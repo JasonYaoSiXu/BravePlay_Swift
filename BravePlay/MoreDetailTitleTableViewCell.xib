@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MoreDetailTitleTableViewCell" customModule="BravePlay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="foA-Nt-54i" userLabel="bgView">
+                        <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlm-l4-gtc" userLabel="titleView">
+                                <rect key="frame" x="8" y="11" width="3" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="3" id="plF-g3-9Gn"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSV-3g-J1k" userLabel="titleLabel">
+                                <rect key="frame" x="19" y="13" width="36" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.74724152514938003" green="0.10404622327166435" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="nSV-3g-J1k" firstAttribute="leading" secondItem="Tlm-l4-gtc" secondAttribute="trailing" constant="8" id="1ai-eQ-gSI"/>
+                            <constraint firstItem="nSV-3g-J1k" firstAttribute="centerY" secondItem="foA-Nt-54i" secondAttribute="centerY" id="3BR-lo-IEN"/>
+                            <constraint firstItem="Tlm-l4-gtc" firstAttribute="leading" secondItem="foA-Nt-54i" secondAttribute="leading" constant="8" id="49w-zi-clD"/>
+                            <constraint firstAttribute="bottom" secondItem="Tlm-l4-gtc" secondAttribute="bottom" constant="11" id="FcR-0j-NXM"/>
+                            <constraint firstItem="Tlm-l4-gtc" firstAttribute="top" secondItem="foA-Nt-54i" secondAttribute="top" constant="11" id="JjX-0B-Mpm"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="foA-Nt-54i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6QW-Jq-bDM"/>
+                    <constraint firstAttribute="trailing" secondItem="foA-Nt-54i" secondAttribute="trailing" constant="10" id="8ME-Ey-N4g"/>
+                    <constraint firstAttribute="bottom" secondItem="foA-Nt-54i" secondAttribute="bottom" id="bOV-hO-9h8"/>
+                    <constraint firstItem="foA-Nt-54i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wMp-hL-tlU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgView" destination="foA-Nt-54i" id="oZu-MT-27y"/>
+                <outlet property="titleLabel" destination="nSV-3g-J1k" id="scc-1e-eWv"/>
+                <outlet property="titleView" destination="Tlm-l4-gtc" id="f0d-M0-tIR"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

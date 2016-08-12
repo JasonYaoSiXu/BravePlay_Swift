@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CustomCellCollectionViewCell" customModule="BravePlay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9wc-QH-SVM" userLabel="customHeadImage">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLz-Bi-xOr" userLabel="titleLabel">
+                        <rect key="frame" x="10" y="23" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9wc-QH-SVM" secondAttribute="bottom" id="0iz-Hn-mTg"/>
+                <constraint firstAttribute="trailing" secondItem="9wc-QH-SVM" secondAttribute="trailing" id="Wyo-yx-AFm"/>
+                <constraint firstItem="KLz-Bi-xOr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="ZR4-sQ-170"/>
+                <constraint firstItem="9wc-QH-SVM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="c1R-Mp-URx"/>
+                <constraint firstAttribute="bottom" secondItem="KLz-Bi-xOr" secondAttribute="bottom" constant="10" id="pcy-iG-fnX"/>
+                <constraint firstItem="9wc-QH-SVM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="y0z-vY-ESf"/>
+            </constraints>
+            <connections>
+                <outlet property="customHeadImage" destination="9wc-QH-SVM" id="X9u-kZ-uAI"/>
+                <outlet property="titleLabel" destination="KLz-Bi-xOr" id="GVQ-Tv-fgZ"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

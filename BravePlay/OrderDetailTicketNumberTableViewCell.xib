@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="OrderDetailTicketNumberTableViewCell" customModule="BravePlay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9Z-CK-WMU" userLabel="bgView">
+                        <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="数量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AtZ-0u-oXM" userLabel="numberLabel">
+                                <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fP7-5w-s1v" userLabel="chooseNumberView">
+                                <rect key="frame" x="189" y="0.0" width="111" height="43"/>
+                                <color key="backgroundColor" red="0.22974338352352164" green="0.060689736363527591" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="111" id="wOt-Ex-SrT"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.03904536989295937" green="1" blue="0.72206188731877252" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="fP7-5w-s1v" secondAttribute="bottom" id="NU7-gb-pgJ"/>
+                            <constraint firstAttribute="trailing" secondItem="fP7-5w-s1v" secondAttribute="trailing" id="PHl-VD-58u"/>
+                            <constraint firstItem="fP7-5w-s1v" firstAttribute="top" secondItem="b9Z-CK-WMU" secondAttribute="top" id="vAj-kn-3Vy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="b9Z-CK-WMU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="76g-HG-N25"/>
+                    <constraint firstAttribute="trailing" secondItem="b9Z-CK-WMU" secondAttribute="trailing" constant="10" id="fO0-a1-LLA"/>
+                    <constraint firstItem="b9Z-CK-WMU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="h1l-Us-ASd"/>
+                    <constraint firstAttribute="bottom" secondItem="b9Z-CK-WMU" secondAttribute="bottom" id="zrh-Co-r0E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgView" destination="b9Z-CK-WMU" id="0Cz-7l-VyR"/>
+                <outlet property="chooseNumberView" destination="fP7-5w-s1v" id="sns-pc-jzG"/>
+                <outlet property="numberLabel" destination="AtZ-0u-oXM" id="s3h-99-8VB"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

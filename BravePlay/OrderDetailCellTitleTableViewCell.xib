@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="OrderDetailCellTitleTableViewCell" customModule="BravePlay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcg-j6-MzQ" userLabel="bgView">
+                        <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASf-Zk-4x2" userLabel="titleView">
+                                <rect key="frame" x="13" y="14" width="3" height="15"/>
+                                <color key="backgroundColor" red="0.043542964048731037" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="3" id="iBm-6X-8qM"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B0I-sJ-7MC" userLabel="titleLabel">
+                                <rect key="frame" x="77" y="13" width="36" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFY-3I-VT7" userLabel="remarksLabel">
+                                <rect key="frame" x="25" y="11" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.86217789004256873" green="1" blue="0.02729321005534624" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="YFY-3I-VT7" firstAttribute="leading" secondItem="ASf-Zk-4x2" secondAttribute="trailing" constant="9" id="1E6-ap-Eve"/>
+                            <constraint firstItem="ASf-Zk-4x2" firstAttribute="centerY" secondItem="kcg-j6-MzQ" secondAttribute="centerY" id="8Wc-j1-gzK"/>
+                            <constraint firstItem="ASf-Zk-4x2" firstAttribute="leading" secondItem="kcg-j6-MzQ" secondAttribute="leading" constant="13" id="CSt-Rc-jYP"/>
+                            <constraint firstAttribute="bottom" secondItem="ASf-Zk-4x2" secondAttribute="bottom" constant="14" id="LrW-BV-uav"/>
+                            <constraint firstItem="ASf-Zk-4x2" firstAttribute="top" secondItem="kcg-j6-MzQ" secondAttribute="top" constant="14" id="dSm-QF-hYQ"/>
+                            <constraint firstItem="B0I-sJ-7MC" firstAttribute="leading" secondItem="YFY-3I-VT7" secondAttribute="trailing" constant="10" id="lax-l5-cyb"/>
+                            <constraint firstItem="YFY-3I-VT7" firstAttribute="centerY" secondItem="kcg-j6-MzQ" secondAttribute="centerY" id="pxn-72-tQA"/>
+                            <constraint firstItem="B0I-sJ-7MC" firstAttribute="centerY" secondItem="kcg-j6-MzQ" secondAttribute="centerY" id="tpY-kY-Fdi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kcg-j6-MzQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MTV-Kh-zSa"/>
+                    <constraint firstAttribute="trailing" secondItem="kcg-j6-MzQ" secondAttribute="trailing" constant="10" id="SKR-0Z-z1j"/>
+                    <constraint firstAttribute="bottom" secondItem="kcg-j6-MzQ" secondAttribute="bottom" id="eOo-ut-7wn"/>
+                    <constraint firstItem="kcg-j6-MzQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="m0h-v9-0Ew"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgView" destination="kcg-j6-MzQ" id="Xy1-ze-74g"/>
+                <outlet property="remarksLabel" destination="YFY-3I-VT7" id="OAj-9t-znW"/>
+                <outlet property="titleLabel" destination="B0I-sJ-7MC" id="gts-E8-e6A"/>
+                <outlet property="titleView" destination="ASf-Zk-4x2" id="Jcv-uZ-b3T"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

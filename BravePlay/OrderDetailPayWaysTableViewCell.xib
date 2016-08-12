@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="OrderDetailPayWaysTableViewCell" customModule="BravePlay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9F-Pa-39d" userLabel="bgView">
+                        <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8H6-G7-jAY" userLabel="payWayImage">
+                                <rect key="frame" x="8" y="8" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8H6-G7-jAY" secondAttribute="height" multiplier="1:1" id="Wri-M4-epu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqs-1g-dQC" userLabel="payNameLabel">
+                                <rect key="frame" x="43" y="11" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wc-p5-GIJ" userLabel="chooseButton">
+                                <rect key="frame" x="274" y="11" width="18" height="22"/>
+                                <state key="normal" image="ticket_buy_n"/>
+                                <connections>
+                                    <action selector="tapChooseButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rJp-8i-lS6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.051964118559434613" green="1" blue="0.92056128338209775" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Vqs-1g-dQC" firstAttribute="leading" secondItem="8H6-G7-jAY" secondAttribute="trailing" constant="8" id="AVr-36-YOV"/>
+                            <constraint firstItem="Vqs-1g-dQC" firstAttribute="centerY" secondItem="x9F-Pa-39d" secondAttribute="centerY" id="DoD-YJ-pLz"/>
+                            <constraint firstItem="7Wc-p5-GIJ" firstAttribute="centerY" secondItem="x9F-Pa-39d" secondAttribute="centerY" id="a8i-TT-cBE"/>
+                            <constraint firstItem="8H6-G7-jAY" firstAttribute="top" secondItem="x9F-Pa-39d" secondAttribute="top" constant="8" id="jSY-of-oPP"/>
+                            <constraint firstAttribute="trailing" secondItem="7Wc-p5-GIJ" secondAttribute="trailing" constant="8" id="swg-lE-bFn"/>
+                            <constraint firstAttribute="bottom" secondItem="8H6-G7-jAY" secondAttribute="bottom" constant="8" id="wgB-8p-EF8"/>
+                            <constraint firstItem="8H6-G7-jAY" firstAttribute="leading" secondItem="x9F-Pa-39d" secondAttribute="leading" constant="8" id="ymm-XK-gzj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="x9F-Pa-39d" secondAttribute="trailing" constant="10" id="6NO-7R-VFR"/>
+                    <constraint firstAttribute="bottom" secondItem="x9F-Pa-39d" secondAttribute="bottom" id="Pgs-nt-ZUZ"/>
+                    <constraint firstItem="x9F-Pa-39d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Vgh-y0-0ov"/>
+                    <constraint firstItem="x9F-Pa-39d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sc4-vG-329"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgView" destination="x9F-Pa-39d" id="4QW-HA-5Zf"/>
+                <outlet property="chooseButton" destination="7Wc-p5-GIJ" id="NCf-vG-8cf"/>
+                <outlet property="payNameLabel" destination="Vqs-1g-dQC" id="rIM-OG-Ssa"/>
+                <outlet property="payWayImageView" destination="8H6-G7-jAY" id="XhD-h6-mJ4"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ticket_buy_n" width="18" height="18"/>
+    </resources>
+</document>
