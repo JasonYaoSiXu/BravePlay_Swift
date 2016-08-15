@@ -50,6 +50,14 @@ public enum  MainSection {
     case Barrages(id: String)
     //视频推荐
     case Recommends(id: String)
+    //用户主页
+    case Channels(id: String)
+    //用户推荐
+    case  UserRecommends(id: String)
+    //用户上传视频
+    case UserUpLoadVideos(id: String)
+    //趣闻详情
+    case ArticleDetail(id: String)
 }
 
 extension MainSection :TargetType {
@@ -79,8 +87,17 @@ extension MainSection :TargetType {
             return "/barrages/_videoId/\(id)"
         case .Recommends(let id):
             return "/video-recommends/\(id)"
+        case .Channels:
+            return "/channels/"
+        case .UserRecommends:
+            return "/channels/recommends/"
+        case .UserUpLoadVideos:
+            return "/videos/_channelId/"
+        case .ArticleDetail:
+            return "/wechat-articles/"
         }
     }
+    
     public var parameters: [String: AnyObject]? {
         switch self {
             case .Banner:
@@ -105,6 +122,14 @@ extension MainSection :TargetType {
                 return ["expand":"userDetail"]
             case .Recommends:
                 return ["expand":"topic"]
+            case .Channels(let id):
+                return ["":id]
+            case .UserRecommends(let id):
+                return ["":id]
+            case .UserUpLoadVideos(let id):
+                return ["":id,"expand":["topic","channel"],"subVersion" : "0.2"]
+            case .ArticleDetail(let id):
+                return ["":id]
         }
     }
     

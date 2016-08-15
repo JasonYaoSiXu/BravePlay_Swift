@@ -259,7 +259,7 @@ extension HeadViewDetailForVideoViewController :  UITableViewDelegate, UITableVi
                 hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(headTv, animated: true)
             } else if indexPath.row == 1 {
-                let headTv: UserVcViewController = UserVcViewController()
+                let headTv: UserVcViewController = UserVcViewController(userId: "\(videos.channel.id)", userName: videos.channel.name)
                 hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(headTv, animated: true)
             }

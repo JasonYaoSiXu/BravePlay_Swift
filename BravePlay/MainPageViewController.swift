@@ -27,12 +27,18 @@ class MainPageViewController: UITabBarController {
         print("\(#function)")
         //首页
         var viewControllers = [UIViewController]()
-        let vc : UIViewController = ViewController()
-        let nvc = UINavigationController(rootViewController: vc)
+        var vc : UIViewController = ViewController()
+        var nvc = UINavigationController(rootViewController: vc)
         nvc.tabBarItem = UITabBarItem(title: "首页", image: UIImage(named: "首页"), selectedImage: UIImage(named: "首页-选中"))
         nvc.tabBarItem.tag = 0
-        
         viewControllers.append(nvc)
+        
+        vc = InterestingSectionViewController()
+        nvc = UINavigationController(rootViewController: vc)
+        nvc.tabBarItem = UITabBarItem(title: "趣闻", image: UIImage(named: "购票"), selectedImage: UIImage(named: "购票-选中"))
+        nvc.tabBarItem.tag = 1
+        viewControllers.append(nvc)
+        
         self.viewControllers = viewControllers
     }
     

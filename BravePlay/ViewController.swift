@@ -55,6 +55,8 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.hidden = true
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        navigationController?.navigationBar.barTintColor = UIColor( red: 0.0824, green: 0.1216, blue: 0.1412, alpha: 1.0 )
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     private func initTableView() {
@@ -191,6 +193,28 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            return
+        }
+        switch indexPath.section {
+        case 0:
+            let intersetingVC = InterestingViewController(id: articleRepos[indexPath.row - 1].id,name: articleRepos[indexPath.row - 1].title)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(intersetingVC, animated: true)
+        case 1:
+            let activityVC = HeadViewDetailViewController(showId: activityRepos!.activityItem[indexPath.row - 1].id, vcTitle: activityRepos!.activityItem[indexPath.row - 1].title)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(activityVC, animated: true)
+        case 2:
+            let tvVC = HeadViewDetailForVideoViewController(name: tvRepos!.tvItem[indexPath.row - 1].title, showId: tvRepos!.tvItem[indexPath.row - 1].id)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(tvVC, animated: true)
+        default:
+            return
+        }
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.section,indexPath.row) {
         case (_,0):
@@ -240,6 +264,10 @@ extension ViewController : CustomHeadViewDelegate,CustomTableViewCellDelegate {
             return TopicItem()
         }
         return topicRepos.dataList[indexPath]
+    }
+    
+    func tapCollectionView(indePath: Int) {
+        
     }
     
 }

@@ -8,12 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		0AB695D9EAAD0DDEA96C441A /* Pods_BravePlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFCD8F239B7853EC81053CB /* Pods_BravePlay.framework */; };
+		820270511D61C3060041AA5B /* InterestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820270501D61C3060041AA5B /* InterestingViewController.swift */; };
+		820270531D61C6770041AA5B /* InterestingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820270521D61C6770041AA5B /* InterestingModel.swift */; };
+		820270561D61D8B30041AA5B /* InterestingSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820270551D61D8B30041AA5B /* InterestingSectionViewController.swift */; };
 		823A80C21D5D6EEC00EE302A /* WebTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A80C11D5D6EEC00EE302A /* WebTableViewCell.swift */; };
 		823A80C41D5D754000EE302A /* MoreDetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A80C31D5D754000EE302A /* MoreDetailWebViewController.swift */; };
 		8241CE721D51827200240803 /* DealError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8241CE711D51827200240803 /* DealError.swift */; };
 		8241CE761D5195A800240803 /* MoyaPares.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8241CE751D5195A800240803 /* MoyaPares.swift */; };
 		8241CE781D51B05A00240803 /* HeadDetailAcCostomHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8241CE771D51B05A00240803 /* HeadDetailAcCostomHeadView.swift */; };
 		8241CE7E1D51BFDB00240803 /* HeadDetailAcCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8241CE7D1D51BFDB00240803 /* HeadDetailAcCustomView.swift */; };
+		824B278F1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824B278D1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift */; };
+		824B27901D6146F0005DD690 /* UserVcTitleViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B278E1D6146F0005DD690 /* UserVcTitleViewTableViewCell.xib */; };
+		824B27931D614942005DD690 /* UserVcRecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824B27911D614942005DD690 /* UserVcRecommendTableViewCell.swift */; };
+		824B27941D614942005DD690 /* UserVcRecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B27921D614942005DD690 /* UserVcRecommendTableViewCell.xib */; };
+		824B279B1D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824B27991D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift */; };
+		824B279C1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B279A1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib */; };
+		824B279F1D615850005DD690 /* UserCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824B279D1D615850005DD690 /* UserCustomTableViewCell.swift */; };
+		824B27A01D615850005DD690 /* UserCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B279E1D615850005DD690 /* UserCustomTableViewCell.xib */; };
 		824E71C81D5421480067351D /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E71C61D5421480067351D /* CustomButtonTableViewCell.swift */; };
 		824E71C91D5421480067351D /* CustomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824E71C71D5421480067351D /* CustomButtonTableViewCell.xib */; };
 		824E71CF1D5425910067351D /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E71CD1D5425910067351D /* ShareViewController.swift */; };
@@ -117,12 +128,23 @@
 /* Begin PBXFileReference section */
 		343708C09E572DDDDF815A3C /* Pods-BravePlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravePlay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravePlay/Pods-BravePlay.debug.xcconfig"; sourceTree = "<group>"; };
 		63F440286B27C95A94001004 /* Pods-BravePlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravePlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravePlay/Pods-BravePlay.release.xcconfig"; sourceTree = "<group>"; };
+		820270501D61C3060041AA5B /* InterestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestingViewController.swift; sourceTree = "<group>"; };
+		820270521D61C6770041AA5B /* InterestingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestingModel.swift; sourceTree = "<group>"; };
+		820270551D61D8B30041AA5B /* InterestingSectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestingSectionViewController.swift; sourceTree = "<group>"; };
 		823A80C11D5D6EEC00EE302A /* WebTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTableViewCell.swift; sourceTree = "<group>"; };
 		823A80C31D5D754000EE302A /* MoreDetailWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreDetailWebViewController.swift; sourceTree = "<group>"; };
 		8241CE711D51827200240803 /* DealError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealError.swift; sourceTree = "<group>"; };
 		8241CE751D5195A800240803 /* MoyaPares.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaPares.swift; sourceTree = "<group>"; };
 		8241CE771D51B05A00240803 /* HeadDetailAcCostomHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadDetailAcCostomHeadView.swift; sourceTree = "<group>"; };
 		8241CE7D1D51BFDB00240803 /* HeadDetailAcCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadDetailAcCustomView.swift; sourceTree = "<group>"; };
+		824B278D1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcTitleViewTableViewCell.swift; sourceTree = "<group>"; };
+		824B278E1D6146F0005DD690 /* UserVcTitleViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserVcTitleViewTableViewCell.xib; sourceTree = "<group>"; };
+		824B27911D614942005DD690 /* UserVcRecommendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcRecommendTableViewCell.swift; sourceTree = "<group>"; };
+		824B27921D614942005DD690 /* UserVcRecommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserVcRecommendTableViewCell.xib; sourceTree = "<group>"; };
+		824B27991D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		824B279A1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserVcRecommendCollectionViewCell.xib; sourceTree = "<group>"; };
+		824B279D1D615850005DD690 /* UserCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCustomTableViewCell.swift; sourceTree = "<group>"; };
+		824B279E1D615850005DD690 /* UserCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCustomTableViewCell.xib; sourceTree = "<group>"; };
 		824E71C61D5421480067351D /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
 		824E71C71D5421480067351D /* CustomButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomButtonTableViewCell.xib; sourceTree = "<group>"; };
 		824E71CD1D5425910067351D /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +281,23 @@
 				63F440286B27C95A94001004 /* Pods-BravePlay.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8202704F1D61C2CD0041AA5B /* Interesting */ = {
+			isa = PBXGroup;
+			children = (
+				820270501D61C3060041AA5B /* InterestingViewController.swift */,
+				820270521D61C6770041AA5B /* InterestingModel.swift */,
+			);
+			name = Interesting;
+			sourceTree = "<group>";
+		};
+		820270541D61D88F0041AA5B /* InterestingSection */ = {
+			isa = PBXGroup;
+			children = (
+				820270551D61D8B30041AA5B /* InterestingSectionViewController.swift */,
+			);
+			name = InterestingSection;
 			sourceTree = "<group>";
 		};
 		8241CE701D51825A00240803 /* DealError */ = {
@@ -410,6 +449,7 @@
 				826D69211D4AF41700A1187D /* BravePlay.xcdatamodeld */,
 				826D694B1D4AF46100A1187D /* Config */,
 				826D694E1D4AF8AA00A1187D /* MainSection */,
+				820270541D61D88F0041AA5B /* InterestingSection */,
 				826D69581D4B227100A1187D /* General */,
 			);
 			path = BravePlay;
@@ -451,6 +491,7 @@
 				8263A47A1D4EF9F700298D96 /* HeadDetailForActivity */,
 				82FAE7B11D506C17006505DB /* HeadDetailForTV */,
 				82B0441A1D5DCFC70020F547 /* UserVc */,
+				8202704F1D61C2CD0041AA5B /* Interesting */,
 			);
 			name = MainSection;
 			sourceTree = "<group>";
@@ -493,6 +534,14 @@
 				82B0441B1D5DD1D40020F547 /* UserVCModel.swift */,
 				82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */,
 				82B0441F1D5DD6FB0020F547 /* UserVcHeadView.swift */,
+				824B278D1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift */,
+				824B278E1D6146F0005DD690 /* UserVcTitleViewTableViewCell.xib */,
+				824B27911D614942005DD690 /* UserVcRecommendTableViewCell.swift */,
+				824B27921D614942005DD690 /* UserVcRecommendTableViewCell.xib */,
+				824B27991D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift */,
+				824B279A1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib */,
+				824B279D1D615850005DD690 /* UserCustomTableViewCell.swift */,
+				824B279E1D615850005DD690 /* UserCustomTableViewCell.xib */,
 			);
 			name = UserVc;
 			sourceTree = "<group>";
@@ -646,6 +695,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				824B27A01D615850005DD690 /* UserCustomTableViewCell.xib in Resources */,
+				824B27901D6146F0005DD690 /* UserVcTitleViewTableViewCell.xib in Resources */,
+				824B27941D614942005DD690 /* UserVcRecommendTableViewCell.xib in Resources */,
 				826D69571D4B14AB00A1187D /* SeciontTitleTableViewCell.xib in Resources */,
 				826D69531D4AF9FC00A1187D /* InterestingTableViewCell.xib in Resources */,
 				826D69601D4B266B00A1187D /* CustomCellCollectionViewCell.xib in Resources */,
@@ -655,6 +707,7 @@
 				826860AC1D59DBD00099670A /* DetailForTvCommentTableViewCell.xib in Resources */,
 				826D69281D4AF41700A1187D /* LaunchScreen.storyboard in Resources */,
 				8263A46B1D4ED2F400298D96 /* BraveActiveTableViewCell.xib in Resources */,
+				824B279C1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib in Resources */,
 				82FEA0391D51E84300EF8440 /* HeadDetalAcCustomTableViewCell.xib in Resources */,
 				8263A4791D4EF26600298D96 /* CustomTableViewCell.xib in Resources */,
 				82FEA0331D51DBAB00EF8440 /* HeadViewAcFirstSectionTableViewCell.xib in Resources */,
@@ -748,6 +801,7 @@
 				82B0441C1D5DD1D40020F547 /* UserVCModel.swift in Sources */,
 				8268609A1D59B63B0099670A /* MoreConsultViewController.swift in Sources */,
 				8263A4781D4EF26600298D96 /* CustomTableViewCell.swift in Sources */,
+				820270511D61C3060041AA5B /* InterestingViewController.swift in Sources */,
 				82FEA0321D51DBAB00EF8440 /* HeadViewAcFirstSectionTableViewCell.swift in Sources */,
 				826D69521D4AF9FC00A1187D /* InterestingTableViewCell.swift in Sources */,
 				82B044201D5DD6FB0020F547 /* UserVcHeadView.swift in Sources */,
@@ -756,6 +810,7 @@
 				8273F8C71D5C83D60053D3A4 /* BottomView.swift in Sources */,
 				8263A4821D4F500B00298D96 /* MainSectionMoya.swift in Sources */,
 				826860AF1D59E02C0099670A /* relatedRecommendTableViewCell.swift in Sources */,
+				820270531D61C6770041AA5B /* InterestingModel.swift in Sources */,
 				82FBA50B1D5AC13500F1B09C /* HeadDetailModel.swift in Sources */,
 				8268608C1D5969360099670A /* OrderDetailTicketNumberTableViewCell.swift in Sources */,
 				826860AB1D59DBD00099670A /* DetailForTvCommentTableViewCell.swift in Sources */,
@@ -772,13 +827,16 @@
 				826D695F1D4B266B00A1187D /* CustomCellCollectionViewCell.swift in Sources */,
 				8241CE761D5195A800240803 /* MoyaPares.swift in Sources */,
 				826860A41D59CE460099670A /* DetailForTvCustomHeadView.swift in Sources */,
+				824B27931D614942005DD690 /* UserVcRecommendTableViewCell.swift in Sources */,
 				824E71CF1D5425910067351D /* ShareViewController.swift in Sources */,
+				820270561D61D8B30041AA5B /* InterestingSectionViewController.swift in Sources */,
 				8268609F1D59BF920099670A /* MoreDetailTitleTableViewCell.swift in Sources */,
 				826D69231D4AF41700A1187D /* BravePlay.xcdatamodeld in Sources */,
 				82FEA03C1D51FA5700EF8440 /* HeadDetailAcConsultTableViewCell.swift in Sources */,
 				8263A47C1D4EFA1200298D96 /* HeadViewDetailViewController.swift in Sources */,
 				826D695C1D4B238400A1187D /* CustomHeadView.swift in Sources */,
 				82B52A8D1D5B353800E5FEAF /* PlayTv.swift in Sources */,
+				824B279B1D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift in Sources */,
 				826D691D1D4AF41700A1187D /* ViewController.swift in Sources */,
 				824E71C81D5421480067351D /* CustomButtonTableViewCell.swift in Sources */,
 				82553AA31D52D82E005150C8 /* HeadViewAcModel.swift in Sources */,
@@ -793,9 +851,11 @@
 				82FAE7B51D50AC35006505DB /* BottomCollectionViewCell.swift in Sources */,
 				826860821D595E1A0099670A /* OrderDetailContactTableViewCell.swift in Sources */,
 				8241CE721D51827200240803 /* DealError.swift in Sources */,
+				824B279F1D615850005DD690 /* UserCustomTableViewCell.swift in Sources */,
 				8273F8C51D5C6DF00053D3A4 /* Subtitles.swift in Sources */,
 				82B0441E1D5DD67C0020F547 /* UserVcViewController.swift in Sources */,
 				82FAE7B01D50597B006505DB /* ExtensionUIControl.swift in Sources */,
+				824B278F1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift in Sources */,
 				824E71D41D544C780067351D /* BuyTicketView.swift in Sources */,
 				82FEA0381D51E84300EF8440 /* HeadDetalAcCustomTableViewCell.swift in Sources */,
 				82553AAD1D531683005150C8 /* MainVcPresentData.swift in Sources */,

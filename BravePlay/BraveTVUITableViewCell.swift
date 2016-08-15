@@ -36,10 +36,6 @@ class BraveTVUITableViewCell: UITableViewCell {
         bgImageView.contentMode = .ScaleAspectFill
         bgImageView.image = UIImage(named: "login_bg")
         
-        bgImageView.userInteractionEnabled = true
-        let tapImageView = UITapGestureRecognizer(target: self, action: #selector(BraveTVUITableViewCell.tapImageView))
-        bgImageView.addGestureRecognizer(tapImageView)
-        
         titleLabel.textAlignment = .Center
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.backgroundColor = UIColor.clearColor()
@@ -48,12 +44,5 @@ class BraveTVUITableViewCell: UITableViewCell {
         nameLabel.textColor = UIColor.whiteColor()
         nameLabel.backgroundColor = UIColor.clearColor()
     }
-    
-    @objc private func tapImageView() {
-        guard let action = self.action else {
-            return
-        }
-        action()
-    }
-    
+        
 }
