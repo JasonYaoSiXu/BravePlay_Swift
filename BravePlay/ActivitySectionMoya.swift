@@ -28,6 +28,8 @@ private extension String {
 public enum  ActivitySection {
     //城市列表
     case CityList
+    //活动列表
+    case ActivityList(page: Int,filter: Int,location: String)
 }
 
 extension ActivitySection :TargetType {
@@ -37,6 +39,8 @@ extension ActivitySection :TargetType {
         switch self {
         case .CityList:
             return "/locations"
+        case .ActivityList:
+            return "/activities"
         }
     }
     
@@ -44,6 +48,8 @@ extension ActivitySection :TargetType {
         switch self {
         case .CityList:
             return ["":""]
+        case let ActivityList(page,filter,location):
+            return ["page":"\(page)","filter":"\(filter)","location":location]
         }
     }
     
@@ -101,6 +107,7 @@ let activityEndpointClosure = { (target: ActivitySection) -> Endpoint<ActivitySe
                     "application/json; version=v3",
                     forHTTPHeaderField: "Accept"
                 )
+                
                 let com = NSURLComponents(URL: mutableURLRequest.URL!,resolvingAgainstBaseURL:false)
                 if query.rangeOfString("=") == nil {
                     if let path = com?.percentEncodedPath {
@@ -109,7 +116,8 @@ let activityEndpointClosure = { (target: ActivitySection) -> Endpoint<ActivitySe
                         com?.percentEncodedPath = query
                     }
                 } else {
-                    com?.percentEncodedQuery = query
+//                    com?.percentEncodedQuery = query
+                    com?.query = query
                 }
                 
                 mutableURLRequest.URL = com?.URL

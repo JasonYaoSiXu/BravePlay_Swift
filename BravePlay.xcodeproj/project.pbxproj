@@ -99,6 +99,12 @@
 		828F6AEB1D62E13F002B0B70 /* ActivityChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F6AEA1D62E13F002B0B70 /* ActivityChooseCityViewController.swift */; };
 		828F6AED1D62E22B002B0B70 /* ActivitySectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F6AEC1D62E22B002B0B70 /* ActivitySectionModel.swift */; };
 		828F6AF01D62F136002B0B70 /* ActivitySectionMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F6AEF1D62F136002B0B70 /* ActivitySectionMoya.swift */; };
+		828F6AF81D630896002B0B70 /* ActivityHasPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F6AF61D630896002B0B70 /* ActivityHasPriceTableViewCell.swift */; };
+		828F6AF91D630896002B0B70 /* ActivityHasPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F6AF71D630896002B0B70 /* ActivityHasPriceTableViewCell.xib */; };
+		828F6AFC1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F6AFA1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift */; };
+		828F6AFD1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F6AFB1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib */; };
+		828F6B001D63123F002B0B70 /* ActivitySectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F6AFE1D63123F002B0B70 /* ActivitySectionCollectionViewCell.swift */; };
+		828F6B011D63123F002B0B70 /* ActivitySectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828F6AFF1D63123F002B0B70 /* ActivitySectionCollectionViewCell.xib */; };
 		82B044191D5DADBB0020F547 /* CustomTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B044181D5DADBB0020F547 /* CustomTitleView.swift */; };
 		82B0441C1D5DD1D40020F547 /* UserVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0441B1D5DD1D40020F547 /* UserVCModel.swift */; };
 		82B0441E1D5DD67C0020F547 /* UserVcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */; };
@@ -236,6 +242,12 @@
 		828F6AEA1D62E13F002B0B70 /* ActivityChooseCityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityChooseCityViewController.swift; sourceTree = "<group>"; };
 		828F6AEC1D62E22B002B0B70 /* ActivitySectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySectionModel.swift; sourceTree = "<group>"; };
 		828F6AEF1D62F136002B0B70 /* ActivitySectionMoya.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySectionMoya.swift; sourceTree = "<group>"; };
+		828F6AF61D630896002B0B70 /* ActivityHasPriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityHasPriceTableViewCell.swift; sourceTree = "<group>"; };
+		828F6AF71D630896002B0B70 /* ActivityHasPriceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityHasPriceTableViewCell.xib; sourceTree = "<group>"; };
+		828F6AFA1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityWithoutPriceTableViewCell.swift; sourceTree = "<group>"; };
+		828F6AFB1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityWithoutPriceTableViewCell.xib; sourceTree = "<group>"; };
+		828F6AFE1D63123F002B0B70 /* ActivitySectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		828F6AFF1D63123F002B0B70 /* ActivitySectionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivitySectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		82B044181D5DADBB0020F547 /* CustomTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTitleView.swift; sourceTree = "<group>"; };
 		82B0441B1D5DD1D40020F547 /* UserVCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVCModel.swift; sourceTree = "<group>"; };
 		82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcViewController.swift; sourceTree = "<group>"; };
@@ -567,6 +579,7 @@
 				828F6AEC1D62E22B002B0B70 /* ActivitySectionModel.swift */,
 				828F6AEF1D62F136002B0B70 /* ActivitySectionMoya.swift */,
 				828F6AEE1D62E2EC002B0B70 /* ChooseCity */,
+				828F6AF11D63082C002B0B70 /* CustomCell */,
 			);
 			name = ActivitySection;
 			sourceTree = "<group>";
@@ -577,6 +590,19 @@
 				828F6AEA1D62E13F002B0B70 /* ActivityChooseCityViewController.swift */,
 			);
 			name = ChooseCity;
+			sourceTree = "<group>";
+		};
+		828F6AF11D63082C002B0B70 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				828F6AF61D630896002B0B70 /* ActivityHasPriceTableViewCell.swift */,
+				828F6AF71D630896002B0B70 /* ActivityHasPriceTableViewCell.xib */,
+				828F6AFA1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift */,
+				828F6AFB1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib */,
+				828F6AFE1D63123F002B0B70 /* ActivitySectionCollectionViewCell.swift */,
+				828F6AFF1D63123F002B0B70 /* ActivitySectionCollectionViewCell.xib */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		82B0441A1D5DCFC70020F547 /* UserVc */ = {
@@ -751,6 +777,8 @@
 				824B27941D614942005DD690 /* UserVcRecommendTableViewCell.xib in Resources */,
 				826D69571D4B14AB00A1187D /* SeciontTitleTableViewCell.xib in Resources */,
 				826D69531D4AF9FC00A1187D /* InterestingTableViewCell.xib in Resources */,
+				828F6AF91D630896002B0B70 /* ActivityHasPriceTableViewCell.xib in Resources */,
+				828F6AFD1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib in Resources */,
 				826D69601D4B266B00A1187D /* CustomCellCollectionViewCell.xib in Resources */,
 				82FEA03D1D51FA5700EF8440 /* HeadDetailAcConsultTableViewCell.xib in Resources */,
 				824E71C91D5421480067351D /* CustomButtonTableViewCell.xib in Resources */,
@@ -775,6 +803,7 @@
 				826860A81D59D8070099670A /* DetailForTvRecommendTableViewCell.xib in Resources */,
 				826860831D595E1A0099670A /* OrderDetailContactTableViewCell.xib in Resources */,
 				826D69201D4AF41700A1187D /* Main.storyboard in Resources */,
+				828F6B011D63123F002B0B70 /* ActivitySectionCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,6 +877,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				828F6ADD1D62B536002B0B70 /* InterestingMoya.swift in Sources */,
+				828F6AFC1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift in Sources */,
 				8263A46A1D4ED2F400298D96 /* BraveActiveTableViewCell.swift in Sources */,
 				826D69561D4B14AB00A1187D /* SeciontTitleTableViewCell.swift in Sources */,
 				82B0441C1D5DD1D40020F547 /* UserVCModel.swift in Sources */,
@@ -901,6 +931,7 @@
 				826860891D5962FE0099670A /* numberOfTicketsView.swift in Sources */,
 				8263A4841D4F542500298D96 /* MainSectionModel.swift in Sources */,
 				82553AAB1D531418005150C8 /* MainVcNetWork.swift in Sources */,
+				828F6B001D63123F002B0B70 /* ActivitySectionCollectionViewCell.swift in Sources */,
 				824E71DD1D548AEA0067351D /* OrderDetailViewController.swift in Sources */,
 				826860A71D59D8070099670A /* DetailForTvRecommendTableViewCell.swift in Sources */,
 				8241CE781D51B05A00240803 /* HeadDetailAcCostomHeadView.swift in Sources */,
@@ -908,6 +939,7 @@
 				82FAE7B51D50AC35006505DB /* BottomCollectionViewCell.swift in Sources */,
 				826860821D595E1A0099670A /* OrderDetailContactTableViewCell.swift in Sources */,
 				8241CE721D51827200240803 /* DealError.swift in Sources */,
+				828F6AF81D630896002B0B70 /* ActivityHasPriceTableViewCell.swift in Sources */,
 				824B279F1D615850005DD690 /* UserCustomTableViewCell.swift in Sources */,
 				8273F8C51D5C6DF00053D3A4 /* Subtitles.swift in Sources */,
 				82B0441E1D5DD67C0020F547 /* UserVcViewController.swift in Sources */,
