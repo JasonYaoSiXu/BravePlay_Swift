@@ -11,7 +11,7 @@ import UIKit
 protocol CustomTableViewCellDelegate: class {
     func showInfoWithCh(indexPath: Int) -> ChnnelItem
     func showInfoWithTop(indexPath: Int) -> TopicItem
-    func tapCollectionView(indePath: Int)
+    func tapCollectionView(indePath: Int, isLastSection: Bool)
 }
 
 class CustomTableViewCell: UITableViewCell {
@@ -90,7 +90,7 @@ extension CustomTableViewCell : UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        delegate.tapCollectionView(indexPath.row)
+        delegate.tapCollectionView(indexPath.row,isLastSection: isLastSection)
     }
     
     

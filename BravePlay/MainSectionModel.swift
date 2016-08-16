@@ -18,6 +18,7 @@ struct BannerItem: Mappable {
     var img_mobile_url: String = ""
     var type: String = ""
     
+    init() {}
     init?(_ map: Map) {}
     
     mutating func mapping(map: Map) {
@@ -196,7 +197,7 @@ struct TopicResponse: Mappable {
 
 struct TopicItem: Mappable {
     
-    var id: String = ""
+    var id: Int = 0
     var avatar: String = ""
     var headimg: String = ""
     var name: String = ""

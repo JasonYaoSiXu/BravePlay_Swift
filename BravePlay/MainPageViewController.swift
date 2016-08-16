@@ -33,10 +33,25 @@ class MainPageViewController: UITabBarController {
         nvc.tabBarItem.tag = 0
         viewControllers.append(nvc)
         
+        //趣闻
         vc = InterestingSectionViewController()
         nvc = UINavigationController(rootViewController: vc)
         nvc.tabBarItem = UITabBarItem(title: "趣闻", image: UIImage(named: "购票"), selectedImage: UIImage(named: "购票-选中"))
         nvc.tabBarItem.tag = 1
+        viewControllers.append(nvc)
+        
+        //TV
+        vc = TVSectionViewController()
+        nvc = UINavigationController(rootViewController: vc)
+        nvc.tabBarItem = UITabBarItem(title: "TV", image: UIImage(named: "发现"), selectedImage: UIImage(named: "发现-选中"))
+        nvc.tabBarItem.tag = 2
+        viewControllers.append(nvc)
+        
+        //活动列表
+        vc = ActivitySectionViewController()
+        nvc = UINavigationController(rootViewController: vc)
+        nvc.tabBarItem = UITabBarItem(title: "活动", image: UIImage(named: "购票"), selectedImage: UIImage(named: "购票-选中"))
+        nvc.tabBarItem.tag = 3
         viewControllers.append(nvc)
         
         self.viewControllers = viewControllers

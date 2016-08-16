@@ -202,14 +202,17 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
             let intersetingVC = InterestingViewController(id: articleRepos[indexPath.row - 1].id,name: articleRepos[indexPath.row - 1].title)
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(intersetingVC, animated: true)
+            hidesBottomBarWhenPushed = false
         case 1:
             let activityVC = HeadViewDetailViewController(showId: activityRepos!.activityItem[indexPath.row - 1].id, vcTitle: activityRepos!.activityItem[indexPath.row - 1].title)
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(activityVC, animated: true)
+            hidesBottomBarWhenPushed = false
         case 2:
             let tvVC = HeadViewDetailForVideoViewController(name: tvRepos!.tvItem[indexPath.row - 1].title, showId: tvRepos!.tvItem[indexPath.row - 1].id)
             hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(tvVC, animated: true)
+            hidesBottomBarWhenPushed = false
         default:
             return
         }
@@ -266,8 +269,18 @@ extension ViewController : CustomHeadViewDelegate,CustomTableViewCellDelegate {
         return topicRepos.dataList[indexPath]
     }
     
-    func tapCollectionView(indePath: Int) {
-        
+    func tapCollectionView(indePath: Int,isLastSection: Bool) {
+        if isLastSection == false {
+            let channelVc = UserVcViewController(userId: "\(channelRepos!.dataList[indePath].id)", userName: channelRepos!.dataList[indePath].name,isLast: isLastSection)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(channelVc, animated: true)
+            hidesBottomBarWhenPushed = false
+        } else {
+            let channelVc = UserVcViewController(userId: "\(topicRepos!.dataList[indePath].id)", userName: topicRepos!.dataList[indePath].name,isLast: isLastSection)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(channelVc, animated: true)
+            hidesBottomBarWhenPushed = false
+        }
     }
     
 }

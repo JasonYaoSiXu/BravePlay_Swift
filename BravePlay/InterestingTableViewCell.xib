@@ -76,7 +76,7 @@
                 <outlet property="titleImageView" destination="BdF-9y-clc" id="MI5-3Y-WBk"/>
                 <outlet property="titleInfoLabel" destination="7uQ-XJ-B3L" id="V64-O8-yf9"/>
             </connections>
-            <point key="canvasLocation" x="88" y="323.5"/>
+            <point key="canvasLocation" x="427" y="307.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -26,9 +26,16 @@ class UserVcViewController: UIViewController {
     private var userRecommend: [UserRecommendResponse] = []
     private var userIssueVideos: [UserIssueVideosResponse] = []
     
-    init(userId: String, userName: String) {
+    private var userTopicData: TopicUserResponse = TopicUserResponse()
+    private var userTopicRecommendData: [TopicRecommand] = []
+    private var userTopicVideosData: [TopicIssueVideosResponse] = []
+    
+    private var isLast: Bool = false
+    
+    init(userId: String, userName: String,isLast: Bool) {
         self.userId = userId
         self.userName = userName
+        self.isLast = isLast
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,7 +57,12 @@ class UserVcViewController: UIViewController {
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
-        requestUserData(userId)
+        if isLast == false {
+            requestUserData(userId)
+        } else {
+            requestUserTopicData(userId)
+        }
+        
         initTableView()
         // Do any additional setup after loading the view.
     }
@@ -103,7 +115,11 @@ extension UserVcViewController : UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 2
         } else {
-            return userIssueVideos.count + 1
+            if isLast == false {
+                return userIssueVideos.count + 1
+            } else {
+                return userTopicVideosData.count + 1
+            }
         }
     }
     
@@ -120,12 +136,21 @@ extension UserVcViewController : UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCellWithIdentifier(recommendCellIdentifier, forIndexPath: indexPath) as? UserVcRecommendTableViewCell else {
                 return UITableViewCell()
             }
-            cell.delegate = self
             
-            if userRecommend.count != 0 {
-                cell.customCollectionView.reloadData()
-                cell.takeData = { [unowned self] _ in
-                    return self.userRecommend
+            cell.delegate = self
+            if isLast == false {
+                if userRecommend.count != 0 {
+                    cell.takeData = { [unowned self] _ in
+                        return self.userRecommend
+                    }
+                    cell.customCollectionView.reloadData()
+                }
+            } else {
+                if userTopicRecommendData.count != 0 {
+                    cell.takeTopicData = { [unowned self] _ in
+                        return self.userTopicRecommendData
+                    }
+                    cell.customCollectionView.reloadData()
                 }
             }
             
@@ -135,20 +160,35 @@ extension UserVcViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            let date = NSDate(timeIntervalSince1970: Double(userIssueVideos[indexPath.row - 1].created_at))
-            let dateFormat = NSDateFormatter()
-            dateFormat.dateFormat = "MM-dd"
-            cell.timeLabel.text = dateFormat.stringFromDate(date)
-            cell.coverImageView.setImageWithURL(makeImageURL(userIssueVideos[indexPath.row - 1].front_cover), defaultImage: UIImage(named: "find_mw_bg"))
-            cell.titleLabel.text = userIssueVideos[indexPath.row - 1].title
-            cell.nameLabel.text = userIssueVideos[indexPath.row - 1].topic.name
-            
-            cell.timeInfoLabel.text = {
-                let mutines = userIssueVideos[indexPath.row - 1].duration / 60
-                let seconds = userIssueVideos[indexPath.row - 1].duration % 60
-                return "\(mutines)'\(seconds)"
-            }()
-            
+            if isLast == false {
+                let date = NSDate(timeIntervalSince1970: Double(userIssueVideos[indexPath.row - 1].created_at))
+                let dateFormat = NSDateFormatter()
+                dateFormat.dateFormat = "MM-dd"
+                cell.timeLabel.text = dateFormat.stringFromDate(date)
+                cell.coverImageView.setImageWithURL(makeImageURL(userIssueVideos[indexPath.row - 1].front_cover), defaultImage: UIImage(named: "find_mw_bg"))
+                cell.titleLabel.text = userIssueVideos[indexPath.row - 1].title
+                cell.nameLabel.text = userIssueVideos[indexPath.row - 1].topic.name
+                
+                cell.timeInfoLabel.text = {
+                    let mutines = userIssueVideos[indexPath.row - 1].duration / 60
+                    let seconds = userIssueVideos[indexPath.row - 1].duration % 60
+                    return "\(mutines)'\(seconds)"
+                }()
+            } else {
+                let date = NSDate(timeIntervalSince1970: Double(userTopicVideosData[indexPath.row - 1].created_at))
+                let dateFormat = NSDateFormatter()
+                dateFormat.dateFormat = "MM-dd"
+                cell.timeLabel.text = dateFormat.stringFromDate(date)
+                cell.coverImageView.setImageWithURL(makeImageURL(userTopicVideosData[indexPath.row - 1].front_cover), defaultImage: UIImage(named: "find_mw_bg"))
+                cell.titleLabel.text = userTopicVideosData[indexPath.row - 1].title
+                cell.nameLabel.text = userTopicVideosData[indexPath.row - 1].topic.name
+                
+                cell.timeInfoLabel.text = {
+                    let mutines = userTopicVideosData[indexPath.row - 1].duration / 60
+                    let seconds = userTopicVideosData[indexPath.row - 1].duration % 60
+                    return "\(mutines)'\(seconds)"
+                }()
+            }
             return cell
         }
     }
@@ -156,9 +196,15 @@ extension UserVcViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if indexPath.section == 1 && indexPath.row > 0 {
-            let showVideos = HeadViewDetailForVideoViewController(name: userIssueVideos[indexPath.row].title, showId: "\(userIssueVideos[indexPath.row].id)")
-            hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(showVideos, animated: true)
+            if isLast == false {
+                let showVideos = HeadViewDetailForVideoViewController(name: userIssueVideos[indexPath.row].title, showId: "\(userIssueVideos[indexPath.row].id)")
+                hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(showVideos, animated: true)
+            } else {
+                let showVideos = HeadViewDetailForVideoViewController(name: userTopicVideosData[indexPath.row].title, showId: "\(userTopicVideosData[indexPath.row].id)")
+                hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(showVideos, animated: true)
+            }
         }
         
     }
@@ -224,16 +270,76 @@ extension UserVcViewController : MoyaPares,UserVcRecommendTableViewCellDelegate 
             })
     }
     
+    //topic
+    private func requestUserTopicData(id: String) {
+        MainSectionProvider.request(MainSection.TopicDetai(id: id), completion: { [unowned self] result in
+            self.showHud("正在加载")
+            let resultData : Result<TopicUserResponse, MyErrorType> = self.paresObject(result)
+            switch resultData {
+            case .Success(let data):
+                self.userTopicData = data
+                self.userTopicRecommends(id)
+            case .Failure(let error):
+                self.popHud()
+                self.dealWithError(error)
+            }
+            })
+    }
+    
+    private func userTopicRecommends(id: String) {
+        MainSectionProvider.request(MainSection.TopicRecommends(id: id), completion: { [unowned self] result in
+            self.showHud("正在加载")
+            let resultData : Result<[TopicRecommand], MyErrorType> = self.paresObjectArray(result)
+            switch resultData {
+            case .Success(let data):
+                self.userTopicRecommendData = data
+                self.userTopicUpLoadVideos(id)
+            case .Failure(let error):
+                self.popHud()
+                self.dealWithError(error)
+            }
+            })
+    }
+    
+    private func userTopicUpLoadVideos(id: String) {
+        MainSectionProvider.request(MainSection.TopicVideos(id: id), completion: { [unowned self] result in
+            self.showHud("正在加载")
+            let resultData : Result<[TopicIssueVideosResponse], MyErrorType> = self.paresObjectArray(result)
+            switch resultData {
+            case .Success(let data):
+                self.userTopicVideosData = data
+                self.popHud()
+                self.setHeadView()
+                self.tableView.reloadData()
+            case .Failure(let error):
+                self.popHud()
+                self.dealWithError(error)
+            }
+            })
+    }
+    
     private func setHeadView() {
-        headView.introduce = userData.description
-        headView.nick = userData.name
-        headView.headImageUrl = userData.avatar
+        if isLast == false {
+            headView.introduce = userData.description
+            headView.nick = userData.name
+            headView.headImageUrl = userData.avatar
+        } else {
+            headView.introduce = ""
+            headView.nick = userTopicData.name
+            headView.headImageUrl = userTopicData.avatar
+        }
     }
     
     func tapCollectionView(index: Int) {
-        let user = UserVcViewController(userId: "\(userRecommend[index].id)", userName: userRecommend[index].name)
-        hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(user, animated: true)
+        if isLast == false {
+            let user = UserVcViewController(userId: "\(userRecommend[index].id)", userName: userRecommend[index].name,isLast: isLast)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(user, animated: true)
+        } else {
+            let user = UserVcViewController(userId: "\(userTopicRecommendData[index].id)", userName: userTopicRecommendData[index].name,isLast: isLast)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(user, animated: true)
+        }
     }
     
 }

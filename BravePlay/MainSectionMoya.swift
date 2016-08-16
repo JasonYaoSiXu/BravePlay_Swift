@@ -58,6 +58,12 @@ public enum  MainSection {
     case UserUpLoadVideos(id: String)
     //趣闻详情
     case ArticleDetail(id: String)
+    //topic 详情
+    case TopicDetai(id: String)
+    //topic 推荐
+    case TopicRecommends(id: String)
+    //topic 视频
+    case  TopicVideos(id: String)
 }
 
 extension MainSection :TargetType {
@@ -95,6 +101,12 @@ extension MainSection :TargetType {
             return "/videos/_channelId/"
         case .ArticleDetail:
             return "/wechat-articles/"
+        case .TopicDetai:
+            return "/topics/"
+        case .TopicRecommends:
+            return "/topics/recommends/"
+        case .TopicVideos:
+            return "/videos/_topicId/"
         }
     }
     
@@ -130,6 +142,12 @@ extension MainSection :TargetType {
                 return ["":id,"expand":["topic","channel"],"subVersion" : "0.2"]
             case .ArticleDetail(let id):
                 return ["":id]
+            case .TopicDetai(let id):
+                return ["":id]
+            case .TopicRecommends(let id):
+                return ["":id]
+            case .TopicVideos(let id):
+                return ["":id,"expand":["topic","channel"],"subVersion" : "0.2"]
         }
     }
     

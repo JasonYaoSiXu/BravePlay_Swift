@@ -15,6 +15,7 @@ protocol  UserVcRecommendTableViewCellDelegate : class {
 class UserVcRecommendTableViewCell: UITableViewCell {
 
     var takeData: ((Void) -> [UserRecommendResponse])?
+    var takeTopicData: ((Void) -> [TopicRecommand])?
     var customCollectionView: UICollectionView!
     let collectionViewCell = "UserVcRecommendCollectionViewCell"
     weak var delegate: UserVcRecommendTableViewCellDelegate!
@@ -61,10 +62,14 @@ extension UserVcRecommendTableViewCell : UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if takeData == nil {
+        if takeData == nil && takeTopicData == nil {
             return 1
         }
-        return takeData!().count
+        
+        if takeData != nil {
+            return takeData!().count
+        }
+        return takeTopicData!().count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -73,12 +78,13 @@ extension UserVcRecommendTableViewCell : UICollectionViewDelegate, UICollectionV
             return UICollectionViewCell()
         }
         
-        guard let data = takeData?() else {
-            return cell
+        if let data = takeData?() {
+            cell.recommendImageView.setImageWithURL(makeImageURL(data[indexPath.row].avatar), defaultImage: UIImage(named: "find_mw_bg"))
+            cell.recommendLabel.text = data[indexPath.row].name
+        } else if let data = takeTopicData?() {
+            cell.recommendImageView.setImageWithURL(makeImageURL(data[indexPath.row].avatar), defaultImage: UIImage(named: "find_mw_bg"))
+            cell.recommendLabel.text = data[indexPath.row].name
         }
-        
-        cell.recommendImageView.setImageWithURL(makeImageURL(data[indexPath.row].avatar), defaultImage: UIImage(named: "find_mw_bg"))
-        cell.recommendLabel.text = data[indexPath.row].name
         
         return cell
     }
