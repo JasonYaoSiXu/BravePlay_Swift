@@ -54,6 +54,13 @@ class MainPageViewController: UITabBarController {
         nvc.tabBarItem.tag = 3
         viewControllers.append(nvc)
         
+        //活动列表
+        vc = MineSectionViewController()
+        nvc = UINavigationController(rootViewController: vc)
+        nvc.tabBarItem = UITabBarItem(title: "我的", image: UIImage(named: "我的"), selectedImage: UIImage(named: "我的-选中"))
+        nvc.tabBarItem.tag = 4
+        viewControllers.append(nvc)
+        
         self.viewControllers = viewControllers
     }
     
