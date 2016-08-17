@@ -15,6 +15,7 @@ class ActivityWithoutPriceTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var markView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,15 @@ class ActivityWithoutPriceTableViewCell: UITableViewCell {
         selectionStyle = .None
         
         bgView.backgroundColor = UIColor.clearColor()
+        
+        markView.layer.cornerRadius = 4
+        markView.layer.masksToBounds = true
+        
+        bgImageView.layer.cornerRadius = 4
+        bgImageView.layer.masksToBounds = true
+        bgImageView.clipsToBounds = true
+        bgImageView.contentMode = .ScaleAspectFill
+        bgImageView.image = UIImage(named: "find_mw_bg")
         
         titleLabel.backgroundColor = UIColor.clearColor()
         titleLabel.textColor = UIColor.whiteColor()

@@ -8,13 +8,21 @@
 
 import UIKit
 
+protocol ActivitySectionCollectionViewCellDelegate: class {
+    func tapTableViewCell(rankList: RankList)
+}
+
+
 class ActivitySectionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var customTableView: UITableView!
     var takeData: ((Void) -> (AllActivity?,HotActivity?,FreeActivity?,RoomActivity?,CourseActivity?))?
+    private var resultData : ResultData = ResultData()
     
     private let hasPriceCellIdentifier: String = "ActivityHasPriceTableViewCell"
     private let withoutPriceCellIdentifier: String = "ActivityWithoutPriceTableViewCell"
+    
+    weak var delegate: ActivitySectionCollectionViewCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,52 +55,89 @@ extension ActivitySectionCollectionViewCell : UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let count = takeData?().0 {
-            return count.list.count
+            resultData.currentPage = count.currentPage
+            resultData.pageCount = count.pageCount
+            resultData.rankList = count.list
         } else if let count = takeData?().1 {
-            return count.list.count
+            resultData.currentPage = count.currentPage
+            resultData.pageCount = count.pageCount
+            resultData.rankList = count.list
         } else if let count = takeData?().2 {
-            return count.list.count
+            resultData.currentPage = count.currentPage
+            resultData.pageCount = count.pageCount
+            resultData.rankList = count.list
         } else if let count = takeData?().3 {
-            return count.list.count
+            resultData.currentPage = count.currentPage
+            resultData.pageCount = count.pageCount
+            resultData.rankList = count.list
         } else if let count = takeData?().4 {
-            return count.list.count
+            resultData.currentPage = count.currentPage
+            resultData.pageCount = count.pageCount
+            resultData.rankList = count.list
         }
         
-        return 0
+        return resultData.rankList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        if let count = takeData?().0 {
-//            if count.list[indexPath.row].type == "10" {
-//                
-//            }
-//        } else if let count = takeData?().1 {
-//            if count.list[indexPath.row].type == "10" {
-//                
-//            }
-//        } else if let count = takeData?().2 {
-//            if count.list[indexPath.row].type == "10" {
-//                
-//            }
-//        } else if let count = takeData?().3 {
-//            if count.list[indexPath.row].type == "10" {
-//                
-//            }
-//        } else if let count = takeData?().4 {
-//            if count.list[indexPath.row].type == "10" {
-//                
-//            }
-//        }
-
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(hasPriceCellIdentifier, forIndexPath: indexPath) as? ActivityHasPriceTableViewCell else {
-            return UITableViewCell()
+        // type == "10" 有售价  type == "9" 无售价
+        
+        if resultData.rankList.count > 0  {
+            if resultData.rankList[indexPath.row].type == "10" {
+                guard let cell = hasPriceCell(tableView, cellIdentifier: hasPriceCellIdentifier, indexPath: indexPath,result: resultData) else {
+                    return UITableViewCell()
+                }
+                return cell
+            } else if resultData.rankList[indexPath.row].type == "9" {
+                guard let cell = withoutPriceCell(tableView, cellIdentifier: withoutPriceCellIdentifier, indexPath: indexPath,result: resultData) else {
+                    return UITableViewCell()
+                }
+                return cell
+            }
         }
-        return cell
+        
+        return UITableViewCell()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("\(#function)")
+        delegate.tapTableViewCell(resultData.rankList[indexPath.row])
+    }
+    
+    
+    private func hasPriceCell(tableView: UITableView, cellIdentifier: String, indexPath: NSIndexPath,result: ResultData) -> ActivityHasPriceTableViewCell? {
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(hasPriceCellIdentifier, forIndexPath: indexPath) as? ActivityHasPriceTableViewCell else {
+            return nil
+        }
+        
+        if let seconds = Double(result.rankList[indexPath.row].time) {
+            let date = NSDate(timeIntervalSince1970: seconds)
+            let dateFormat = NSDateFormatter()
+            dateFormat.dateFormat = "MM月dd日"
+            let dateStr = dateFormat.stringFromDate(date)
+            cell.timeLabel.text = dateStr
+        }
+
+        cell.titleLabel.text = result.rankList[indexPath.row].title
+        cell.addressLabel.text = result.rankList[indexPath.row].s_location
+        cell.priceLabel.text = "¥" + result.rankList[indexPath.row].expense
+        cell.coverImageView.setImageWithURL(makeImageURL(result.rankList[indexPath.row].avatar), defaultImage: UIImage(named: "find_mw_bg"))
+        
+        return cell
+    }
+    
+    
+    private func withoutPriceCell(tableView: UITableView, cellIdentifier: String, indexPath: NSIndexPath,result: ResultData) -> ActivityWithoutPriceTableViewCell? {
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(withoutPriceCellIdentifier, forIndexPath: indexPath) as? ActivityWithoutPriceTableViewCell else {
+            return nil
+        }
+        
+        cell.titleLabel.text = result.rankList[indexPath.row].title
+        cell.addressLabel.text = result.rankList[indexPath.row].s_location
+        cell.timeLabel.text = result.rankList[indexPath.row].date_limited_for_longtime
+        cell.bgImageView.setImageWithURL(makeImageURL(result.rankList[indexPath.row].avatar), defaultImage: UIImage(named: "find_mw_bg"))
+        
+        return cell
     }
     
 }

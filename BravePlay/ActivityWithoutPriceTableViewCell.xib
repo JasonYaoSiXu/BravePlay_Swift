@@ -86,6 +86,7 @@
                 <outlet property="addressLabel" destination="Oul-hP-c7Y" id="RNm-cV-Avj"/>
                 <outlet property="bgImageView" destination="wX9-He-wDl" id="y9e-GH-lVY"/>
                 <outlet property="bgView" destination="pZ5-cG-ltg" id="Xre-J4-5Ch"/>
+                <outlet property="markView" destination="Nfd-Ui-rRK" id="UES-Bu-ugY"/>
                 <outlet property="timeLabel" destination="iLv-KH-hRM" id="Jvk-BN-hs6"/>
                 <outlet property="titleLabel" destination="fbX-Sp-ADz" id="KKW-cC-CzH"/>
             </connections>

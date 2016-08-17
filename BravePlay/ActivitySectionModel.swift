@@ -32,7 +32,7 @@ struct AllActivity : Mappable {
     
     var currentPage: Int = 0
     var pageCount: Int = 0
-    var list: [List] = []
+    var list: [RankList] = []
     init() {}
     init?(_ map: Map) {
     }
@@ -142,6 +142,8 @@ struct List : Mappable {
     var type: String = ""
     var date_limited_for_longtime: String = ""
     var platform_visible: String = ""
+    var ticketTimes : [TicketTimes] = []
+    var rank: String = ""
     var time: String = ""
     
     init() {}
@@ -265,3 +267,12 @@ struct TicketTimes : Mappable {
     }
     
 }
+
+
+//result Data
+struct ResultData {
+    var currentPage: Int = 0
+    var pageCount: Int = 0
+    var rankList: [RankList] = []
+}
+
