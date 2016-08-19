@@ -19,16 +19,17 @@ class MineSectionHeadView: UIView {
     
     var nick: String = "" {
         didSet {
-            nickLabel.text = nick
-            nickLabel.sizeToFit()
+            nickButton.titleLabel?.text = nick
+            nickButton.setTitle(nick, forState: .Normal)
         }
     }
     
     var tapImageAction: ((Void) -> Void)?
     var tapSetButtonAction: ((Void) -> Void)?
+    var tapNickButotnAction: ((Void) -> Void)?
     
     private let headImageView: UIImageView = UIImageView()
-    private let nickLabel: UILabel = UILabel()
+    private let nickButton: UIButton = UIButton()
     private let setButton: UIButton = UIButton()
     
     override init(frame: CGRect) {
@@ -60,14 +61,13 @@ class MineSectionHeadView: UIView {
         let tapHeadImageView = UITapGestureRecognizer(target: self, action: #selector(MineSectionHeadView.tapImageView))
         headImageView.addGestureRecognizer(tapHeadImageView)
         
-        addSubview(nickLabel)
-        nickLabel.snp.makeConstraints(closure: { [unowned self] make in
+        addSubview(nickButton)
+        nickButton.snp.makeConstraints(closure: { [unowned self] make in
             make.centerY.equalTo(self.snp.centerY)
             make.left.equalTo(self.headImageView.snp.right).offset(10)
         })
-        nickLabel.backgroundColor = UIColor.clearColor()
-        nickLabel.textColor = UIColor.whiteColor()
-        nickLabel.text = "哇他那呗"
+        nickButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        nickButton.addTarget(self, action: #selector(MineSectionHeadView.tapNickButton), forControlEvents: .TouchUpInside)
         
         addSubview(setButton)
         setButton.snp.makeConstraints(closure: { [unowned self] make in
@@ -93,6 +93,11 @@ class MineSectionHeadView: UIView {
     @objc private func tapSetButton() {
         print("MineSectionHeadView::\(#function)")
         tapSetButtonAction?()
+    }
+    
+    @objc private func tapNickButton() {
+        print("MineSectionHeadView::\(#function)")
+        tapNickButotnAction?()
     }
     
 }

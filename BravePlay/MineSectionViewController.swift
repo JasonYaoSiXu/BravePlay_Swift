@@ -29,14 +29,45 @@ class MineSectionViewController: UIViewController {
     private let scrollLine: UIView = UIView()
     private var typeButtonArray: [UIButton] = []
     
+    private var newWindow: UIWindow = UIWindow(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height))
+    private var beforeKeyWindow: UIWindow = UIWindow()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor ( red: 0.1922, green: 0.2941, blue: 0.3137, alpha: 1.0 )
+        view.backgroundColor = UIColor ( red: 0.2353, green: 0.3333, blue: 0.3451, alpha: 1.0 )
         automaticallyAdjustsScrollViewInsets = false
+
+        if let window = UIApplication.sharedApplication().keyWindow {
+             beforeKeyWindow = window
+        }
+        
+        newWindow.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        newWindow.frame.origin = CGPoint(x: 0.0, y: 0.0)
+        let scale = CGAffineTransformMakeScale(0.0001, 0.0001)
+        newWindow.transform = scale
         
         addHeadView()
         addTypeView()
         initCollectionView()
+        
+        let tapWindow = UITapGestureRecognizer(target: self, action: #selector(MineSectionViewController.tapWindowAction))
+        newWindow.addGestureRecognizer(tapWindow)
+    }
+    
+    @objc private func tapWindowAction () {
+        UIView.animateWithDuration(0.5, animations: { [unowned self] _ in
+            self.newWindow.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+            let scale = CGAffineTransformMakeScale(0.0001, 0.0001)
+            self.newWindow.transform = scale
+            let beforeTransform = CGAffineTransformScale(self.beforeKeyWindow.transform, 1.0 / 0.9, 1.0 / 0.9)
+            self.beforeKeyWindow.transform = beforeTransform
+            }, completion: { [unowned self] _ in
+                self.newWindow.resignKeyWindow()
+                self.beforeKeyWindow.makeKeyAndVisible()
+                self.newWindow.subviews.forEach({
+                    $0.removeFromSuperview()
+                })
+        })
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -50,6 +81,16 @@ class MineSectionViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = ""
         navigationItem.backBarButtonItem = backButton
+        
+        if let loged = UserData.UserDatas.isLoged {
+            if loged {
+                headView.nick = UserData.UserDatas.nickName!
+            } else {
+                headView.nick = "未登录"
+            }
+        } else {
+            headView.nick = "未登录"
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,8 +106,23 @@ class MineSectionViewController: UIViewController {
             self.hidesBottomBarWhenPushed = false
         }
 
-        headView.tapImageAction = { _ in
-            
+        headView.tapImageAction = { [unowned self] _ in
+            UIView.animateWithDuration(0.5, animations: {
+                let newTransform = CGAffineTransformScale(self.beforeKeyWindow.transform, 0.9, 0.9)
+                self.beforeKeyWindow.transform = newTransform
+                self.beforeKeyWindow.resignKeyWindow()
+                self.newWindow.becomeFirstResponder()
+                self.newWindow.makeKeyAndVisible()
+                self.presentView(UserData.UserDatas.avatar)
+            })
+        }
+        
+        headView.tapNickButotnAction = { [unowned self] _ in
+            if let loged = UserData.UserDatas.isLoged {
+                if !loged {
+                    gotoLogIn(self)
+                }
+            }
         }
         
     }
@@ -177,10 +233,10 @@ class MineSectionViewController: UIViewController {
         collectionViewLayout.scrollDirection = .Horizontal
         collectionViewLayout.minimumLineSpacing = 0
         collectionViewLayout.minimumInteritemSpacing = 0
-        let height = view.bounds.size.height - headView.bounds.size.height - 50
-        collectionViewLayout.itemSize = CGSize(width: view.bounds.size.width, height: height)
+        let height = view.bounds.size.height - headView.bounds.size.height - 50 - 44
+        collectionViewLayout.itemSize = CGSize(width: view.bounds.size.width, height: height - 15)
         
-        collectionView = UICollectionView(frame: CGRect(x: 0,y: view.bounds.size.height - height,width: view.bounds.size.width, height: height), collectionViewLayout: collectionViewLayout)
+        collectionView = UICollectionView(frame: CGRect(x: 0,y: 150,width: view.bounds.size.width, height: height), collectionViewLayout: collectionViewLayout)
         collectionView.pagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = UIColor ( red: 0.2353, green: 0.3333, blue: 0.3451, alpha: 1.0 )
@@ -243,6 +299,24 @@ class MineSectionViewController: UIViewController {
         afterCollectionViewOffset = collectionView.contentOffset.x
     }
     
+    func presentView(imageUrl: String?) {
+        let width: CGFloat = UIScreen.mainScreen().bounds.size.width
+        let height: CGFloat = UIScreen.mainScreen().bounds.size.height / 2
+        let imageView = UIImageView(frame: CGRect(x: 0, y: height / 2, width: width, height: height))
+        imageView.clipsToBounds = true
+        imageView.contentMode = .ScaleAspectFill
+        
+        if imageUrl == nil {
+            imageView.image = UIImage(named: "find_mw_bg")
+        } else {
+            imageView.setImageWithURL(makeImageURL(imageUrl!), defaultImage: UIImage(named: "find_mw_bg"))
+        }
+        newWindow.layer.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+        let scale = CGAffineTransformMakeScale(1, 1)
+        newWindow.transform = scale
+        newWindow.backgroundColor = UIColor.clearColor()
+        newWindow.addSubview(imageView)
+    }
 }
 
 extension MineSectionViewController : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -267,13 +341,11 @@ extension MineSectionViewController : UICollectionViewDelegate, UICollectionView
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(careCellIdentifier, forIndexPath: indexPath) as? MineCareCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.backgroundColor = UIColor.cyanColor()
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(likeCellIdentifier, forIndexPath: indexPath) as? MineLikeCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.backgroundColor = UIColor.brownColor()
             return cell
         default:
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ticketInfoCellIdentifier, forIndexPath: indexPath) as? MineTicketInfoCollectionViewCell else {

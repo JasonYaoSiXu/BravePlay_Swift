@@ -43,13 +43,34 @@ extension UIViewController {
         return ""
     }
     
+    func alterView(titleOne: String, titleTwo: String, titleThree: String,oneAction: ((UIAlertAction) -> Void)?,twoAction: ((UIAlertAction) -> Void)?,threeAction: ((UIAlertAction) -> Void)?) {
+        
+        let alterView = UIAlertController(title: "请选择", message: "", preferredStyle: .ActionSheet)
+        alterView.addAction(UIAlertAction(title: titleOne, style: .Default, handler: oneAction))
+        alterView.addAction(UIAlertAction(title: titleTwo, style: .Default, handler: twoAction))
+        alterView.addAction(UIAlertAction(title: titleThree, style: .Cancel, handler: threeAction))
+        presentViewController(alterView, animated: true, completion: nil)
+    }
+
 }
 
 extension UITableView {
     
 }
 
+func gotoLogIn(presentView: UIViewController) {
+    let story = UIStoryboard(name: "LogInStoryBoard", bundle: nil)
+    let logVc = story.instantiateViewControllerWithIdentifier("loginStoryBoard") as! LongInStoryBoardViewController
+    let navController = UINavigationController(rootViewController: logVc)
+    presentView.presentViewController(navController, animated: true, completion:  nil)
+}
 
+func dismissLogVc() {
+    guard let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController  else {
+        return
+    }
+    rootVC.dismissViewControllerAnimated(false, completion: nil)
+}
 
 func makeImageURL(urlStr: String) -> NSURL {
     

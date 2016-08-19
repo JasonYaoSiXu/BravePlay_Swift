@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height))
         window?.backgroundColor = UIColor.whiteColor()
         window?.rootViewController = MainPageViewController()
+        window?.backgroundColor = UIColor.blackColor()
         window?.tintColor = UIColor.blackColor()
         window?.makeKeyAndVisible()
         
