@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Result
 
 class MineSectionViewController: UIViewController {
     private let subviewsWidth: CGFloat = (UIScreen.mainScreen().bounds.size.width - 40) / 4
@@ -31,6 +32,15 @@ class MineSectionViewController: UIViewController {
     
     private var newWindow: UIWindow = UIWindow(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height))
     private var beforeKeyWindow: UIWindow = UIWindow()
+    
+    //未读消息
+    private var unreadCount : UnReadCount = UnReadCount()
+    //系统消息
+    private var systemMessage: [UserMessage] = []
+    //关注列表
+    private var careList: UserCareList  = UserCareList()
+    //喜欢列表
+    private var likeList: [UserLike] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +94,14 @@ class MineSectionViewController: UIViewController {
         
         if let loged = UserData.UserDatas.isLoged {
             if loged {
+//                //未读消息
+//                requestData(UserData.UserDatas.access_token!)
+//                //系统消息
+//                systemMessage(1)
+//                //关注列表
+//                requestCareList()
+                //喜欢列表
+                requestLikeList(1)
                 headView.nick = UserData.UserDatas.nickName!
             } else {
                 headView.nick = "未登录"
@@ -91,6 +109,11 @@ class MineSectionViewController: UIViewController {
         } else {
             headView.nick = "未登录"
         }
+        
+        if let headImageUrl = UserData.UserDatas.avatar {
+            headView.headImageViewUrl = headImageUrl
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -357,3 +380,65 @@ extension MineSectionViewController : UICollectionViewDelegate, UICollectionView
     
 }
 
+// 请求数据
+extension MineSectionViewController : MoyaPares {
+    
+    //未读消息
+    private func requestData(userToken: String) {
+        mineSectionProvider.request(MineSection.UnReadCount(userToken: userToken), completion: { [unowned self] result in
+            let resultData : Result<UnReadCount, MyErrorType> = self.paresObject(result)
+            
+            switch resultData {
+            case .Success(let data):
+                self.unreadCount.unread_notification_count = data.unread_notification_count
+                print("\(#function) :: \(data.unread_notification_count)")
+            case .Failure(let error):
+                self.dealWithError(error)
+            }
+        })
+    }
+    
+    //系统消息
+    private func systemMessage(page: Int) {
+        mineSectionProvider.request(MineSection.SystemMessage(page: page), completion: { [unowned self] result in
+            let resultData : Result<[UserMessage], MyErrorType> = self.paresObjectArray(result)
+            
+            switch resultData {
+            case .Success(let data):
+                self.systemMessage = data
+                print("\(#function) :: \(data)")
+            case .Failure(let error):
+                self.dealWithError(error)
+            }
+            })
+    }
+    //关注列表
+    private func requestCareList() {
+        mineSectionProvider.request(MineSection.CareList, completion: { [unowned self] result in
+            let resultData : Result<UserCareList, MyErrorType> = self.paresObject(result)
+            
+            switch resultData {
+            case .Success(let data):
+                self.careList = data
+                print("\(#function) :: \(data)")
+            case .Failure(let error):
+                self.dealWithError(error)
+            }
+            })
+    }
+    //喜欢列表
+    private func requestLikeList(page: Int) {
+        mineSectionProvider.request(MineSection.LikeList(page: page), completion: { [unowned self] result in
+            let resultData : Result<[UserLike], MyErrorType> = self.paresObjectArray(result)
+            
+            switch resultData {
+            case .Success(let data):
+                self.likeList = data
+                print("\(self.likeList[0].topic)")
+                print("\(self.likeList[0].video)")
+            case .Failure(let error):
+                self.dealWithError(error)
+            }
+            })
+    }
+}

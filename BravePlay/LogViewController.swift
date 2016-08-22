@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Result
+import ObjectMapper
 
-class LogViewController: UIViewController {
+class LogViewController: UIViewController,MoyaPares {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -105,10 +107,44 @@ class LogViewController: UIViewController {
     }
     
     @IBAction func tapLogButton(sender: UIButton) {
-        UserData.UserDatas.userLogIn(UserDataStruct())
-        navigationController?.popToRootViewControllerAnimated(true)
-        dismissLogVc()
+        showHud("正在登录")
+        mineSectionProvider.request(MineSection.Sessions(password: passwordTextField.text!, phoneNumber: phoneNumberTextFiled.text!), completion: { [unowned self] result in
+            switch result {
+            case .Success(let results):
+                print("status = \(results.statusCode)")
+                do {
+                    let json = try results.mapJSON()
+                    guard let data = Mapper<UserLogIn>().map(json) else {
+                        return
+                    }
+                    print("data = \(data)")
+                    self.userData(data.access_token)
+                } catch {
+                    
+                }
+            case .Failure:
+                self.popHud()
+            }
+        })
     }
+    
+    private func userData(userToken: String) {
+        mineSectionProvider.request(MineSection.UserData(userToken: userToken), completion: { [unowned self] result in
+            let resultData : Result<UserLogData,MyErrorType> = self.paresObject(result)
+
+            switch resultData {
+            case .Success(let data):
+                UserData.UserDatas.userLogIn(data)
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                dismissLogVc()
+                self.showInfoMessage("登录成功")
+            case .Failure(let error):
+                self.popHud()
+                self.dealWithError(error)
+            }
+        })
+    }
+    
     
     @objc private func logButtonIsUser() {
         if phoneNumberTextFiled.text?.characters.count > 0 && passwordTextField.text?.characters.count > 0 {

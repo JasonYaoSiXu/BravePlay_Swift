@@ -10,6 +10,7 @@ import UIKit
 
 class MineSetViewController: UIViewController {
 
+    private var imagePicker = UIImagePickerController()
     private let titleCellIdentifier: String = "MineSectionTitleTableViewCell"
     private let detailCellIdentifier: String = "MineSectionDetailTableViewCell"
     private let titleArray: [String] = ["个人信息","帐号信息","其它"]
@@ -83,6 +84,16 @@ class MineSetViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    private func sourceType(type: Int, imagePicker: UIImagePickerController) {
+        imagePicker.delegate = self
+        if type == 0 {
+            imagePicker.sourceType = .PhotoLibrary
+        } else if type == 1 {
+            imagePicker.sourceType = .Camera
+        }
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
 }
 
 extension MineSetViewController : UITableViewDelegate, UITableViewDataSource {
@@ -170,11 +181,14 @@ extension MineSetViewController : UITableViewDelegate, UITableViewDataSource {
         return 15
     }
     
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch  (indexPath.section, indexPath.row) {
         case (0,1):
-            alterView("拍照", titleTwo: "从相册选择", titleThree: "取消", oneAction: nil, twoAction: nil, threeAction: { [unowned self] _ in
+            alterView("拍照", titleTwo: "从相册选择", titleThree: "取消", oneAction: { [unowned self] _ in
+                self.sourceType(1, imagePicker: self.imagePicker)
+                }, twoAction: { [unowned self] _ in
+                self.sourceType(0, imagePicker: self.imagePicker)
+                }, threeAction: { [unowned self] _ in
                 self.dismissViewControllerAnimated(true, completion: nil)
             })
         case (0,2):
@@ -213,3 +227,17 @@ extension MineSetViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+extension MineSetViewController : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? MineSectionDetailTableViewCell else {
+            return
+        }
+        cell.headImageView.image = image
+    }
+    
+}
+

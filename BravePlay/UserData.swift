@@ -23,20 +23,20 @@ enum UserInfo: String {
     case Favorite_activity = "favorite_activity"
 }
 
-struct UserDataStruct {
-    var nickname: String = "哇他那呗"
-    var avatar: String = ""
-    var telephone: String = ""
-    var email: String = ""
-    var sex: Int = 0
-    var access_token: String = ""
-    var binding_phone: Bool = false
-    var default_contact_id: Int = 0
-    var subscribe_channel: [Int] = []
-    var subscribe_topic: [Int] = []
-    var favorite_video: [Int] = []
-    var favorite_activity: [Int] = []
-}
+//struct UserDataStruct {
+//    var nickname: String = "哇他那呗"
+//    var avatar: String = ""
+//    var telephone: String = ""
+//    var email: String = ""
+//    var sex: Int = 0
+//    var access_token: String = ""
+//    var binding_phone: Bool = false
+//    var default_contact_id: Int = 0
+//    var subscribe_channel: [Int] = []
+//    var subscribe_topic: [Int] = []
+//    var favorite_video: [Int] = []
+//    var favorite_activity: [Int] = []
+//}
 
 class UserData: NSObject {
     
@@ -112,7 +112,6 @@ class UserData: NSObject {
         return array as? [Int]
     }
 
-    
     func userLogOut() {
         //string
         userDefault.removeObjectForKey(UserInfo.Nickname.rawValue)
@@ -135,7 +134,7 @@ class UserData: NSObject {
         userDefault.setBool(false, forKey: "UserLoged")
     }
     
-    func userLogIn(userData: UserDataStruct) {
+    func userLogIn(userData: UserLogData) {
         //string
         userDefault.setObject(userData.nickname, forKey: UserInfo.Nickname.rawValue)
         userDefault.setObject(userData.avatar, forKey: UserInfo.Avatar.rawValue)

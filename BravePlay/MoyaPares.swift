@@ -34,7 +34,7 @@ extension MoyaPares {
         if response.statusCode == 200 {
             return .Success(response)
         }
-        return .Failure(MyErrorType.NetWorkError)
+        return .Failure(MyErrorType.HttpErrorCode(code: response.statusCode))
     }
     
     private func toJson(response: Moya.Response) -> Result<AnyObject, MyErrorType> {

@@ -52,6 +52,9 @@
 		82553AA51D52FBA1005150C8 /* MainVcConnectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82553AA41D52FBA1005150C8 /* MainVcConnectConfig.swift */; };
 		82553AAB1D531418005150C8 /* MainVcNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82553AAA1D531418005150C8 /* MainVcNetWork.swift */; };
 		82553AAD1D531683005150C8 /* MainVcPresentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82553AAC1D531683005150C8 /* MainVcPresentData.swift */; };
+		82581EDA1D6A854800C7A743 /* ImagePickerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82581ED91D6A854800C7A743 /* ImagePickerProtocol.swift */; };
+		82581EDC1D6AA27600C7A743 /* MineMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82581EDB1D6AA27600C7A743 /* MineMoya.swift */; };
+		82581EDE1D6AA3FB00C7A743 /* MineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82581EDD1D6AA3FB00C7A743 /* MineModel.swift */; };
 		8263A46A1D4ED2F400298D96 /* BraveActiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8263A4681D4ED2F400298D96 /* BraveActiveTableViewCell.swift */; };
 		8263A46B1D4ED2F400298D96 /* BraveActiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8263A4691D4ED2F400298D96 /* BraveActiveTableViewCell.xib */; };
 		8263A46E1D4EE6DC00298D96 /* BraveTVUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8263A46C1D4EE6DC00298D96 /* BraveTVUITableViewCell.swift */; };
@@ -219,6 +222,9 @@
 		82553AA41D52FBA1005150C8 /* MainVcConnectConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVcConnectConfig.swift; sourceTree = "<group>"; };
 		82553AAA1D531418005150C8 /* MainVcNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVcNetWork.swift; sourceTree = "<group>"; };
 		82553AAC1D531683005150C8 /* MainVcPresentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVcPresentData.swift; sourceTree = "<group>"; };
+		82581ED91D6A854800C7A743 /* ImagePickerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerProtocol.swift; sourceTree = "<group>"; };
+		82581EDB1D6AA27600C7A743 /* MineMoya.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineMoya.swift; sourceTree = "<group>"; };
+		82581EDD1D6AA3FB00C7A743 /* MineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModel.swift; sourceTree = "<group>"; };
 		8263A4681D4ED2F400298D96 /* BraveActiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BraveActiveTableViewCell.swift; sourceTree = "<group>"; };
 		8263A4691D4ED2F400298D96 /* BraveActiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BraveActiveTableViewCell.xib; sourceTree = "<group>"; };
 		8263A46C1D4EE6DC00298D96 /* BraveTVUITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BraveTVUITableViewCell.swift; sourceTree = "<group>"; };
@@ -481,6 +487,7 @@
 				826D695B1D4B238400A1187D /* CustomHeadView.swift */,
 				82FAE7AF1D50597B006505DB /* ExtensionUIControl.swift */,
 				8241CE751D5195A800240803 /* MoyaPares.swift */,
+				82581ED91D6A854800C7A743 /* ImagePickerProtocol.swift */,
 			);
 			name = general;
 			sourceTree = "<group>";
@@ -787,6 +794,8 @@
 				82FE84601D645E2C00CE6977 /* SetViewController */,
 				82FE84741D646F2D00CE6977 /* MineTableViewCell */,
 				82FE84671D646E3300CE6977 /* MineCollectionViewCell */,
+				82581EDB1D6AA27600C7A743 /* MineMoya.swift */,
+				82581EDD1D6AA3FB00C7A743 /* MineModel.swift */,
 			);
 			name = MineSection;
 			sourceTree = "<group>";
@@ -1100,6 +1109,7 @@
 				824B27931D614942005DD690 /* UserVcRecommendTableViewCell.swift in Sources */,
 				824E71CF1D5425910067351D /* ShareViewController.swift in Sources */,
 				82FE84771D646F5600CE6977 /* MineTicketInfoTableViewCell.swift in Sources */,
+				82581EDC1D6AA27600C7A743 /* MineMoya.swift in Sources */,
 				82FE846A1D646EB700CE6977 /* MineTicketInfoCollectionViewCell.swift in Sources */,
 				82FE84721D646F2900CE6977 /* MineLikeCollectionViewCell.swift in Sources */,
 				820270561D61D8B30041AA5B /* InterestingSectionViewController.swift in Sources */,
@@ -1114,6 +1124,7 @@
 				828F6AE61D62CA5B002B0B70 /* TVSectionModel.swift in Sources */,
 				82FE847B1D646F7B00CE6977 /* MineCareTableViewCell.swift in Sources */,
 				826D695C1D4B238400A1187D /* CustomHeadView.swift in Sources */,
+				82581EDA1D6A854800C7A743 /* ImagePickerProtocol.swift in Sources */,
 				82B52A8D1D5B353800E5FEAF /* PlayTv.swift in Sources */,
 				824B279B1D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift in Sources */,
 				828F6ADF1D62B774002B0B70 /* InterestingSectionModel.swift in Sources */,
@@ -1121,6 +1132,7 @@
 				824E71C81D5421480067351D /* CustomButtonTableViewCell.swift in Sources */,
 				82553AA31D52D82E005150C8 /* HeadViewAcModel.swift in Sources */,
 				821F16B21D658D3500A7B8A4 /* ChangeNickViewController.swift in Sources */,
+				82581EDE1D6AA3FB00C7A743 /* MineModel.swift in Sources */,
 				821F16991D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.swift in Sources */,
 				82553AA51D52FBA1005150C8 /* MainVcConnectConfig.swift in Sources */,
 				826D691B1D4AF41700A1187D /* AppDelegate.swift in Sources */,

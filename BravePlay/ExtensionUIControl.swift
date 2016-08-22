@@ -36,7 +36,7 @@ extension UIViewController {
     }
     
     func dealWithError(error: MyErrorType) {
-        showInfoMessage(error.description)
+        SVProgressHUD.showErrorWithStatus(error.description)
     }
     
     func htmlEntityDecode(soucreString: String) -> String {
