@@ -41,6 +41,13 @@ class MineSectionViewController: UIViewController {
     private var careList: UserCareList  = UserCareList()
     //喜欢列表
     private var likeList: [UserLike] = []
+    //喜欢活动列表
+    private var likeActivity: [UserLikeActivity] = []
+    
+    private var pageOfSystemMessage : Int = 1
+    private var countPageOfSystemMessage : Int = -1
+    private var pageOfLikeList : Int = 1
+    private var countPageOfLikeList : Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +66,10 @@ class MineSectionViewController: UIViewController {
         addHeadView()
         addTypeView()
         initCollectionView()
+        
+        if UserData.UserDatas.isLoged != nil && UserData.UserDatas.isLoged! == true {
+            requestData(UserData.UserDatas.access_token!)
+        }
         
         let tapWindow = UITapGestureRecognizer(target: self, action: #selector(MineSectionViewController.tapWindowAction))
         newWindow.addGestureRecognizer(tapWindow)
@@ -94,14 +105,6 @@ class MineSectionViewController: UIViewController {
         
         if let loged = UserData.UserDatas.isLoged {
             if loged {
-//                //未读消息
-//                requestData(UserData.UserDatas.access_token!)
-//                //系统消息
-//                systemMessage(1)
-//                //关注列表
-//                requestCareList()
-                //喜欢列表
-                requestLikeList(1)
                 headView.nick = UserData.UserDatas.nickName!
             } else {
                 headView.nick = "未登录"
@@ -124,9 +127,11 @@ class MineSectionViewController: UIViewController {
     private func addHeadView() {
         view.addSubview(headView)
         headView.tapSetButtonAction = { [unowned self] _ in
-            self.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(MineSetViewController(), animated: true)
-            self.hidesBottomBarWhenPushed = false
+            if UserData.UserDatas.isLoged != nil && UserData.UserDatas.isLoged! == true {
+                self.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(MineSetViewController(), animated: true)
+                self.hidesBottomBarWhenPushed = false
+            }
         }
 
         headView.tapImageAction = { [unowned self] _ in
@@ -364,16 +369,31 @@ extension MineSectionViewController : UICollectionViewDelegate, UICollectionView
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(careCellIdentifier, forIndexPath: indexPath) as? MineCareCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            cell.deleagte = self
+            cell.takeDate = { [unowned self] _ in
+                return self.careList
+            }
+            cell.careTableView.reloadData()
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(likeCellIdentifier, forIndexPath: indexPath) as? MineLikeCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            cell.delegate = self
+            cell.takeData = { [unowned self] _ in
+                return (self.likeList,self.likeActivity)
+            }
+            cell.custonTableView.reloadData()
             return cell
         default:
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ticketInfoCellIdentifier, forIndexPath: indexPath) as? MineTicketInfoCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            
+            cell.takeData = { [unowned self] _ in
+                return self.systemMessage
+            }
+            cell.ticketInfoTableView.reloadData()
             return cell
         }
     }
@@ -386,13 +406,15 @@ extension MineSectionViewController : MoyaPares {
     //未读消息
     private func requestData(userToken: String) {
         mineSectionProvider.request(MineSection.UnReadCount(userToken: userToken), completion: { [unowned self] result in
+            self.showHud("正在加载")
             let resultData : Result<UnReadCount, MyErrorType> = self.paresObject(result)
-            
             switch resultData {
             case .Success(let data):
                 self.unreadCount.unread_notification_count = data.unread_notification_count
+                self.systemMessage(self.pageOfSystemMessage)
                 print("\(#function) :: \(data.unread_notification_count)")
             case .Failure(let error):
+                self.popHud()
                 self.dealWithError(error)
             }
         })
@@ -406,8 +428,10 @@ extension MineSectionViewController : MoyaPares {
             switch resultData {
             case .Success(let data):
                 self.systemMessage = data
+                self.requestCareList()
                 print("\(#function) :: \(data)")
             case .Failure(let error):
+                self.popHud()
                 self.dealWithError(error)
             }
             })
@@ -420,8 +444,10 @@ extension MineSectionViewController : MoyaPares {
             switch resultData {
             case .Success(let data):
                 self.careList = data
+                self.requestLikeList(self.pageOfLikeList)
                 print("\(#function) :: \(data)")
             case .Failure(let error):
+                self.popHud()
                 self.dealWithError(error)
             }
             })
@@ -430,15 +456,62 @@ extension MineSectionViewController : MoyaPares {
     private func requestLikeList(page: Int) {
         mineSectionProvider.request(MineSection.LikeList(page: page), completion: { [unowned self] result in
             let resultData : Result<[UserLike], MyErrorType> = self.paresObjectArray(result)
-            
             switch resultData {
             case .Success(let data):
                 self.likeList = data
-                print("\(self.likeList[0].topic)")
-                print("\(self.likeList[0].video)")
+                self.requestLikeActivity(page)
             case .Failure(let error):
+                self.popHud()
                 self.dealWithError(error)
             }
             })
     }
+    
+    //喜欢活动的列表
+    private func requestLikeActivity(page: Int) {
+        mineSectionProvider.request(MineSection.LikeActivity(page: page), completion: { [unowned self] result in
+            let resultData : Result<[UserLikeActivity], MyErrorType> = self.paresObjectArray(result)
+            switch resultData {
+            case .Success(let data):
+                self.likeActivity = data
+                self.popHud()
+                self.collectionView.reloadData()
+            case .Failure(let error):
+                self.popHud()
+                self.dealWithError(error)
+            }
+            })
+    }
+}
+
+// 点击cell里面的内容时所要执行的动作
+extension MineSectionViewController : MineCareCollectionViewCellDelegate, MineLikeCollectionViewCellDelegate {
+    //关注列表
+    func tapWitchCellItem(indexModel: Int, index: Int) {
+        let vc = HeadViewDetailForVideoViewController(name: careList.models[indexModel].videos[index].title, showId: careList.models[indexModel].videos[index].id)
+        hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func tapLastCellItem(index: Int) {
+        let vc = UserVcViewController(userId: "\(careList.models[index].id)", userName: careList.models[index].name, isLast: true)
+        hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //喜欢列表
+    func tapCellItem(whitchOther: Int, userLike: UserLike?, userLikeActivity: UserLikeActivity?) {
+
+        if whitchOther == 0 {
+            let vc = HeadViewDetailForVideoViewController(name: userLike!.video.title, showId: "\(userLike!.video.id)")
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = HeadViewDetailViewController(showId: "\(userLikeActivity!.activity.id)", vcTitle: userLikeActivity!.activity.title)
+            hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
 }

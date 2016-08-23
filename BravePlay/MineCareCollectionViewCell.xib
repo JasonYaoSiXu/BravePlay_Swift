@@ -29,7 +29,7 @@
             <connections>
                 <outlet property="careTableView" destination="JcU-R8-JTJ" id="8Sr-6h-byG"/>
             </connections>
-            <point key="canvasLocation" x="483.5" y="318.5"/>
+            <point key="canvasLocation" x="158.5" y="337.5"/>
         </collectionViewCell>
     </objects>
 </document>

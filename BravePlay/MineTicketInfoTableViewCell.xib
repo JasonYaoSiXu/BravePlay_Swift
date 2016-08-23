@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,7 +17,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nqf-iW-5Sh">
                         <rect key="frame" x="10" y="20" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="nqf-iW-5Sh" secondAttribute="height" multiplier="1:1" id="vHk-O2-ppg"/>
+                            <constraint firstAttribute="width" secondItem="nqf-iW-5Sh" secondAttribute="height" multiplier="1:1" id="FIE-yc-DMz"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-GP-do6" userLabel="titleLabel">
@@ -41,15 +40,15 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nqf-iW-5Sh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EST-dY-df5"/>
-                    <constraint firstAttribute="bottom" secondItem="kT5-Al-huD" secondAttribute="bottom" constant="15" id="VKp-52-gju"/>
-                    <constraint firstAttribute="trailing" secondItem="VPN-ln-2HH" secondAttribute="trailing" constant="10" id="XrC-hx-iAU"/>
-                    <constraint firstItem="kT5-Al-huD" firstAttribute="leading" secondItem="nqf-iW-5Sh" secondAttribute="trailing" constant="10" id="YuJ-h1-7hZ"/>
-                    <constraint firstItem="nqf-iW-5Sh" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.5" id="cei-VU-xc4"/>
-                    <constraint firstItem="nqf-iW-5Sh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="cm6-w5-2hb"/>
-                    <constraint firstItem="VPN-ln-2HH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ktn-0b-HS1"/>
-                    <constraint firstItem="NU8-GP-do6" firstAttribute="leading" secondItem="nqf-iW-5Sh" secondAttribute="trailing" constant="10" id="u4r-2I-9al"/>
-                    <constraint firstItem="NU8-GP-do6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ucM-fS-N7x"/>
+                    <constraint firstItem="nqf-iW-5Sh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="6M7-D9-Mb8"/>
+                    <constraint firstItem="VPN-ln-2HH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NDZ-ua-NlF"/>
+                    <constraint firstAttribute="bottom" secondItem="nqf-iW-5Sh" secondAttribute="bottom" constant="20" id="Pw0-np-0Ue"/>
+                    <constraint firstItem="NU8-GP-do6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="QBo-K8-Cbf"/>
+                    <constraint firstItem="nqf-iW-5Sh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VgX-7S-9qj"/>
+                    <constraint firstAttribute="bottom" secondItem="kT5-Al-huD" secondAttribute="bottom" constant="15" id="ara-JU-Drm"/>
+                    <constraint firstAttribute="trailing" secondItem="VPN-ln-2HH" secondAttribute="trailing" constant="10" id="ezd-lw-GPa"/>
+                    <constraint firstItem="kT5-Al-huD" firstAttribute="leading" secondItem="nqf-iW-5Sh" secondAttribute="trailing" constant="10" id="wMS-lq-61V"/>
+                    <constraint firstItem="NU8-GP-do6" firstAttribute="leading" secondItem="nqf-iW-5Sh" secondAttribute="trailing" constant="10" id="zu1-hb-udb"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -58,7 +57,7 @@
                 <outlet property="timeLabel" destination="VPN-ln-2HH" id="Y2V-zg-6F0"/>
                 <outlet property="titleLabel" destination="NU8-GP-do6" id="waP-IH-eC4"/>
             </connections>
-            <point key="canvasLocation" x="344" y="436.5"/>
+            <point key="canvasLocation" x="154" y="318.5"/>
         </tableViewCell>
     </objects>
 </document>

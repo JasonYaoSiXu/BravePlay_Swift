@@ -29,7 +29,7 @@
             <connections>
                 <outlet property="ticketInfoTableView" destination="930-FL-fpr" id="AV2-9J-EMy"/>
             </connections>
-            <point key="canvasLocation" x="416" y="454.5"/>
+            <point key="canvasLocation" x="29" y="412.5"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -13,6 +13,7 @@ class MineCareDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var playImageView: UIImageView!
+    @IBOutlet weak var moreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +31,10 @@ class MineCareDetailCollectionViewCell: UICollectionViewCell {
         
         detailLabel.textColor = UIColor.whiteColor()
         detailLabel.text = "没有不能走的路，比跑车还要厉害的车！"
+        
+        moreButton.setTitle("查看更多", forState: .Normal)
+        moreButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        moreButton.hidden = true
+        moreButton.userInteractionEnabled = false
     }
-
 }

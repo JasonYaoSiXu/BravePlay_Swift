@@ -8,12 +8,21 @@
 
 import UIKit
 
+protocol MineCareTableViewCellDelegate : class {
+    func tapCareCell(indexModel: Int,index: Int)
+    func tapCareCellIsLast(index: Int)
+}
+
 class MineCareTableViewCell: UITableViewCell {
 
+    var takeData : ((Void) -> (UserCare,Int))?
+    
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var headImageView: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var customCollectionView: UICollectionView!
+    
+    weak var delegate : MineCareTableViewCellDelegate!
     
     private let collectionCellIdentifier: String = "MineCareDetailCollectionViewCell"
     
@@ -65,7 +74,6 @@ class MineCareTableViewCell: UITableViewCell {
     
 }
 
-
 extension MineCareTableViewCell :  UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -73,14 +81,44 @@ extension MineCareTableViewCell :  UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if takeData == nil {
+            return 0
+        } else if takeData!().0.videos.count > 4 {
+            return 4
+        } else {
+            return takeData!().0.videos.count
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(collectionCellIdentifier, forIndexPath: indexPath) as? MineCareDetailCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        if indexPath.row < 3 {
+            cell.moreButton.hidden = true
+            cell.detailLabel.hidden = false
+            cell.playImageView.hidden = false
+        } else {
+            cell.moreButton.hidden = false
+            cell.detailLabel.hidden = true
+            cell.playImageView.hidden = true
+        }
+        
+        cell.coverImageView.setImageWithURL(makeImageURL(takeData!().0.videos[indexPath.row].front_cover), defaultImage: UIImage(named: "find_mw_bg"))
+        cell.detailLabel.text = takeData!().0.videos[indexPath.row].title
+        
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.row == 3 {
+            delegate.tapCareCellIsLast(takeData!().1)
+        } else {
+            delegate.tapCareCell(takeData!().1, index: indexPath.row)
+        }
+        
     }
     
 }

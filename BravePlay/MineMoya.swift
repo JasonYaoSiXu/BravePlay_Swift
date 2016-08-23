@@ -38,6 +38,8 @@ public enum  MineSection {
     case CareList
     //喜欢列表
     case LikeList(page: Int)
+    //喜欢的活动
+    case LikeActivity(page: Int)
 }
 
 extension MineSection :TargetType {
@@ -57,6 +59,8 @@ extension MineSection :TargetType {
             return "/subscribes"
         case .LikeList:
             return "/video-favorites"
+        case .LikeActivity:
+            return "/activity-favorites"
         }
     }
     
@@ -74,6 +78,8 @@ extension MineSection :TargetType {
             return ["":""]
         case .LikeList(let page):
             return ["page" : "\(page)","expand" : ["video","topic"]]
+        case .LikeActivity(let page):
+            return ["page" : "\(page)","expand" : "activity"]
         }
     }
     
@@ -160,7 +166,7 @@ let mineEndpointClosure = { (target: MineSection) -> Endpoint<MineSection> in
                         "Bearer  \(query)",
                         forHTTPHeaderField: "Authorization"
                     )
-                case .LikeList:
+                case .LikeList,.LikeActivity:
                     mutableURLRequest.setValue(
                         "Bearer  \(UserData.UserDatas.access_token!)",
                         forHTTPHeaderField: "Authorization"

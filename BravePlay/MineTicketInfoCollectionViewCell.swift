@@ -10,7 +10,7 @@ import UIKit
 
 class MineTicketInfoCollectionViewCell: UICollectionViewCell {
 
-    
+    var takeData : ((Void) -> [UserMessage])?
     @IBOutlet weak var ticketInfoTableView: UITableView!
     private let cellIdentifier: String = "MineTicketInfoTableViewCell"
     
@@ -43,13 +43,22 @@ extension MineTicketInfoCollectionViewCell : UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        if takeData == nil {
+            return 0
+        }
+        return takeData!().count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as? MineTicketInfoTableViewCell else {
             return UITableViewCell()
         }
+                
+        cell.headImageView.setImageWithURL(makeImageURL(takeData!()[indexPath.row].sender.avatar), defaultImage: UIImage(named: "find_mw_bg"))
+        cell.timeLabel.text = takeData!()[indexPath.row].sender.nickname + " 回复了您的咨询:"
+        cell.infoLabel.text = takeData!()[indexPath.row].notification.content
+        cell.timeLabel.text = takeData!()[indexPath.row].created_at
+        
         return cell
     }
     

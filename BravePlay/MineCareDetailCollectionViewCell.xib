@@ -24,30 +24,40 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="播放" translatesAutoresizingMaskIntoConstraints="NO" id="U3O-Lt-LD5">
                         <rect key="frame" x="52" y="24" width="15" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="JXk-kw-5oj"/>
-                            <constraint firstAttribute="height" constant="15" id="eRC-iZ-YMd"/>
+                            <constraint firstAttribute="height" constant="15" id="m4Y-pq-Twa"/>
+                            <constraint firstAttribute="width" constant="15" id="s9f-dg-zR6"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-XS-V5Y" userLabel="moreButton">
+                        <rect key="frame" x="37" y="20" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="tapMoreButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="V6b-R1-eXN"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="U3O-Lt-LD5" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="058-gc-krA"/>
-                <constraint firstAttribute="bottom" secondItem="Oyw-5u-Gqs" secondAttribute="bottom" constant="12" id="3om-nK-LRp"/>
-                <constraint firstAttribute="trailing" secondItem="Oyw-5u-Gqs" secondAttribute="trailing" constant="15" id="B8c-mT-OH6"/>
-                <constraint firstItem="Oyw-5u-Gqs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="BQd-c8-wpb"/>
-                <constraint firstItem="EPk-YO-dU4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Drb-hW-eV9"/>
-                <constraint firstItem="EPk-YO-dU4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Ete-h6-qDN"/>
-                <constraint firstItem="Oyw-5u-Gqs" firstAttribute="leading" secondItem="U3O-Lt-LD5" secondAttribute="trailing" constant="-52" id="YmP-JX-pnI"/>
-                <constraint firstAttribute="bottom" secondItem="EPk-YO-dU4" secondAttribute="bottom" constant="5" id="ZWa-po-g8d"/>
-                <constraint firstItem="U3O-Lt-LD5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="24" id="iCM-Uc-2vu"/>
-                <constraint firstAttribute="trailing" secondItem="EPk-YO-dU4" secondAttribute="trailing" constant="5" id="sgB-jG-tGd"/>
+                <constraint firstAttribute="trailing" secondItem="Oyw-5u-Gqs" secondAttribute="trailing" constant="15" id="4GJ-eL-ujm"/>
+                <constraint firstAttribute="bottom" secondItem="EPk-YO-dU4" secondAttribute="bottom" constant="5" id="9dh-AK-zvh"/>
+                <constraint firstItem="P5f-XS-V5Y" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="BVD-jM-igy"/>
+                <constraint firstAttribute="trailing" secondItem="EPk-YO-dU4" secondAttribute="trailing" constant="5" id="W9c-vf-JUB"/>
+                <constraint firstItem="Oyw-5u-Gqs" firstAttribute="top" secondItem="U3O-Lt-LD5" secondAttribute="bottom" constant="2" id="jBk-yu-hkE"/>
+                <constraint firstItem="EPk-YO-dU4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="jTa-Dk-1B9"/>
+                <constraint firstItem="EPk-YO-dU4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="nMb-h9-G4u"/>
+                <constraint firstItem="P5f-XS-V5Y" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="o5m-YJ-v7n"/>
+                <constraint firstItem="EPk-YO-dU4" firstAttribute="top" secondItem="U3O-Lt-LD5" secondAttribute="bottom" constant="-34" id="y9n-Gd-K6X"/>
+                <constraint firstItem="Oyw-5u-Gqs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="z19-Y5-Kpy"/>
+                <constraint firstItem="U3O-Lt-LD5" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zCP-8C-c4H"/>
             </constraints>
             <connections>
                 <outlet property="coverImageView" destination="EPk-YO-dU4" id="FdS-7R-x41"/>
                 <outlet property="detailLabel" destination="Oyw-5u-Gqs" id="2li-hG-QgC"/>
+                <outlet property="moreButton" destination="P5f-XS-V5Y" id="SEq-X8-7ed"/>
                 <outlet property="playImageView" destination="U3O-Lt-LD5" id="zyq-Ty-tXf"/>
             </connections>
+            <point key="canvasLocation" x="149" y="327"/>
         </collectionViewCell>
     </objects>
     <resources>

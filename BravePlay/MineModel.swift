@@ -139,7 +139,6 @@ struct UserMessageQuestion : Mappable {
 }
 
 // 关注列表
-
 struct UserCareList : Mappable {
     
     var models: [UserCare] = []
@@ -302,4 +301,74 @@ struct UserLikeTopic : Mappable {
     
 }
 
+//用户喜欢活动
+struct UserLikeActivity : Mappable {
+    
+    var updated_at: Int = 0
+    var activity: UserLikeActivityDetail = UserLikeActivityDetail()
+    
+    init() {}
+    init?(_ map: Map) {}
+    mutating func mapping(map: Map) {
+        updated_at <- map["updated_at"]
+        activity <- map["activity"]
+    }
+    
+}
+
+struct UserLikeActivityDetail : Mappable {
+    
+    var id: Int = 0
+    var channel_id: Int = 0
+    var title: String = ""
+    var p_num_limit: Int = 0
+    var p_num: Int = 0
+    var expense: Int = 0
+    var avatar: String = ""
+    var description: String = ""
+    var location: String = ""
+    var s_location: String = ""
+    var network_video_source_id: String = ""
+    var score: String = ""
+    var sort: Int = 0
+    var is_apply: Int = 0
+    var view_count: Int = 0
+    var created_at: Int = 0
+    var updated_at: Int = 0
+    var qrcode: String = ""
+    var h5_link: String = ""
+    var review_img: String = ""
+    var contact: String = ""
+    var type: Int = 0
+    var date_limited_for_longtime: String = ""
+    
+    init() {}
+    init?(_ map: Map) {}
+    mutating func mapping(map: Map) {
+        id <- map["id"]
+        channel_id <- map["channel_id"]
+        title <- map["title"]
+        p_num_limit <- map["p_num_limit"]
+        p_num <- map["p_num"]
+        expense <- map["expense"]
+        avatar <- map["avatar"]
+        description <- map["description"]
+        location <- map["location"]
+        s_location <- map["s_location"]
+        network_video_source_id <- map["network_video_source_id"]
+        score <- map["score"]
+        sort <- map["sort"]
+        is_apply <- map["is_apply"]
+        view_count <- map["view_count"]
+        created_at <- map["created_at"]
+        updated_at <- map["updated_at"]
+        qrcode <- map["qrcode"]
+        h5_link <- map["h5_link"]
+        review_img <- map["review_img"]
+        contact <- map["contact"]
+        type <- map["type"]
+        date_limited_for_longtime <- map["date_limited_for_longtime"]
+    }
+    
+}
 
