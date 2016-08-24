@@ -8,12 +8,17 @@
 
 import Foundation
 
+enum CustomError : Int {
+    case IDPasswordError = 422
+}
+
 
 enum MyErrorType : ErrorType {
     case NetWorkError
     case NoWayToParse
     case ParseError
     case HttpErrorCode(code: Int)
+    case ResultErrorCode(code: Int)
 }
 
 extension MyErrorType : CustomStringConvertible {
@@ -32,6 +37,13 @@ extension MyErrorType : CustomStringConvertible {
                 return "401 错误"
             default:
                 return "其它错误"
+            }
+        case let .ResultErrorCode(code):
+            switch code {
+            case CustomError.IDPasswordError.rawValue :
+                return "帐号或密码错误"
+            default:
+                return "未知错误"
             }
         default:
             return "未知错误"

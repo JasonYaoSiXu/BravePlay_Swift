@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Result
 
 class ChangeNickViewController: UIViewController {
 
@@ -51,6 +52,7 @@ class ChangeNickViewController: UIViewController {
     
     
     @objc private func saveChange() {
+        changeNick(nickTextField.text!)
         print("ChangeNickViewController :: \(#function)")
     }
 
@@ -72,3 +74,38 @@ class ChangeNickViewController: UIViewController {
     }
     
 }
+
+extension ChangeNickViewController : MoyaPares {
+    
+    private func changeNick(nickName: String) {
+        mineSectionProvider.request(MineSection.ChangeNick(nickname: nickName), completion: { [unowned self] result in
+            self.showHud("修改中...")
+            let resultData : Result<ChangeNick,MyErrorType> = self.paresObject(result)
+            switch  resultData {
+            case .Success(let data):
+                UserData.UserDatas.userLogIn(getUserData(data))
+                self.showInfoMessage("修改成功!")
+                self.navigationController?.popViewControllerAnimated(true)
+                NSNotificationCenter.defaultCenter().postNotificationName(Notification.ChangeNick.rawValue, object: nil)
+            case .Failure(let error):
+                self.dealWithError(error)
+            }
+        })
+    }
+    
+}
+
+func getUserData(data: ChangeNick) -> UserLogData {
+    var userData = UserLogData()
+    userData.nickname = data.nickname
+    userData.avatar = data.avatar
+    userData.telephone = data.telephone
+    userData.email = data.email
+    userData.sex = data.sex
+    userData.access_token = data.access_token
+    userData.binding_phone = data.binding_phone
+    
+    return userData
+}
+
+

@@ -67,9 +67,19 @@ class MineSectionViewController: UIViewController {
         addTypeView()
         initCollectionView()
         
-        if UserData.UserDatas.isLoged != nil && UserData.UserDatas.isLoged! == true {
-            requestData(UserData.UserDatas.access_token!)
-        }
+        reloadData()
+        NSNotificationCenter.defaultCenter().addObserverForName(Notification.LogSuccess.rawValue, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
+            self.reloadData()
+        })
+
+        NSNotificationCenter.defaultCenter().addObserverForName(Notification.LogOutSuccess.rawValue, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { _ in
+            self.unreadCount = UnReadCount()
+            self.systemMessage.removeAll()
+            self.careList = UserCareList()
+            self.likeList.removeAll()
+            self.likeActivity.removeAll()
+            self.collectionView.reloadData()
+        })
         
         let tapWindow = UITapGestureRecognizer(target: self, action: #selector(MineSectionViewController.tapWindowAction))
         newWindow.addGestureRecognizer(tapWindow)
@@ -106,22 +116,26 @@ class MineSectionViewController: UIViewController {
         if let loged = UserData.UserDatas.isLoged {
             if loged {
                 headView.nick = UserData.UserDatas.nickName!
+                headView.headImageViewUrl = UserData.UserDatas.avatar!
             } else {
                 headView.nick = "未登录"
+                headView.headImageViewUrl = ""
             }
         } else {
             headView.nick = "未登录"
+            headView.headImageViewUrl = ""
         }
-        
-        if let headImageUrl = UserData.UserDatas.avatar {
-            headView.headImageViewUrl = headImageUrl
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func reloadData() {
+        if UserData.UserDatas.isLoged != nil && UserData.UserDatas.isLoged! == true {
+            requestData(UserData.UserDatas.access_token!)
+        }
     }
     
     private func addHeadView() {
@@ -131,6 +145,8 @@ class MineSectionViewController: UIViewController {
                 self.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(MineSetViewController(), animated: true)
                 self.hidesBottomBarWhenPushed = false
+            } else {
+                gotoLogIn(self)
             }
         }
 

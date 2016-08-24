@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class ForgetPasswordViewController: UIViewController {
 
@@ -106,16 +107,13 @@ class ForgetPasswordViewController: UIViewController {
         dismissLogVc()
     }
     
-    @IBAction func tapOkButton(sender: UIButton) {
-        
-    }
-    
     @IBAction func checkCodeButton(sender: UIButton) {
         checkCodeButton.enabled = false
         checkCodeButton.layer.borderColor = UIColor ( red: 0.6549, green: 0.6549, blue: 0.6667, alpha: 1.0 ).CGColor
-        times = 10
+        times = 50
         countDownTime = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ForgetPasswordViewController.cutDown), userInfo: nil, repeats: true)
         countDownTime.fire()
+        forgetPasswordCheckCode()
     }
     
     @objc private func cutDown() {
@@ -127,6 +125,16 @@ class ForgetPasswordViewController: UIViewController {
             checkCodeButton.layer.borderColor = UIColor.whiteColor().CGColor
         }
         times -= 1
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "TransData" {
+            guard let vc = segue.destinationViewController as? ResetPasswordViewController else {
+                return
+            }
+            vc.phoneNumber = phoneNumberTextField.text!
+            vc.checkCode = checkCodeTextField.text!
+        }
     }
     
     @objc private func oKButtonIsUser() {
@@ -142,5 +150,33 @@ class ForgetPasswordViewController: UIViewController {
             }
         }
     }
-    
 }
+
+extension ForgetPasswordViewController {
+    
+    //忘记密码获取验证码
+    private func forgetPasswordCheckCode() {
+        storySectionProvider.request(StorySection.ForgetPassword(phone_number: phoneNumberTextField.text!), completion: { [unowned self] result in
+            switch result {
+            case .Success(let results):
+                print("status = \(results.statusCode)")
+                if results.statusCode != 200 {
+                    do {
+                        let json = try results.mapJSON()
+                        guard let data = Mapper<GetRegisterCheckCodeError>().mapArray(json) else {
+                            return
+                        }
+                        self.showErrorMessage(data[0].message)
+                    } catch {
+                        
+                    }
+                    return
+                }
+                self.showInfoMessage("成功获取验证码")
+            case .Failure:
+                self.popHud()
+            }
+            })
+    }
+}
+

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MineSetViewController: UIViewController {
 
@@ -24,6 +25,11 @@ class MineSetViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor ( red: 0.1255, green: 0.2118, blue: 0.2588, alpha: 1.0 )
         initTableView()
+        NSNotificationCenter.defaultCenter().addObserverForName(Notification.ChangeNick.rawValue, object: nil, queue: NSOperationQueue.mainQueue(), usingBlock: { [unowned self] _ in
+                self.tableView.beginUpdates()
+                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow:2,inSection:0)], withRowAnimation: .None)
+                self.tableView.endUpdates()
+        })
         // Do any additional setup after loading the view.
     }
 
@@ -65,6 +71,7 @@ class MineSetViewController: UIViewController {
     @objc private func logOutAction() {
         UserData.UserDatas.userLogOut()
         navigationController?.popViewControllerAnimated(true)
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.LogOutSuccess.rawValue, object: nil)
     }
 
     private func initTableView() {
@@ -86,6 +93,7 @@ class MineSetViewController: UIViewController {
     
     private func sourceType(type: Int, imagePicker: UIImagePickerController) {
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         if type == 0 {
             imagePicker.sourceType = .PhotoLibrary
         } else if type == 1 {
@@ -131,10 +139,11 @@ extension MineSetViewController : UITableViewDelegate, UITableViewDataSource {
             case 0:
                 if indexPath.row == 1 {
                     cell.operatorTitle.hidden = true
+                    cell.headImageView.setImageWithURL(makeImageURL(UserData.UserDatas.avatar!), defaultImage: UIImage(named: "find_mw_bg"))
                 } else {
                     cell.headImageView.hidden = true
                     cell.isLastCell = true
-                    cell.operatorTitle.text = "Nick"
+                    cell.operatorTitle.text = UserData.UserDatas.nickName!
                 }
                 cell.operatorName.text = operatorName[indexPath.row - 1]
             case 1:
@@ -143,6 +152,7 @@ extension MineSetViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.operatorName.hidden = true
                 cell.operatorTitle.text = "修改密码"
             default:
+                cell.operatorName.text = "0.0M"
                 cell.headImageView.hidden = true
                 if indexPath.row == 4 {
                     cell.isLastCell = true
@@ -229,15 +239,46 @@ extension MineSetViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MineSetViewController : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         self.dismissViewControllerAnimated(true, completion: nil)
         let indexPath = NSIndexPath(forRow: 1, inSection: 0)
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? MineSectionDetailTableViewCell else {
             return
         }
         cell.headImageView.image = image
+        
+        if let destImage = UIImageJPEGRepresentation(image!, 0.01) {
+            let date = NSDate()
+            let dateFormat = NSDateFormatter()
+            dateFormat.dateFormat = "yyyy年MM月dd日hh时MM"
+            let path = dateFormat.stringFromDate(date)
+            self.qinius(path)
+            Alamofire.upload(.PUT, "https://api.idarex.com/users/_current?scenario=avatar",headers: ["Authorization":"Bearer  \(UserData.UserDatas.access_token!)","Accept":"application/json; version=v3"], multipartFormData: { (data) in
+                let imageName = "avatar=FmQoW5GvMl7zuOIOw40q4u5nfysx"
+                data.appendBodyPart(data: imageName.dataUsingEncoding(NSUTF8StringEncoding)!, name: "")
+                data.appendBodyPart(data: destImage, name: "file", mimeType: "image/jpeg")
+            }) { (result) in
+                print("数据准备完成；")
+                switch result {
+                case .Success(let upload, _, _):
+                    upload.responseString(completionHandler: {(respone) in
+                        print("success::\(respone)")
+                    })
+                case .Failure(let err):
+                    print("Error::\(err)")
+                    break
+                }
+            }
+        }
     }
     
+    private func qinius(avater: String) {
+        
+        mineSectionProvider.request(MineSection.ChangeAvater, completion: { result in
+            print("\(#function) :: result: \(result)")
+        })
+        
+    }
 }
-

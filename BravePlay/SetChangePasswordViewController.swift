@@ -52,7 +52,29 @@ class SetChangePasswordViewController: UIViewController {
 
     
     @objc private func saveChange() {
-        print("SetChangePasswordViewController :: \(#function)")
+        guard let oldPasswordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? SetPasswordTableViewCell else {
+            return
+        }
+        
+        guard let newOnePasswordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as? SetPasswordTableViewCell else {
+            return
+        }
+        
+        guard let newTwoPasswordCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as? SetPasswordTableViewCell else {
+            return
+        }
+
+        if newOnePasswordCell.passwordTextField.text != newTwoPasswordCell.passwordTextField.text && newOnePasswordCell.passwordTextField.text?.characters.count != 0 {
+            showErrorMessage("两次输入的密码不一致")
+            return
+        } else if newOnePasswordCell.passwordTextField.text == oldPasswordCell.passwordTextField.text {
+            showErrorMessage("新密码不能和旧密码相同")
+            return
+        } else if oldPasswordCell.passwordTextField.text?.characters.count == 0 {
+            showErrorMessage("请输入旧密码")
+            return
+        }
+        changePassword(oldPasswordCell.passwordTextField.text!, password: newOnePasswordCell.passwordTextField.text!)
     }
     
     private func initTableView() {
@@ -87,6 +109,26 @@ extension SetChangePasswordViewController : UITableViewDelegate, UITableViewData
             return UITableViewCell()
         }
         return cell
+    }
+}
+
+extension SetChangePasswordViewController {
+    
+    private func changePassword(old_password: String,password: String) {
+        mineSectionProvider.request(MineSection.ChangePassword(access_token: UserData.UserDatas.access_token!, old_password: old_password, password: password), completion: { [unowned self] result in
+            self.showHud("正在修改")
+            switch result {
+            case .Success(let data):
+                if data.statusCode == 201 {
+                    self.showInfoMessage("修改成功")
+                    self.navigationController?.popViewControllerAnimated(true)
+                } else {
+                    self.dealWithError(MyErrorType.ResultErrorCode(code: data.statusCode))
+                }
+            case .Failure:
+                self.showErrorMessage("修改失败请重试!")
+            }
+        })
     }
     
 }

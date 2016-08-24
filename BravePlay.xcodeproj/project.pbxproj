@@ -23,7 +23,6 @@
 		821F16B51D6594CE00A7B8A4 /* SetDebunkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F16B31D6594CE00A7B8A4 /* SetDebunkViewController.swift */; };
 		821F16B61D6594CE00A7B8A4 /* SetDebunkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821F16B41D6594CE00A7B8A4 /* SetDebunkViewController.xib */; };
 		821F16BA1D659B3200A7B8A4 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F16B91D659B3200A7B8A4 /* Cache.swift */; };
-		821F16BC1D65B4A000A7B8A4 /* LogInStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 821F16BB1D65B4A000A7B8A4 /* LogInStoryBoard.storyboard */; };
 		821F16BE1D65B4F400A7B8A4 /* LongInStoryBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F16BD1D65B4F400A7B8A4 /* LongInStoryBoardViewController.swift */; };
 		823A80C21D5D6EEC00EE302A /* WebTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A80C11D5D6EEC00EE302A /* WebTableViewCell.swift */; };
 		823A80C41D5D754000EE302A /* MoreDetailWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A80C31D5D754000EE302A /* MoreDetailWebViewController.swift */; };
@@ -39,6 +38,10 @@
 		824B279C1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B279A1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib */; };
 		824B279F1D615850005DD690 /* UserCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824B279D1D615850005DD690 /* UserCustomTableViewCell.swift */; };
 		824B27A01D615850005DD690 /* UserCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B279E1D615850005DD690 /* UserCustomTableViewCell.xib */; };
+		824D368C1D6C168D0097A1D8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824D368B1D6C168D0097A1D8 /* Notification.swift */; };
+		824D368E1D6C1D250097A1D8 /* StoryBoardMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824D368D1D6C1D250097A1D8 /* StoryBoardMoya.swift */; };
+		824D36901D6C1EBA0097A1D8 /* StoryBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824D368F1D6C1EBA0097A1D8 /* StoryBoardModel.swift */; };
+		824D36921D6C2BE40097A1D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824D36911D6C2BE40097A1D8 /* ResetPasswordViewController.swift */; };
 		824E71C81D5421480067351D /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E71C61D5421480067351D /* CustomButtonTableViewCell.swift */; };
 		824E71C91D5421480067351D /* CustomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824E71C71D5421480067351D /* CustomButtonTableViewCell.xib */; };
 		824E71CF1D5425910067351D /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824E71CD1D5425910067351D /* ShareViewController.swift */; };
@@ -130,6 +133,8 @@
 		82B0441E1D5DD67C0020F547 /* UserVcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */; };
 		82B044201D5DD6FB0020F547 /* UserVcHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0441F1D5DD6FB0020F547 /* UserVcHeadView.swift */; };
 		82B52A8D1D5B353800E5FEAF /* PlayTv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B52A8C1D5B353800E5FEAF /* PlayTv.swift */; };
+		82C0329B1D6C38B000C5E721 /* LogInStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */; };
+		82C0329D1D6C4E4F00C5E721 /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0329C1D6C4E4F00C5E721 /* SetModel.swift */; };
 		82FAE7B01D50597B006505DB /* ExtensionUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAE7AF1D50597B006505DB /* ExtensionUIControl.swift */; };
 		82FAE7B51D50AC35006505DB /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAE7B31D50AC35006505DB /* BottomCollectionViewCell.swift */; };
 		82FAE7B61D50AC35006505DB /* BottomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FAE7B41D50AC35006505DB /* BottomCollectionViewCell.xib */; };
@@ -193,7 +198,6 @@
 		821F16B31D6594CE00A7B8A4 /* SetDebunkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDebunkViewController.swift; sourceTree = "<group>"; };
 		821F16B41D6594CE00A7B8A4 /* SetDebunkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetDebunkViewController.xib; sourceTree = "<group>"; };
 		821F16B91D659B3200A7B8A4 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		821F16BB1D65B4A000A7B8A4 /* LogInStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogInStoryBoard.storyboard; sourceTree = "<group>"; };
 		821F16BD1D65B4F400A7B8A4 /* LongInStoryBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongInStoryBoardViewController.swift; sourceTree = "<group>"; };
 		823A80C11D5D6EEC00EE302A /* WebTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTableViewCell.swift; sourceTree = "<group>"; };
 		823A80C31D5D754000EE302A /* MoreDetailWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreDetailWebViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,10 @@
 		824B279A1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserVcRecommendCollectionViewCell.xib; sourceTree = "<group>"; };
 		824B279D1D615850005DD690 /* UserCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCustomTableViewCell.swift; sourceTree = "<group>"; };
 		824B279E1D615850005DD690 /* UserCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCustomTableViewCell.xib; sourceTree = "<group>"; };
+		824D368B1D6C168D0097A1D8 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		824D368D1D6C1D250097A1D8 /* StoryBoardMoya.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryBoardMoya.swift; sourceTree = "<group>"; };
+		824D368F1D6C1EBA0097A1D8 /* StoryBoardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryBoardModel.swift; sourceTree = "<group>"; };
+		824D36911D6C2BE40097A1D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		824E71C61D5421480067351D /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
 		824E71C71D5421480067351D /* CustomButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomButtonTableViewCell.xib; sourceTree = "<group>"; };
 		824E71CD1D5425910067351D /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +316,8 @@
 		82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcViewController.swift; sourceTree = "<group>"; };
 		82B0441F1D5DD6FB0020F547 /* UserVcHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcHeadView.swift; sourceTree = "<group>"; };
 		82B52A8C1D5B353800E5FEAF /* PlayTv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTv.swift; sourceTree = "<group>"; };
+		82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogInStoryBoard.storyboard; sourceTree = "<group>"; };
+		82C0329C1D6C4E4F00C5E721 /* SetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetModel.swift; sourceTree = "<group>"; };
 		82FAE7AF1D50597B006505DB /* ExtensionUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIControl.swift; sourceTree = "<group>"; };
 		82FAE7B31D50AC35006505DB /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
 		82FAE7B41D50AC35006505DB /* BottomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -405,11 +415,14 @@
 		821F16A31D6574B800A7B8A4 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				821F16BB1D65B4A000A7B8A4 /* LogInStoryBoard.storyboard */,
+				82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */,
 				821F16BD1D65B4F400A7B8A4 /* LongInStoryBoardViewController.swift */,
 				82642DE61D66987300C7B6D5 /* RegisterViewController.swift */,
 				82642DE81D66A79500C7B6D5 /* LogViewController.swift */,
 				82642DEA1D66B28D00C7B6D5 /* ForgetPasswordViewController.swift */,
+				824D36911D6C2BE40097A1D8 /* ResetPasswordViewController.swift */,
+				824D368D1D6C1D250097A1D8 /* StoryBoardMoya.swift */,
+				824D368F1D6C1EBA0097A1D8 /* StoryBoardModel.swift */,
 			);
 			name = StoryBoard;
 			sourceTree = "<group>";
@@ -488,6 +501,7 @@
 				82FAE7AF1D50597B006505DB /* ExtensionUIControl.swift */,
 				8241CE751D5195A800240803 /* MoyaPares.swift */,
 				82581ED91D6A854800C7A743 /* ImagePickerProtocol.swift */,
+				824D368B1D6C168D0097A1D8 /* Notification.swift */,
 			);
 			name = general;
 			sourceTree = "<group>";
@@ -808,6 +822,7 @@
 				821F16981D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.xib */,
 				821F169B1D65569500A7B8A4 /* MineSectionDetailTableViewCell.swift */,
 				821F169C1D65569500A7B8A4 /* MineSectionDetailTableViewCell.xib */,
+				82C0329C1D6C4E4F00C5E721 /* SetModel.swift */,
 				821F16AE1D658CCB00A7B8A4 /* ChangeNick */,
 				821F16A81D657E7200A7B8A4 /* ChangePassword */,
 				821F16B71D6594D900A7B8A4 /* Debunk */,
@@ -957,7 +972,7 @@
 				828F6AF91D630896002B0B70 /* ActivityHasPriceTableViewCell.xib in Resources */,
 				821F16B61D6594CE00A7B8A4 /* SetDebunkViewController.xib in Resources */,
 				828F6AFD1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib in Resources */,
-				821F16BC1D65B4A000A7B8A4 /* LogInStoryBoard.storyboard in Resources */,
+				82C0329B1D6C38B000C5E721 /* LogInStoryBoard.storyboard in Resources */,
 				826D69601D4B266B00A1187D /* CustomCellCollectionViewCell.xib in Resources */,
 				82FEA03D1D51FA5700EF8440 /* HeadDetailAcConsultTableViewCell.xib in Resources */,
 				824E71C91D5421480067351D /* CustomButtonTableViewCell.xib in Resources */,
@@ -1070,6 +1085,7 @@
 				826D69561D4B14AB00A1187D /* SeciontTitleTableViewCell.swift in Sources */,
 				82B0441C1D5DD1D40020F547 /* UserVCModel.swift in Sources */,
 				8268609A1D59B63B0099670A /* MoreConsultViewController.swift in Sources */,
+				824D368E1D6C1D250097A1D8 /* StoryBoardMoya.swift in Sources */,
 				8263A4781D4EF26600298D96 /* CustomTableViewCell.swift in Sources */,
 				820270511D61C3060041AA5B /* InterestingViewController.swift in Sources */,
 				828F6AEB1D62E13F002B0B70 /* ActivityChooseCityViewController.swift in Sources */,
@@ -1109,6 +1125,7 @@
 				824B27931D614942005DD690 /* UserVcRecommendTableViewCell.swift in Sources */,
 				824E71CF1D5425910067351D /* ShareViewController.swift in Sources */,
 				82FE84771D646F5600CE6977 /* MineTicketInfoTableViewCell.swift in Sources */,
+				824D368C1D6C168D0097A1D8 /* Notification.swift in Sources */,
 				82581EDC1D6AA27600C7A743 /* MineMoya.swift in Sources */,
 				82FE846A1D646EB700CE6977 /* MineTicketInfoCollectionViewCell.swift in Sources */,
 				82FE84721D646F2900CE6977 /* MineLikeCollectionViewCell.swift in Sources */,
@@ -1155,16 +1172,19 @@
 				82B0441E1D5DD67C0020F547 /* UserVcViewController.swift in Sources */,
 				82FAE7B01D50597B006505DB /* ExtensionUIControl.swift in Sources */,
 				828F6AE21D62C81F002B0B70 /* TVSectionViewController.swift in Sources */,
+				824D36921D6C2BE40097A1D8 /* ResetPasswordViewController.swift in Sources */,
 				824B278F1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift in Sources */,
 				824E71D41D544C780067351D /* BuyTicketView.swift in Sources */,
 				82FEA0381D51E84300EF8440 /* HeadDetalAcCustomTableViewCell.swift in Sources */,
 				82553AAD1D531683005150C8 /* MainVcPresentData.swift in Sources */,
+				82C0329D1D6C4E4F00C5E721 /* SetModel.swift in Sources */,
 				82FE847F1D646FC100CE6977 /* MineCareDetailCollectionViewCell.swift in Sources */,
 				821F16B51D6594CE00A7B8A4 /* SetDebunkViewController.swift in Sources */,
 				82B044191D5DADBB0020F547 /* CustomTitleView.swift in Sources */,
 				828F6AE41D62C946002B0B70 /* TVSectionMoya.swift in Sources */,
 				8268609C1D59B6580099670A /* MoreDetailViewController.swift in Sources */,
 				826860961D59ADB00099670A /* MapVCViewController.swift in Sources */,
+				824D36901D6C1EBA0097A1D8 /* StoryBoardModel.swift in Sources */,
 				828F6AF01D62F136002B0B70 /* ActivitySectionMoya.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

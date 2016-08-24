@@ -16,11 +16,11 @@ enum UserInfo: String {
     case Sex = "sex"
     case Access_token = "access_token"
     case Binding_phone = "binding_phone"
-    case Default_contact_id = "default_contact_id"
-    case Subscribe_channel = "subscribe_channel"
-    case Subscribe_topic = "subscribe_topic"
-    case Favorite_video = "favorite_video"
-    case Favorite_activity = "favorite_activity"
+//    case Default_contact_id = "default_contact_id"
+//    case Subscribe_channel = "subscribe_channel"
+//    case Subscribe_topic = "subscribe_topic"
+//    case Favorite_video = "favorite_video"
+//    case Favorite_activity = "favorite_activity"
 }
 
 //struct UserDataStruct {
@@ -80,37 +80,37 @@ class UserData: NSObject {
         return userDefault.boolForKey(UserInfo.Binding_phone.rawValue)
     }
     
-    var default_contact_id: Int? {
-        return userDefault.integerForKey(UserInfo.Default_contact_id.rawValue)
-    }
-    
-    var subscribe_channel: [Int]? {
-        guard let array = userDefault.arrayForKey(UserInfo.Subscribe_channel.rawValue) else {
-            return nil
-        }
-        return array as? [Int]
-    }
-    
-    var subscribe_topic: [Int]? {
-        guard let array = userDefault.arrayForKey(UserInfo.Subscribe_topic.rawValue) else {
-            return nil
-        }
-        return array as? [Int]
-    }
-
-    var favorite_video: [Int]? {
-        guard let array = userDefault.arrayForKey(UserInfo.Favorite_video.rawValue) else {
-            return nil
-        }
-        return array as? [Int]
-    }
-
-    var favorite_activity: [Int]? {
-        guard let array = userDefault.arrayForKey(UserInfo.Favorite_activity.rawValue) else {
-            return nil
-        }
-        return array as? [Int]
-    }
+//    var default_contact_id: Int? {
+//        return userDefault.integerForKey(UserInfo.Default_contact_id.rawValue)
+//    }
+//    
+//    var subscribe_channel: [Int]? {
+//        guard let array = userDefault.arrayForKey(UserInfo.Subscribe_channel.rawValue) else {
+//            return nil
+//        }
+//        return array as? [Int]
+//    }
+//    
+//    var subscribe_topic: [Int]? {
+//        guard let array = userDefault.arrayForKey(UserInfo.Subscribe_topic.rawValue) else {
+//            return nil
+//        }
+//        return array as? [Int]
+//    }
+//
+//    var favorite_video: [Int]? {
+//        guard let array = userDefault.arrayForKey(UserInfo.Favorite_video.rawValue) else {
+//            return nil
+//        }
+//        return array as? [Int]
+//    }
+//
+//    var favorite_activity: [Int]? {
+//        guard let array = userDefault.arrayForKey(UserInfo.Favorite_activity.rawValue) else {
+//            return nil
+//        }
+//        return array as? [Int]
+//    }
 
     func userLogOut() {
         //string
@@ -125,12 +125,12 @@ class UserData: NSObject {
         //bool
         userDefault.removeObjectForKey(UserInfo.Binding_phone.rawValue)
         //int
-        userDefault.removeObjectForKey(UserInfo.Default_contact_id.rawValue)
-        //array
-        userDefault.removeObjectForKey(UserInfo.Subscribe_channel.rawValue)
-        userDefault.removeObjectForKey(UserInfo.Subscribe_topic.rawValue)
-        userDefault.removeObjectForKey(UserInfo.Favorite_video.rawValue)
-        userDefault.removeObjectForKey(UserInfo.Favorite_activity.rawValue)
+//        userDefault.removeObjectForKey(UserInfo.Default_contact_id.rawValue)
+//        //array
+//        userDefault.removeObjectForKey(UserInfo.Subscribe_channel.rawValue)
+//        userDefault.removeObjectForKey(UserInfo.Subscribe_topic.rawValue)
+//        userDefault.removeObjectForKey(UserInfo.Favorite_video.rawValue)
+//        userDefault.removeObjectForKey(UserInfo.Favorite_activity.rawValue)
         userDefault.setBool(false, forKey: "UserLoged")
     }
     
@@ -147,12 +147,12 @@ class UserData: NSObject {
         //bool
         userDefault.setBool(userData.binding_phone, forKey: UserInfo.Binding_phone.rawValue)
         //int
-        userDefault.setInteger(userData.default_contact_id, forKey: UserInfo.Default_contact_id.rawValue)
-        //array
-        userDefault.setObject(userData.subscribe_channel, forKey: UserInfo.Subscribe_channel.rawValue)
-        userDefault.setObject(userData.subscribe_topic, forKey: UserInfo.Subscribe_topic.rawValue)
-        userDefault.setObject(userData.favorite_video, forKey: UserInfo.Favorite_video.rawValue)
-        userDefault.setObject(userData.favorite_activity, forKey: UserInfo.Favorite_activity.rawValue)
+//        userDefault.setInteger(userData.default_contact_id, forKey: UserInfo.Default_contact_id.rawValue)
+//        //array
+//        userDefault.setObject(userData.subscribe_channel, forKey: UserInfo.Subscribe_channel.rawValue)
+//        userDefault.setObject(userData.subscribe_topic, forKey: UserInfo.Subscribe_topic.rawValue)
+//        userDefault.setObject(userData.favorite_video, forKey: UserInfo.Favorite_video.rawValue)
+//        userDefault.setObject(userData.favorite_activity, forKey: UserInfo.Favorite_activity.rawValue)
         userDefault.setBool(true, forKey: "UserLoged")
     }
     

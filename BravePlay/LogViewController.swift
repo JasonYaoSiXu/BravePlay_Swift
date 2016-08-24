@@ -112,6 +112,10 @@ class LogViewController: UIViewController,MoyaPares {
             switch result {
             case .Success(let results):
                 print("status = \(results.statusCode)")
+                if results.statusCode != 200 {
+                    self.dealWithError(MyErrorType.ResultErrorCode(code: results.statusCode))
+                    return
+                }
                 do {
                     let json = try results.mapJSON()
                     guard let data = Mapper<UserLogIn>().map(json) else {
@@ -120,7 +124,7 @@ class LogViewController: UIViewController,MoyaPares {
                     print("data = \(data)")
                     self.userData(data.access_token)
                 } catch {
-                    
+                    self.popHud()
                 }
             case .Failure:
                 self.popHud()
@@ -136,6 +140,7 @@ class LogViewController: UIViewController,MoyaPares {
             case .Success(let data):
                 UserData.UserDatas.userLogIn(data)
                 self.navigationController?.popToRootViewControllerAnimated(true)
+                NSNotificationCenter.defaultCenter().postNotificationName(Notification.LogSuccess.rawValue, object: nil)
                 dismissLogVc()
                 self.showInfoMessage("登录成功")
             case .Failure(let error):

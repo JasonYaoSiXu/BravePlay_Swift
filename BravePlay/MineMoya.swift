@@ -40,6 +40,14 @@ public enum  MineSection {
     case LikeList(page: Int)
     //喜欢的活动
     case LikeActivity(page: Int)
+    //修改头像
+    case ChangeAvater
+    //上传图像 https://api.idarex.com/users/_current?scenario=avatar avatar=FvVDVFZKwP09DLf-OokPfU263qrl
+    case UpLoadAvater(avatar: String)
+    //重置密码
+    case ChangePassword(access_token: String,old_password: String,password: String)
+    //改变昵称
+    case ChangeNick(nickname: String)
 }
 
 extension MineSection :TargetType {
@@ -61,6 +69,14 @@ extension MineSection :TargetType {
             return "/video-favorites"
         case .LikeActivity:
             return "/activity-favorites"
+        case .ChangeAvater:
+            return "/qinius"
+        case .ChangePassword:
+            return "/reset-passwords?scenario=password"
+        case .ChangeNick:
+            return "/users/_current?scenario=nickname"
+        case .UpLoadAvater:
+            return "/users/_current?scenario=avatar"
         }
     }
     
@@ -80,13 +96,23 @@ extension MineSection :TargetType {
             return ["page" : "\(page)","expand" : ["video","topic"]]
         case .LikeActivity(let page):
             return ["page" : "\(page)","expand" : "activity"]
+        case .ChangeAvater:
+            return ["":""]
+        case .ChangePassword(let access_token,let old_password,let password):
+            return ["access_token":access_token, "old_password":old_password,"password":password]
+        case .ChangeNick(let nickname):
+            return ["nickname":nickname]
+        case .UpLoadAvater(let avatar):
+            return ["avatar":avatar]
         }
     }
     
     public var method: Moya.Method {
         switch   self {
-        case .Sessions:
+        case .Sessions,.ChangeAvater,.ChangePassword:
             return .POST
+        case .ChangeNick,.UpLoadAvater:
+            return .PUT
         default:
             return .GET
         }
@@ -182,6 +208,46 @@ let mineEndpointClosure = { (target: MineSection) -> Endpoint<MineSection> in
                         com?.percentEncodedQuery = query
                     }
                     mutableURLRequest.URL = com?.URL
+                case .ChangePassword:
+                    let body = query
+                    let data = body.dataUsingEncoding(NSUTF8StringEncoding)
+                    mutableURLRequest.HTTPBody = data
+                    let dataUrl = "https://api.idarex.com/reset-passwords?scenario=password"
+                    let url = NSURL(string: dataUrl)
+                    mutableURLRequest.URL = url
+                case .ChangeNick:
+                    mutableURLRequest.setValue(
+                        "Bearer  \(UserData.UserDatas.access_token!)",
+                        forHTTPHeaderField: "Authorization"
+                    )
+                    let body = query
+                    let data = body.dataUsingEncoding(NSUTF8StringEncoding)
+                    mutableURLRequest.HTTPBody = data
+                    let dataUrl = "https://api.idarex.com/users/_current?scenario=nickname"
+                    let url = NSURL(string: dataUrl)
+                    mutableURLRequest.URL = url
+                case .ChangeAvater:
+                    mutableURLRequest.setValue(
+                        "Bearer  \(UserData.UserDatas.access_token!)",
+                        forHTTPHeaderField: "Authorization"
+                    )
+                    let body = query
+                    let data = body.dataUsingEncoding(NSUTF8StringEncoding)
+                    mutableURLRequest.HTTPBody = data
+                    let dataUrl = "https://api.idarex.com/qinius"
+                    let url = NSURL(string: dataUrl)
+                    mutableURLRequest.URL = url
+                case .UpLoadAvater:
+                    mutableURLRequest.setValue(
+                        "Bearer  \(UserData.UserDatas.access_token!)",
+                        forHTTPHeaderField: "Authorization"
+                    )
+                    let body = query
+                    let data = body.dataUsingEncoding(NSUTF8StringEncoding)
+                    mutableURLRequest.HTTPBody = data
+                    let dataUrl = "https://api.idarex.com/users/_current?scenario=avatar"
+                    let url = NSURL(string: dataUrl)
+                    mutableURLRequest.URL = url
                 default:
                     mutableURLRequest.setValue(
                         "Bearer  \(UserData.UserDatas.access_token!)",

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class RegisterViewController: UIViewController {
 
@@ -146,15 +147,22 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func tapRegisterButton(sender: UIButton) {
-        
+        registerNewUser()
     }
     
     @IBAction func tapGetCheckCodeButtonn(sender: UIButton) {
         getCheckCodeButton.enabled = false
         getCheckCodeButton.layer.borderColor = UIColor ( red: 0.6549, green: 0.6549, blue: 0.6667, alpha: 1.0 ).CGColor
-        times = 10
+        times = 50
         countDownTime = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(RegisterViewController.cutDown), userInfo: nil, repeats: true)
         countDownTime.fire()
+        
+        if phoneTextField.text?.characters.count == 0 {
+            showErrorMessage("手机号码不能为空!")
+            return
+        }
+        registerCheckCode()
+
     }
     
     @objc private func cutDown() {
@@ -193,3 +201,100 @@ class RegisterViewController: UIViewController {
     }
     
 }
+
+//请求数据
+extension RegisterViewController {
+    
+    //获取注册验证码
+    private func registerCheckCode() {
+        storySectionProvider.request(StorySection.RegisterGetCheckCode(phone_number: phoneTextField.text!), completion: { [unowned self] result in
+            switch result {
+            case .Success(let results):
+                print("status = \(results.statusCode)")
+                if results.statusCode != 200 {
+                    do {
+                        let json = try results.mapJSON()
+                        guard let data = Mapper<GetRegisterCheckCodeError>().mapArray(json) else {
+                            return
+                        }
+                        self.showErrorMessage(data[0].message)
+                    } catch {
+                        
+                    }
+                    return
+                }
+                do {
+                    let json = try results.mapJSON()
+                    guard let data = Mapper<RegisterCheckCode>().map(json) else {
+                        return
+                    }
+                    print("data = \(data)")
+                } catch {
+                    self.popHud()
+                }
+            case .Failure:
+                self.popHud()
+            }
+        })
+    }
+    
+    //注册新账号
+    private func registerNewUser() {
+        storySectionProvider.request(StorySection.Register(nickname: nickTextField.text!, password: passwordTextField.text!, phone_number: phoneTextField.text!, verify_code: checkCodeTextFiled.text!), completion: { [unowned self] result in
+            switch result {
+            case .Success(let results):
+                print("status = \(results.statusCode)")
+                if results.statusCode != 200 {
+                    do {
+                        let json = try results.mapJSON()
+                        guard let data = Mapper<GetRegisterCheckCodeError>().mapArray(json) else {
+                            return
+                        }
+                        self.showErrorMessage(data[0].message)
+                    } catch {
+                        
+                    }
+                    return
+                }
+                self.LogIn()
+//                do {
+//                    let json = try results.mapJSON()
+//                    guard let data = Mapper<RegisterCheckCode>().map(json) else {
+//                        return
+//                    }
+//                    print("data = \(data)")
+//                } catch {
+//                    self.popHud()
+//                }
+            case .Failure:
+                self.popHud()
+            }
+            })
+    }
+    
+    private func LogIn() {
+        mineSectionProvider.request(MineSection.Sessions(password: passwordTextField.text!, phoneNumber: phoneTextField.text!), completion: { [unowned self] result in
+            switch result {
+            case .Success(let results):
+                print("status = \(results.statusCode)")
+                if results.statusCode != 200 {
+                    self.dealWithError(MyErrorType.ResultErrorCode(code: results.statusCode))
+                    return
+                }
+                do {
+                    let json = try results.mapJSON()
+                    guard let data = Mapper<UserLogIn>().map(json) else {
+                        return
+                    }
+                    print("data = \(data)")
+                } catch {
+                    self.popHud()
+                }
+            case .Failure:
+                self.popHud()
+            }
+            })
+    }
+    
+}
+
