@@ -19,6 +19,10 @@ class BottomView: UIView {
     var sendMessageAction: ((Void) -> Void)?
     var sharedAction: ((Void) -> Void)?
     
+    deinit {
+        print("BottomView deinit")
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor ( red: 0.051, green: 0.0431, blue: 0.0431, alpha: 1.0 )
@@ -108,9 +112,9 @@ class BottomView: UIView {
         addSubview(spaceLine)
         spaceLine.snp.makeConstraints(closure: { [unowned self] make in
             make.centerY.equalTo(self.snp.centerY)
-            make.width.equalTo(1.5)
+            make.width.equalTo(1)
             make.height.equalTo(self.bounds.size.height / 2)
-            make.left.equalTo(self.sendMessageButton.snp.right).offset(5)
+            make.left.equalTo(self.sendMessageButton.snp.right).offset(2)
             })
         
         addSubview(shareButton)
@@ -120,8 +124,7 @@ class BottomView: UIView {
         shareButton.snp.makeConstraints(closure: { [unowned self] make in
             make.centerY.equalTo(self.snp.centerY)
             make.left.equalTo(spaceLine.snp.right).offset(5)
-            make.right.equalTo(-10)
-            make.width.equalTo(self.bounds.size.height / 2)
+            make.right.equalTo(0)
         })
     }
     

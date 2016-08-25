@@ -17,6 +17,10 @@ class SubtitlesView: UIView {
     private var intoLabelArray: [UILabel] = []
     private var isInclude: Int = 0
     
+    deinit {
+        print("SubtitlesView deinit")
+    }
+    
     init(frame: CGRect, infoStrArray:[String] = [] ) {
         super.init(frame: frame)
         self.infoStrArray = infoStrArray

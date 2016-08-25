@@ -21,6 +21,18 @@ class TVSectionViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         initTableView()
         requestData(1)
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        navigationItem.backBarButtonItem = backButton
+        
+        let titleLabel = UILabel()
+        titleLabel.frame.origin = CGPoint(x: 0.0, y: 0.0)
+        titleLabel.text = "TV"
+        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.sizeToFit()
+        navigationItem.titleView = titleLabel
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,18 +49,6 @@ class TVSectionViewController: UIViewController {
         
         navigationController?.navigationBar.barTintColor = UIColor( red: 0.0824, green: 0.1216, blue: 0.1412, alpha: 1.0 )
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        navigationItem.backBarButtonItem = backButton
-        
-        let titleLabel = UILabel()
-        titleLabel.frame.origin = CGPoint(x: 0.0, y: 0.0)
-        titleLabel.text = "TV"
-        titleLabel.textAlignment = .Center
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.sizeToFit()
-        navigationItem.titleView = titleLabel
     }
 
     private func initTableView() {

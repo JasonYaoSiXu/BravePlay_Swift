@@ -11,13 +11,17 @@ import AVFoundation
 
 class PlayTvViewController: UIViewController {
 
+    deinit {
+        print("PlayTvViewController  deinit")
+    }
     
     private let closeButton: UIButton = UIButton()
     private var playId: String = ""
     private var barrages: [VideosBarrages] = []
-    private var playTv = PlayTv()
-//    private var subtitles: SubtitlesView!
+    private var playTv : PlayTv!
+    private var subtitles: SubtitlesView!
     private var bottomView: BottomView!
+    private var popAnimation : ViewControllerPopAnimation! = ViewControllerPopAnimation()
     
     init(playId: String, barrages: [VideosBarrages]) {
         self.playId = playId
@@ -33,8 +37,7 @@ class PlayTvViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor ( red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 )
         addSubViews()
-//        playTv = PlayTv(frame: CGRect(x: 0, y: 100, width: view.bounds.size.width, height: view.bounds.size.height / 3))
-//        playTv = PlayTv()
+        playTv = PlayTv(frame: CGRect(x: 0, y: 100, width: view.bounds.size.width, height: view.bounds.size.height / 3))
         view.addSubview(playTv)
         playTv.startPlay(playId)
         
@@ -43,12 +46,13 @@ class PlayTvViewController: UIViewController {
             infoArray.append($0.content)
         })
         
-//        subtitles = SubtitlesView(frame: CGRect(x:0,y:view.bounds.size.height / 3 + 100,width:view.bounds.size.width,height: view.bounds.size.height / 3), infoStrArray: infoArray)
-//        view.addSubview(subtitles)
-//        subtitles.startSubtitles()
+        subtitles = SubtitlesView(frame: CGRect(x:0,y:view.bounds.size.height / 3 + 100,width:view.bounds.size.width,height: view.bounds.size.height / 3), infoStrArray: infoArray)
+        view.addSubview(subtitles)
+        subtitles.startSubtitles()
 
         bottomView = BottomView(frame: CGRect(x: 0, y: view.bounds.size.height - 60, width: view.bounds.size.width, height: 60))
         view.addSubview(bottomView)
+        navigationController?.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,11 +68,19 @@ class PlayTvViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         playTv.dismiss()
-//        subtitles.stopSubtitles()
-//        subtitles.hidden = true
-//        subtitles.removeFromSuperview()
+        subtitles.stopSubtitles()
+        subtitles.hidden = true
+        subtitles.removeFromSuperview()
         navigationController?.navigationBar.hidden = false
         UIApplication.sharedApplication().statusBarHidden = false
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        playTv = nil
+        subtitles = nil
+        bottomView = nil
+        popAnimation = nil
     }
     
     private func addSubViews() {
@@ -91,3 +103,43 @@ class PlayTvViewController: UIViewController {
     }
     
 }
+
+extension PlayTvViewController : UINavigationControllerDelegate {
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .Pop && (fromVC is PlayTvViewController ) {
+            return popAnimation
+        }
+        return nil
+    }
+    
+}
+
+
+////增加动画
+//extension PlayTvViewController {
+//    
+//    // 进入动画
+//    private func appearAnimation() {
+//        maskLayer.path = UIBezierPath(ovalInRect: CGRectInset(originFrame, -oppositeAnglesLength, -oppositeAnglesLength)).CGPath
+//        let animation = CABasicAnimation(keyPath: "path")
+//        animation.fromValue = UIBezierPath(ovalInRect: originFrame).CGPath
+//        animation.toValue = UIBezierPath(ovalInRect: CGRectInset(originFrame, -oppositeAnglesLength, -oppositeAnglesLength)).CGPath
+//        animation.duration = 2.0
+//        
+//        maskLayer.addAnimation(animation, forKey: "path")
+//    }
+//    
+//    //退出动画
+//    private func disappearAnimation() {
+//        maskLayer.path = UIBezierPath(ovalInRect: originFrame).CGPath
+//        let animation = CABasicAnimation(keyPath: "path")
+//        animation.fromValue = UIBezierPath(ovalInRect: CGRectInset(originFrame, -oppositeAnglesLength, -oppositeAnglesLength)).CGPath
+//        animation.toValue = UIBezierPath(ovalInRect: originFrame).CGPath
+//        animation.duration = 2.0
+//        
+//        maskLayer.addAnimation(animation, forKey: "path")
+//    }
+//    
+//}
+//

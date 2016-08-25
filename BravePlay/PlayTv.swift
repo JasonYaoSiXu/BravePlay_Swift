@@ -11,11 +11,12 @@ import SnapKit
 import AVFoundation
 
 class PlayTv : UIView {
-    private var avPlayer: AVPlayer? = AVPlayer()
+    private var avPlayer: AVPlayer! = AVPlayer()
     private var playItem: AVPlayerItem!
-    private var playerLayer: AVPlayerLayer = AVPlayerLayer()
+    private var playerLayer: AVPlayerLayer! = AVPlayerLayer()
     private var isShow: Bool = true
     private var isPlay: Bool = true
+    private var isPlayEnd: Bool = false
     private var isFullScreen: Bool = false
     private let controlView = UIView()
     private var currTimes: Double = 0
@@ -28,37 +29,22 @@ class PlayTv : UIView {
     private let playButton: UIButton = UIButton()
     private let fullScreenButton: UIButton = UIButton()
     private let loadAnimationActivity: UIActivityIndicatorView = UIActivityIndicatorView()
+    private var timeObject: AnyObject!
     
-    init() {
-        super.init(frame: CGRectZero)
+    deinit {
+        print("Play Tv Deinit")
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         let tapSelf = UITapGestureRecognizer(target: self, action: #selector(PlayTv.tapSelf))
         self.addGestureRecognizer(tapSelf)
         configVideoPlayer()
         controlerBar()
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        let tapSelf = UITapGestureRecognizer(target: self, action: #selector(PlayTv.tapSelf))
-//        self.addGestureRecognizer(tapSelf)
-//        configVideoPlayer()
-//        controlerBar()
-//    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // 点击播放界面隐藏显示播放控制条
-    @objc private func tapSelf() {
-        UIView.animateWithDuration(1, animations: { [unowned self] in
-            if self.isShow {
-                self.controlView.alpha = 0.0
-            } else {
-                self.controlView.alpha = 0.6
-            }
-        })
-        isShow = !isShow
     }
     
     // 添加播放试图
@@ -67,106 +53,16 @@ class PlayTv : UIView {
         playerLayer = AVPlayerLayer(player: avPlayer)
         playerLayer.backgroundColor = UIColor.blackColor().CGColor
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        guard let rootVc = UIApplication.sharedApplication().keyWindow?.rootViewController else {
-            return
-        }
         
-        frame = CGRect(x: 0, y: 100, width: rootVc.view.bounds.size.width, height: rootVc.view.bounds.size.height / 3)
         selfFrame = frame
         playerLayer.frame = bounds
         layer.addSublayer(playerLayer)
-        rootVc.view.addSubview(self)
         
         let height: CGFloat = 30
         let width: CGFloat = 30
         loadAnimationActivity.frame = CGRect(x: (bounds.size.width - width) / 2, y: (bounds.size.height - height) / 2 , width: width, height: height)
         addSubview(loadAnimationActivity)
     }
-    
-    //添加播放控制条
-    private func controlerBar() {
-        addSubview(controlView)
-        controlView.backgroundColor = UIColor ( red: 0.0, green: 0.2706, blue: 0.6078, alpha: 1.0 )
-        controlView.alpha = 0.6
-        
-        controlView.snp.makeConstraints(closure: { [unowned self] make in
-            make.width.equalTo(self.bounds.size.width)
-            make.height.equalTo(self.bounds.size.height / 5)
-            make.bottom.equalTo(self.snp.bottom)
-            })
-        addSubviewForControlView()
-    }
-    
-    //为播放控制条添加子控件
-    private func addSubviewForControlView() {
-        //缓冲进度条
-        controlView.addSubview(loadProgress)
-        loadProgress.progressTintColor = UIColor ( red: 0.9843, green: 0.7882, blue: 0.1843, alpha: 1.0 )
-        loadProgress.trackTintColor = UIColor.grayColor()
-        loadProgress.snp.makeConstraints(closure: { [unowned self] make in
-            make.centerY.equalTo(self.controlView.snp.centerY)
-            make.left.equalTo(90)
-            make.right.equalTo(-90)
-            make.height.equalTo(3)
-            })
-        
-        //播放进度条
-        controlView.addSubview(playSlider)
-        playSlider.minimumTrackTintColor = UIColor.clearColor()
-        playSlider.maximumTrackTintColor = UIColor.clearColor()
-        playSlider.minimumValueImageRectForBounds(loadProgress.bounds)
-        playSlider.value = 0
-        playSlider.snp.makeConstraints(closure: { make in
-            make.centerY.equalTo(self.controlView.snp.centerY)
-            make.left.equalTo(90)
-            make.right.equalTo(-90)
-            make.height.equalTo(3)
-        })
-        playSlider.addTarget(self, action: #selector(PlayTv.dragSlider), forControlEvents: .TouchDragInside)
-        
-        //停止播放按钮
-        controlView.addSubview(playButton)
-        playButton.setImage(UIImage(named: "停止"), forState: .Normal)
-        playButton.addTarget(self, action: #selector(PlayTv.tapPlayButton), forControlEvents: .TouchUpInside)
-        playButton.snp.makeConstraints(closure: { [unowned self] make in
-            make.centerY.equalTo(self.controlView.snp.centerY)
-            make.left.equalTo(10)
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-            })
-        
-        //已经播放的时间
-        controlView.addSubview(playTimeLabel)
-        playTimeLabel.textColor = UIColor.whiteColor()
-        playTimeLabel.text = "00:00"
-        playTimeLabel.font = UIFont(name: "Helvetica", size: 14)
-        playTimeLabel.snp.makeConstraints(closure: { [unowned self] make in
-            make.centerY.equalTo(self.controlView.snp.centerY)
-            make.left.equalTo(self.playButton.snp.right).offset(10)
-            })
-        
-        //总时间
-        controlView.addSubview(sumTimesLabel)
-        sumTimesLabel.textColor = UIColor.whiteColor()
-        sumTimesLabel.text = "00:00"
-        sumTimesLabel.font = UIFont(name: "Helvetica", size: 14)
-        sumTimesLabel.snp.makeConstraints(closure: { [unowned self] make in
-            make.centerY.equalTo(self.controlView.snp.centerY)
-            make.left.equalTo(self.loadProgress.snp.right).offset(10)
-            })
-        
-        //全屏按钮
-        controlView.addSubview(fullScreenButton)
-        fullScreenButton.setTitle("全屏", forState: .Normal)
-        fullScreenButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        fullScreenButton.addTarget(self, action: #selector(PlayTv.tapFullScreenButton), forControlEvents: .TouchUpInside)
-        fullScreenButton.snp.makeConstraints(closure: { [unowned self] make in
-            make.centerY.equalTo(self.controlView.snp.centerY)
-            make.left.equalTo(self.sumTimesLabel.snp.right).offset(5)
-            make.height.equalTo(20)
-            })
-    }
-
     
     func startPlay(url: String) {
         print("\(#function)")
@@ -175,7 +71,7 @@ class PlayTv : UIView {
         }
         
         playItem = AVPlayerItem(URL: video)
-        avPlayer?.replaceCurrentItemWithPlayerItem(playItem)
+        avPlayer = AVPlayer(playerItem: playItem)
         playerLayer.player = avPlayer
         start()
     }
@@ -187,13 +83,41 @@ class PlayTv : UIView {
         playItem.addObserver(self, forKeyPath: "duration", options: .New, context: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PlayTv.playEnd), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
         
-        avPlayer?.play()
+        avPlayer.play()
         loadAnimationActivity.startAnimating()
     }
     
+    //播放结束
+    @objc private func playEnd() {
+        print("\(#function)")
+        isPlayEnd = true
+        playItem.removeObserver(self, forKeyPath: "status")
+        playItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
+        playItem.removeObserver(self, forKeyPath: "duration")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    //退出播放界面
+    func dismiss() {
+        print("\(#function)")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { [unowned self] _ in
+            self.avPlayer.pause()
+            if self.isPlayEnd == false {
+                self.playEnd()
+            }
+            self.avPlayer.removeTimeObserver(self.timeObject)
+            self.playItem = nil
+            self.avPlayer = nil
+            self.playerLayer = nil
+            self.hidden = true
+        })
+    }
     
     // kvo 监听播放状态
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if isPlayEnd == true {
+            return
+        }
         guard let avPlayItem = object as? AVPlayerItem else {
             return
         }
@@ -202,11 +126,11 @@ class PlayTv : UIView {
             switch avPlayItem.status {
             case .Failed:
                 print("\(#function)::play Failed")
-                avPlayer?.pause()
+                avPlayer.pause()
                 loadAnimationActivity.stopAnimating()
             case .ReadyToPlay:
                 print("\(#function)::ReadyToPlay")
-                avPlayer?.addPeriodicTimeObserverForInterval(CMTime(seconds: 1, preferredTimescale: 1), queue: nil, usingBlock: { [unowned self] _ in
+                timeObject = avPlayer.addPeriodicTimeObserverForInterval(CMTime(seconds: 1, preferredTimescale: 1), queue: nil, usingBlock: { [unowned self] _ in
                     self.cucalatePlay()
                 })
             case .Unknown:
@@ -245,10 +169,10 @@ class PlayTv : UIView {
         let durationTime = CMTimeGetSeconds(loadTimeRange.duration)
         
         if   (startTime + durationTime) - playItem.currentTime().seconds <=  5 && loadAnimationActivity.isAnimating() == false {
-            avPlayer?.pause()
+            avPlayer.pause()
             loadAnimationActivity.startAnimating()
         } else if (startTime + durationTime) - playItem.currentTime().seconds >  5 && loadAnimationActivity.isAnimating()  || (startTime + durationTime) == playItem.duration.seconds {
-            avPlayer?.play()
+            avPlayer.play()
             loadAnimationActivity.stopAnimating()
         }
         
@@ -268,17 +192,20 @@ class PlayTv : UIView {
         
         return dateFormat.stringFromDate(date)
     }
-    
-    //退出播放界面
-    func dismiss() {
-        print("\(#function)")
-        
-//        dispatch_async(dispatch_get_main_queue(), { [unowned self] _ in
-            self.avPlayer?.pause()
-            self.avPlayer = nil
-//        })
-        
-        self.hidden = true
+}
+
+//点击事件
+extension  PlayTv {
+    // 点击播放界面隐藏显示播放控制条
+    @objc private func tapSelf() {
+        UIView.animateWithDuration(1, animations: { [unowned self] in
+            if self.isShow {
+                self.controlView.alpha = 0.0
+            } else {
+                self.controlView.alpha = 0.6
+            }
+        })
+        isShow = !isShow
     }
     
     //拖动slider
@@ -288,7 +215,7 @@ class PlayTv : UIView {
         playItem.seekToTime(CMTime(seconds: playItem.duration.seconds * value, preferredTimescale: 1))
         loadAnimationActivity.startAnimating()
     }
-    
+
     //点击全屏按钮
     @objc private func tapFullScreenButton() {
         print("\(#function)")
@@ -312,7 +239,7 @@ class PlayTv : UIView {
                 self.isFullScreen = !self.isFullScreen
         })
     }
-    
+
     //点击播放按钮
     @objc private func tapPlayButton() {
         print("\(#function)")
@@ -327,13 +254,92 @@ class PlayTv : UIView {
             currTimes = playItem.currentTime().seconds
         }
     }
+}
+
+//添加播放控制条
+extension PlayTv {
+        //添加播放控制条
+        private func controlerBar() {
+            addSubview(controlView)
+            controlView.backgroundColor = UIColor ( red: 0.0, green: 0.2706, blue: 0.6078, alpha: 1.0 )
+            controlView.alpha = 0.6
     
-    //播放结束
-    @objc private func playEnd() {
-        print("\(#function)")
-        playItem.removeObserver(self, forKeyPath: "status")
-        playItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
-        playItem.removeObserver(self, forKeyPath: "duration")
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
+            controlView.snp.makeConstraints(closure: { [unowned self] make in
+                make.left.equalTo(0)
+                make.right.equalTo(0)
+                make.height.equalTo(self.bounds.size.height / 5)
+                make.bottom.equalTo(self.snp.bottom)
+                })
+            addSubviewForControlView()
+        }
+    
+        //为播放控制条添加子控件
+        private func addSubviewForControlView() {
+            //缓冲进度条
+            controlView.addSubview(loadProgress)
+            loadProgress.progressTintColor = UIColor ( red: 0.9843, green: 0.7882, blue: 0.1843, alpha: 1.0 )
+            loadProgress.trackTintColor = UIColor.grayColor()
+            loadProgress.snp.makeConstraints(closure: { [unowned self] make in
+                make.centerY.equalTo(self.controlView.snp.centerY)
+                make.left.equalTo(90)
+                make.right.equalTo(-90)
+                make.height.equalTo(3)
+                })
+    
+            //播放进度条
+            controlView.addSubview(playSlider)
+            playSlider.minimumTrackTintColor = UIColor.clearColor()
+            playSlider.maximumTrackTintColor = UIColor.clearColor()
+            playSlider.minimumValueImageRectForBounds(loadProgress.bounds)
+            playSlider.value = 0
+            playSlider.snp.makeConstraints(closure: { make in
+                make.centerY.equalTo(self.controlView.snp.centerY)
+                make.left.equalTo(90)
+                make.right.equalTo(-90)
+                make.height.equalTo(3)
+            })
+            playSlider.addTarget(self, action: #selector(PlayTv.dragSlider), forControlEvents: .TouchDragInside)
+    
+            //停止播放按钮
+            controlView.addSubview(playButton)
+            playButton.setImage(UIImage(named: "停止"), forState: .Normal)
+            playButton.addTarget(self, action: #selector(PlayTv.tapPlayButton), forControlEvents: .TouchUpInside)
+            playButton.snp.makeConstraints(closure: { [unowned self] make in
+                make.centerY.equalTo(self.controlView.snp.centerY)
+                make.left.equalTo(10)
+                make.width.equalTo(20)
+                make.height.equalTo(20)
+                })
+    
+            //已经播放的时间
+            controlView.addSubview(playTimeLabel)
+            playTimeLabel.textColor = UIColor.whiteColor()
+            playTimeLabel.text = "00:00"
+            playTimeLabel.font = UIFont(name: "Helvetica", size: 14)
+            playTimeLabel.snp.makeConstraints(closure: { [unowned self] make in
+                make.centerY.equalTo(self.controlView.snp.centerY)
+                make.left.equalTo(self.playButton.snp.right).offset(10)
+                })
+    
+            //总时间
+            controlView.addSubview(sumTimesLabel)
+            sumTimesLabel.textColor = UIColor.whiteColor()
+            sumTimesLabel.text = "00:00"
+            sumTimesLabel.font = UIFont(name: "Helvetica", size: 14)
+            sumTimesLabel.snp.makeConstraints(closure: { [unowned self] make in
+                make.centerY.equalTo(self.controlView.snp.centerY)
+                make.left.equalTo(self.loadProgress.snp.right).offset(10)
+                })
+    
+            //全屏按钮
+            controlView.addSubview(fullScreenButton)
+            fullScreenButton.setTitle("全屏", forState: .Normal)
+            fullScreenButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+            fullScreenButton.addTarget(self, action: #selector(PlayTv.tapFullScreenButton), forControlEvents: .TouchUpInside)
+            fullScreenButton.snp.makeConstraints(closure: { [unowned self] make in
+                make.centerY.equalTo(self.controlView.snp.centerY)
+                make.left.equalTo(self.sumTimesLabel.snp.right).offset(5)
+                make.height.equalTo(20)
+                })
+        }
 }

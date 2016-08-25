@@ -11,6 +11,7 @@ import Result
 
 class HeadViewDetailForVideoViewController: UIViewController,MoyaPares {
     
+    private let pushAnimation = ViewControllerPushAnimation()
     private var titleName: String = ""
     private var showId: String = ""
     private let tableView: UITableView =  UITableView()
@@ -23,6 +24,14 @@ class HeadViewDetailForVideoViewController: UIViewController,MoyaPares {
     private var barragesArray: [VideosBarrages] = []
     private var recommendArray: [VideosRecommends] = []
     private let titleArray: [String] = ["相关推荐","评论"]
+    
+    deinit {
+        print("HeadViewDetailForVideoViewController Deinit")
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
     
     init(name: String, showId: String) {
         self.titleName = name
@@ -59,6 +68,7 @@ class HeadViewDetailForVideoViewController: UIViewController,MoyaPares {
         navigationController?.navigationBar.alpha = 0.0
         navigationController?.navigationBar.barTintColor = UIColor( red: 0.0824, green: 0.1216, blue: 0.1412, alpha: 1.0 )
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+//        navigationController?.delegate = self
         
         let backButton = UIBarButtonItem()
         backButton.title = ""
@@ -307,5 +317,17 @@ extension HeadViewDetailForVideoViewController :  UITableViewDelegate, UITableVi
             return 80
         }
     }
+}
+
+extension HeadViewDetailForVideoViewController : UINavigationControllerDelegate {
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        if operation == .Push && (toVC is PlayTvViewController) {
+            return pushAnimation
+        }
+        return nil
+    }
     
 }
+

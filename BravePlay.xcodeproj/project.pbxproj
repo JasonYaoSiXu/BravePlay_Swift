@@ -11,6 +11,8 @@
 		820270511D61C3060041AA5B /* InterestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820270501D61C3060041AA5B /* InterestingViewController.swift */; };
 		820270531D61C6770041AA5B /* InterestingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820270521D61C6770041AA5B /* InterestingModel.swift */; };
 		820270561D61D8B30041AA5B /* InterestingSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820270551D61D8B30041AA5B /* InterestingSectionViewController.swift */; };
+		8209F6061D6EA282000111B1 /* ViewControllerPushAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209F6051D6EA282000111B1 /* ViewControllerPushAnimation.swift */; };
+		8209F6081D6EA293000111B1 /* ViewControllerPopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8209F6071D6EA293000111B1 /* ViewControllerPopAnimation.swift */; };
 		821F16991D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F16971D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.swift */; };
 		821F169A1D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 821F16981D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.xib */; };
 		821F169D1D65569500A7B8A4 /* MineSectionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821F169B1D65569500A7B8A4 /* MineSectionDetailTableViewCell.swift */; };
@@ -192,6 +194,8 @@
 		820270501D61C3060041AA5B /* InterestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestingViewController.swift; sourceTree = "<group>"; };
 		820270521D61C6770041AA5B /* InterestingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestingModel.swift; sourceTree = "<group>"; };
 		820270551D61D8B30041AA5B /* InterestingSectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestingSectionViewController.swift; sourceTree = "<group>"; };
+		8209F6051D6EA282000111B1 /* ViewControllerPushAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerPushAnimation.swift; sourceTree = "<group>"; };
+		8209F6071D6EA293000111B1 /* ViewControllerPopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerPopAnimation.swift; sourceTree = "<group>"; };
 		821F16971D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineSectionTitleTableViewCell.swift; sourceTree = "<group>"; };
 		821F16981D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineSectionTitleTableViewCell.xib; sourceTree = "<group>"; };
 		821F169B1D65569500A7B8A4 /* MineSectionDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineSectionDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -514,6 +518,8 @@
 				8241CE751D5195A800240803 /* MoyaPares.swift */,
 				82581ED91D6A854800C7A743 /* ImagePickerProtocol.swift */,
 				824D368B1D6C168D0097A1D8 /* Notification.swift */,
+				8209F6051D6EA282000111B1 /* ViewControllerPushAnimation.swift */,
+				8209F6071D6EA293000111B1 /* ViewControllerPopAnimation.swift */,
 			);
 			name = general;
 			sourceTree = "<group>";
@@ -1150,6 +1156,7 @@
 				824E71D91D544E3B0067351D /* ButTicketViewTableViewCell.swift in Sources */,
 				826860901D597CBB0099670A /* OrderDetailTableViewCell.swift in Sources */,
 				826D694D1D4AF4CA00A1187D /* MainPageViewController.swift in Sources */,
+				8209F6081D6EA293000111B1 /* ViewControllerPopAnimation.swift in Sources */,
 				823A80C41D5D754000EE302A /* MoreDetailWebViewController.swift in Sources */,
 				8241CE7E1D51BFDB00240803 /* HeadDetailAcCustomView.swift in Sources */,
 				821F169D1D65569500A7B8A4 /* MineSectionDetailTableViewCell.swift in Sources */,
@@ -1191,6 +1198,7 @@
 				821F16991D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.swift in Sources */,
 				82553AA51D52FBA1005150C8 /* MainVcConnectConfig.swift in Sources */,
 				826D691B1D4AF41700A1187D /* AppDelegate.swift in Sources */,
+				8209F6061D6EA282000111B1 /* ViewControllerPushAnimation.swift in Sources */,
 				826860891D5962FE0099670A /* numberOfTicketsView.swift in Sources */,
 				8263A4841D4F542500298D96 /* MainSectionModel.swift in Sources */,
 				82553AAB1D531418005150C8 /* MainVcNetWork.swift in Sources */,
