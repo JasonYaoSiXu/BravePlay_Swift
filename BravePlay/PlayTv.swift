@@ -11,7 +11,7 @@ import SnapKit
 import AVFoundation
 
 class PlayTv : UIView {
-    private var avPlayer: AVPlayer = AVPlayer()
+    private var avPlayer: AVPlayer? = AVPlayer()
     private var playItem: AVPlayerItem!
     private var playerLayer: AVPlayerLayer = AVPlayerLayer()
     private var isShow: Bool = true
@@ -36,6 +36,14 @@ class PlayTv : UIView {
         configVideoPlayer()
         controlerBar()
     }
+    
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        let tapSelf = UITapGestureRecognizer(target: self, action: #selector(PlayTv.tapSelf))
+//        self.addGestureRecognizer(tapSelf)
+//        configVideoPlayer()
+//        controlerBar()
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -167,7 +175,7 @@ class PlayTv : UIView {
         }
         
         playItem = AVPlayerItem(URL: video)
-        avPlayer.replaceCurrentItemWithPlayerItem(playItem)
+        avPlayer?.replaceCurrentItemWithPlayerItem(playItem)
         playerLayer.player = avPlayer
         start()
     }
@@ -179,7 +187,7 @@ class PlayTv : UIView {
         playItem.addObserver(self, forKeyPath: "duration", options: .New, context: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PlayTv.playEnd), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
         
-        avPlayer.play()
+        avPlayer?.play()
         loadAnimationActivity.startAnimating()
     }
     
@@ -194,11 +202,11 @@ class PlayTv : UIView {
             switch avPlayItem.status {
             case .Failed:
                 print("\(#function)::play Failed")
-                avPlayer.pause()
+                avPlayer?.pause()
                 loadAnimationActivity.stopAnimating()
             case .ReadyToPlay:
                 print("\(#function)::ReadyToPlay")
-                avPlayer.addPeriodicTimeObserverForInterval(CMTime(seconds: 1, preferredTimescale: 1), queue: nil, usingBlock: { [unowned self] _ in
+                avPlayer?.addPeriodicTimeObserverForInterval(CMTime(seconds: 1, preferredTimescale: 1), queue: nil, usingBlock: { [unowned self] _ in
                     self.cucalatePlay()
                 })
             case .Unknown:
@@ -237,10 +245,10 @@ class PlayTv : UIView {
         let durationTime = CMTimeGetSeconds(loadTimeRange.duration)
         
         if   (startTime + durationTime) - playItem.currentTime().seconds <=  5 && loadAnimationActivity.isAnimating() == false {
-            avPlayer.pause()
+            avPlayer?.pause()
             loadAnimationActivity.startAnimating()
         } else if (startTime + durationTime) - playItem.currentTime().seconds >  5 && loadAnimationActivity.isAnimating()  || (startTime + durationTime) == playItem.duration.seconds {
-            avPlayer.play()
+            avPlayer?.play()
             loadAnimationActivity.stopAnimating()
         }
         
@@ -264,7 +272,12 @@ class PlayTv : UIView {
     //退出播放界面
     func dismiss() {
         print("\(#function)")
-        avPlayer.pause()
+        
+//        dispatch_async(dispatch_get_main_queue(), { [unowned self] _ in
+            self.avPlayer?.pause()
+            self.avPlayer = nil
+//        })
+        
         self.hidden = true
     }
     
@@ -305,11 +318,11 @@ class PlayTv : UIView {
         print("\(#function)")
         isPlay = !isPlay
         if isPlay {
-            avPlayer.play()
+            avPlayer?.play()
             playButton.setImage(UIImage(named: "停止"), forState: .Normal)
             playItem.seekToTime(CMTime(seconds: currTimes, preferredTimescale: 1))
         } else {
-            avPlayer.pause()
+            avPlayer?.pause()
             playButton.setImage(UIImage(named: "播放"), forState: .Normal)
             currTimes = playItem.currentTime().seconds
         }

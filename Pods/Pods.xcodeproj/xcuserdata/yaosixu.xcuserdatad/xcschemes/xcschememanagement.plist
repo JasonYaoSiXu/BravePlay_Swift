@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Moya.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +52,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3289F9DEADF554B0506B6CC9B6406F70</key>
+		<key>0CEC8CDAC6FB8E912ABC555B5DB618CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38935C7F70EBF54F03037E1B6752EBE7</key>
+		<key>1520003FEBEC114D6C84F832AFEDB994</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1B565402067EAC017F1832BC2F361AD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>48D836ABFBF39A70A26757DD5FA73E6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,7 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8B6E1170F958BCD8C85778D8D5402C0</key>
+		<key>7D266DED6B6C1501FF7A00CE2E98CBBF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,11 +93,6 @@
 			<true/>
 		</dict>
 		<key>D5D6200D4BE741574DBD4FB768A6F55B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB49557F1EAEE87AD7621B5B0AF18125</key>
 		<dict>
 			<key>primary</key>
 			<true/>

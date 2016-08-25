@@ -156,6 +156,9 @@ struct UserCare : Mappable {
     var id : Int = 0
     var type: String = ""
     var avatar: String = ""
+    var description: String = ""
+    var pc_headimg: String = ""
+    var url: String = ""
     var headimg: String = ""
     var name: String = ""
     var hasSub: Bool = false
@@ -178,10 +181,13 @@ struct UserCare : Mappable {
 struct UserCareVideos :  Mappable {
     
     var id : String = ""
-    var front_cover: String = ""
     var title: String = ""
-    var created_at: String = ""
-    var updated_at: String = ""
+    var channel_id: Int = 0
+    var topic_id: Int = 0
+    var duration: Int = 0
+    var front_cover: String = ""
+    var created_at: Int = 0
+    var updated_at: Int = 0
     var isNew: Bool = false
     
     init() {}

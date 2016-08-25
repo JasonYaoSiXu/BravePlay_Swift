@@ -152,14 +152,15 @@ extension MineSetViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.operatorName.hidden = true
                 cell.operatorTitle.text = "修改密码"
             default:
-                cell.operatorName.text = "0.0M"
                 cell.headImageView.hidden = true
                 if indexPath.row == 4 {
                     cell.isLastCell = true
                     cell.operatorName.hidden = false
+                    cell.operatorName.text = "0.0M"
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                         let path = getCachesPath()
                         cell.operatorName.text = getCacheSizeAtPath(path) + "M"
+                        cell.operatorName.setNeedsDisplay()
                     })
                 } else {
                     cell.isLastCell = false

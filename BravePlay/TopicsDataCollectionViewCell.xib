@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TopicsDataCollectionViewCell" customModule="BravePlay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="180"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8pm-Ka-Uxo" userLabel="bgImageView">
+                        <rect key="frame" x="8" y="8" width="144" height="164"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zm-9K-WIb" userLabel="typeLabel">
+                        <rect key="frame" x="61" y="101" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mov-aP-arJ" userLabel="careButton">
+                        <rect key="frame" x="59" y="134" width="43" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="obT-dB-LmY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="关注"/>
+                        <connections>
+                            <action selector="tapCareButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="lE1-2X-zZr"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5P2-Tb-0Eu" userLabel="headImageView">
+                        <rect key="frame" x="62" y="37" width="36" height="49"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="8pm-Ka-Uxo" secondAttribute="trailing" constant="8" id="5Ol-ga-nAn"/>
+                <constraint firstItem="Mov-aP-arJ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PKU-wA-LuN"/>
+                <constraint firstItem="Mov-aP-arJ" firstAttribute="width" secondItem="8pm-Ka-Uxo" secondAttribute="width" multiplier="0.3" id="Q2K-si-Yxu"/>
+                <constraint firstItem="8pm-Ka-Uxo" firstAttribute="top" secondItem="5P2-Tb-0Eu" secondAttribute="bottom" constant="-78" id="QbN-Tj-8i9"/>
+                <constraint firstItem="8pm-Ka-Uxo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="VCh-o0-875"/>
+                <constraint firstItem="8pm-Ka-Uxo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="ZEM-rC-HeX"/>
+                <constraint firstAttribute="bottom" secondItem="8pm-Ka-Uxo" secondAttribute="bottom" constant="8" id="b81-lE-Iz6"/>
+                <constraint firstItem="2zm-9K-WIb" firstAttribute="top" secondItem="5P2-Tb-0Eu" secondAttribute="bottom" constant="15" id="eSd-Eh-R4Z"/>
+                <constraint firstItem="2zm-9K-WIb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="g7j-4M-Ycw"/>
+                <constraint firstItem="5P2-Tb-0Eu" firstAttribute="height" secondItem="8pm-Ka-Uxo" secondAttribute="height" multiplier="0.3" id="kMd-uC-pYc"/>
+                <constraint firstItem="Mov-aP-arJ" firstAttribute="top" secondItem="2zm-9K-WIb" secondAttribute="bottom" constant="15" id="sre-ex-zMn"/>
+                <constraint firstItem="5P2-Tb-0Eu" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tYK-cf-15e"/>
+                <constraint firstItem="5P2-Tb-0Eu" firstAttribute="width" secondItem="8pm-Ka-Uxo" secondAttribute="width" multiplier="0.25" id="xgg-tX-XLd"/>
+            </constraints>
+            <connections>
+                <outlet property="bgImageView" destination="8pm-Ka-Uxo" id="lWy-zZ-UjO"/>
+                <outlet property="careButton" destination="Mov-aP-arJ" id="ffc-IM-N0s"/>
+                <outlet property="headImageView" destination="5P2-Tb-0Eu" id="FhN-sZ-PvP"/>
+                <outlet property="typeLabel" destination="2zm-9K-WIb" id="YbO-2S-USg"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

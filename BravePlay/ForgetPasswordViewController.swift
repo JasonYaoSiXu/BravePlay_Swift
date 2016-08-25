@@ -89,11 +89,13 @@ class ForgetPasswordViewController: UIViewController {
         phoneNumberTextField.attributedPlaceholder = NSAttributedString(string: "手机号", attributes: [NSForegroundColorAttributeName : UIColor ( red: 0.4039, green: 0.4039, blue: 0.4118, alpha: 1.0 )])
         phoneNumberTextField.textColor = UIColor.whiteColor()
         phoneNumberTextField.alpha = 1.0
+        phoneNumberTextField.keyboardType = .NumberPad
         
         checkCodeTextField.tintColor = UIColor ( red: 0.9569, green: 0.6118, blue: 0.051, alpha: 1.0 )
         checkCodeTextField.attributedPlaceholder = NSAttributedString(string: "验证码", attributes: [NSForegroundColorAttributeName : UIColor ( red: 0.4039, green: 0.4039, blue: 0.4118, alpha: 1.0 )])
         checkCodeTextField.textColor = UIColor.whiteColor()
         checkCodeTextField.alpha = 1.0
+        checkCodeTextField.keyboardType = .NumberPad
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ForgetPasswordViewController.oKButtonIsUser), name: UITextFieldTextDidChangeNotification, object: nil)
     }

@@ -115,14 +115,14 @@ class RegisterViewController: UIViewController {
         phoneTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSForegroundColorAttributeName : UIColor ( red: 0.4039, green: 0.4039, blue: 0.4118, alpha: 1.0 )])
         phoneTextField.textColor = UIColor.whiteColor()
         phoneTextField.alpha = 1.0
-        phoneTextField.keyboardType = .NumbersAndPunctuation
+        phoneTextField.keyboardType = .NumberPad
         phoneTextField.clearButtonMode = .WhileEditing
 
         checkCodeTextFiled.tintColor = UIColor ( red: 0.9569, green: 0.6118, blue: 0.051, alpha: 1.0 )
         checkCodeTextFiled.attributedPlaceholder = NSAttributedString(string: "验证码", attributes: [NSForegroundColorAttributeName : UIColor ( red: 0.4039, green: 0.4039, blue: 0.4118, alpha: 1.0 )])
         checkCodeTextFiled.textColor = UIColor.whiteColor()
         checkCodeTextFiled.alpha = 1.0
-        checkCodeTextFiled.keyboardType = .NumbersAndPunctuation
+        checkCodeTextFiled.keyboardType = .NumberPad
         checkCodeTextFiled.clearButtonMode = .WhileEditing
 
         passwordTextField.tintColor = UIColor ( red: 0.9569, green: 0.6118, blue: 0.051, alpha: 1.0 )

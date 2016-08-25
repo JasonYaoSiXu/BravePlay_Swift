@@ -17,8 +17,17 @@ extension UIImageView {
     }
 }
 
-
 extension UIViewController {
+    
+//    var keyBoardHeight: CGFloat {
+//        get {
+//            return self.keyBoardHeight
+//        }
+//        set {
+//            self.keyBoardHeight = newValue
+//        }
+//    }
+    
     func showHud(status: String = "") {
         SVProgressHUD.showWithStatus(status)
     }
@@ -52,6 +61,27 @@ extension UIViewController {
         presentViewController(alterView, animated: true, completion: nil)
     }
 
+//    func notificationKeyBoard() {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyBoardWillHide), name: UIKeyboardWillHideNotification, object: nil)
+//    }
+//    
+//    @objc private func keyBoardWillShow(notification: NSNotification) {
+//        
+//        guard let userInfo = notification.userInfo else {
+//            return
+//        }
+//        
+//        if let value = userInfo[UIKeyboardFrameEndUserInfoKey] {
+//            keyBoardHeight = value.CGRectValue.size.height
+//        }
+//        
+//    }
+//    
+//    @objc private func keyBoardWillHide() {
+//        keyBoardHeight = 0
+//    }
+    
 }
 
 extension UITableView {

@@ -39,10 +39,7 @@ class SeciontTitleTableViewCell: UITableViewCell {
     
     @IBAction func tapJumpButton(sender: UIButton) {
         print("\(#function)")
-        guard let action = self.action else {
-            return
-        }
-        action()
+        action?()
     }
     
 }

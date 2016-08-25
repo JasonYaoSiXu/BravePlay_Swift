@@ -84,7 +84,7 @@ class LogViewController: UIViewController,MoyaPares {
         phoneNumberTextFiled.attributedPlaceholder = NSAttributedString(string: "手机号", attributes: [NSForegroundColorAttributeName : UIColor ( red: 0.4039, green: 0.4039, blue: 0.4118, alpha: 1.0 )])
         phoneNumberTextFiled.textColor = UIColor.whiteColor()
         phoneNumberTextFiled.alpha = 1.0
-        phoneNumberTextFiled.keyboardType = .NumbersAndPunctuation
+        phoneNumberTextFiled.keyboardType = .NumberPad
         phoneNumberTextFiled.clearButtonMode = .WhileEditing
         
         passwordTextField.tintColor = UIColor ( red: 0.9569, green: 0.6118, blue: 0.051, alpha: 1.0 )
@@ -93,7 +93,7 @@ class LogViewController: UIViewController,MoyaPares {
         passwordTextField.secureTextEntry = true
         passwordTextField.alpha = 1.0
         passwordTextField.clearButtonMode = .WhileEditing
-    
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LogViewController.logButtonIsUser), name: UITextFieldTextDidChangeNotification, object: nil)
     }
     

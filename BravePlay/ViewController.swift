@@ -10,6 +10,10 @@ import UIKit
 import ObjectMapper
 import Result
 
+protocol ViewControllerDelegate : class {
+    func jumpToOtherViewController(index: Int)
+}
+
 class ViewController: UIViewController {
 
     private let sectionOne = "InterestingTableViewCell"
@@ -22,16 +26,16 @@ class ViewController: UIViewController {
     private let titleArray = ["敢玩趣闻","敢玩活动","敢玩TV","自频道精选","Topic推荐"]
     private var sectionCount : [String] = []
     private var imageInfoArray: [String] = []
-    
     var bannerRepos: [BannerItem] = []
     var articleRepos: [ArticleItem] = []
     var activityRepos: ActivityResponse?
     var tvRepos: TvResponse?
     var channelRepos: ChannelResponse?
     var topicRepos: TopicResponse?
-    
     var output: MainVcConnectRequest!
     var input: MainVcConnectDisplay!
+    
+    weak var delegate : ViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +121,31 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCellWithIdentifier(sectionTitle, forIndexPath: indexPath) as? SeciontTitleTableViewCell else {
                 return UITableViewCell()
             }
+            
+            if indexPath.section <= 2 {
+                cell.action = { [unowned self] _ in
+                    var index = indexPath.section + 1
+                    if indexPath.section == 1 {
+                        index = 3
+                    } else if indexPath.section == 2 {
+                        index = 2
+                    }
+                    self.delegate.jumpToOtherViewController(index)
+                }
+            } else if indexPath.section == 3 {
+                cell.action = { [unowned self] _ in
+                    self.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(ChannelsViewController(), animated: true)
+                    self.hidesBottomBarWhenPushed = false
+                }
+            } else if indexPath.section == 4 {
+                cell.action = { [unowned self] _ in
+                    self.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(TopicsViewController(), animated: true)
+                    self.hidesBottomBarWhenPushed = false
+                }
+            }
+            
             cell.titleLabel.text = titleArray[indexPath.section]
             if indexPath.section >= 1 && sectionCount.count != 0 {
                     cell.jumpButton.setTitle(sectionCount[indexPath.section - 1] + ">", forState: .Normal)

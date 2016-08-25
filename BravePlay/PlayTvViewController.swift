@@ -11,11 +11,12 @@ import AVFoundation
 
 class PlayTvViewController: UIViewController {
 
+    
     private let closeButton: UIButton = UIButton()
     private var playId: String = ""
     private var barrages: [VideosBarrages] = []
-    private let playTv = PlayTv()
-    private var subtitles: SubtitlesView!
+    private var playTv = PlayTv()
+//    private var subtitles: SubtitlesView!
     private var bottomView: BottomView!
     
     init(playId: String, barrages: [VideosBarrages]) {
@@ -32,6 +33,9 @@ class PlayTvViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor ( red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 )
         addSubViews()
+//        playTv = PlayTv(frame: CGRect(x: 0, y: 100, width: view.bounds.size.width, height: view.bounds.size.height / 3))
+//        playTv = PlayTv()
+        view.addSubview(playTv)
         playTv.startPlay(playId)
         
         var infoArray: [String] = []
@@ -39,14 +43,13 @@ class PlayTvViewController: UIViewController {
             infoArray.append($0.content)
         })
         
-        subtitles = SubtitlesView(frame: CGRect(x:0,y:view.bounds.size.height / 3 + 100,width:view.bounds.size.width,height: view.bounds.size.height / 3), infoStrArray: infoArray)
-        view.addSubview(subtitles)
-        subtitles.startSubtitles()
+//        subtitles = SubtitlesView(frame: CGRect(x:0,y:view.bounds.size.height / 3 + 100,width:view.bounds.size.width,height: view.bounds.size.height / 3), infoStrArray: infoArray)
+//        view.addSubview(subtitles)
+//        subtitles.startSubtitles()
 
         bottomView = BottomView(frame: CGRect(x: 0, y: view.bounds.size.height - 60, width: view.bounds.size.width, height: 60))
         view.addSubview(bottomView)
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,11 +63,12 @@ class PlayTvViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        playTv.dismiss()
+//        subtitles.stopSubtitles()
+//        subtitles.hidden = true
+//        subtitles.removeFromSuperview()
         navigationController?.navigationBar.hidden = false
         UIApplication.sharedApplication().statusBarHidden = false
-        subtitles.hidden = true
-        subtitles.removeFromSuperview()
-        playTv.dismiss()
     }
     
     private func addSubViews() {
@@ -83,7 +87,6 @@ class PlayTvViewController: UIViewController {
     
     @objc private func tapCloseButton() {
         print("\(#function)")
-        subtitles.stopSubtitles()
         navigationController?.popViewControllerAnimated(true)
     }
     

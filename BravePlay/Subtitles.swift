@@ -32,11 +32,12 @@ class SubtitlesView: UIView {
     }
     
     func stopSubtitles() {
+        isInclude = -1
         intoLabelArray.forEach({
             $0.removeFromSuperview()
         })
-        isInclude = -1
-        closeTime = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: #selector(SubtitlesView.clooseTimes), userInfo: nil, repeats: true)
+        nsTime.invalidate()
+//        closeTime = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(SubtitlesView.clooseTimes), userInfo: nil, repeats: true)
     }
     
     @objc private func clooseTimes() {
@@ -66,6 +67,10 @@ class SubtitlesView: UIView {
         
         var label: UILabel?
 
+        if isInclude == -1 {
+            return
+        }
+        
         if isInclude != -1 {
             intoLabelArray.forEach({
                 if $0.frame.origin.x == -($0.bounds.size.width) && $0.text == nil {
@@ -104,17 +109,19 @@ class SubtitlesView: UIView {
     
         var times: Double = 5
         if label!.text!.characters.count > 10 {
-            times = 8
+            times = 3
         }
         
-        UIView.animateWithDuration(times, animations: { _ in
-            label!.frame.origin.x = -(label!.bounds.size.width)
-            }, completion: { [unowned self] _ in
-                label!.text = nil
-                if !self.intoLabelArray.contains(label!) {
-                    self.intoLabelArray.append(label!)
-                }
-        })
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            UIView.animateWithDuration(times, animations: { _ in
+                label!.frame.origin.x = -(label!.bounds.size.width)
+                }, completion: { [unowned self] _ in
+                    label!.text = nil
+                    if !self.intoLabelArray.contains(label!) {
+                        self.intoLabelArray.append(label!)
+                    }
+                })
+//        })
     }
     
 }

@@ -64,6 +64,10 @@ public enum  MainSection {
     case TopicRecommends(id: String)
     //topic 视频
     case  TopicVideos(id: String)
+    // 所有的channels
+    case Channelsdata(page: Int)
+    //所有的topics
+    case TopicsData(page: Int)
 }
 
 extension MainSection :TargetType {
@@ -107,6 +111,10 @@ extension MainSection :TargetType {
             return "/topics/recommends/"
         case .TopicVideos:
             return "/videos/_topicId/"
+        case .Channelsdata:
+            return "/channels"
+        case .TopicsData:
+            return "/topics"
         }
     }
     
@@ -148,6 +156,10 @@ extension MainSection :TargetType {
                 return ["":id]
             case .TopicVideos(let id):
                 return ["":id,"expand":["topic","channel"],"subVersion" : "0.2"]
+            case .Channelsdata(let page):
+                return ["expand":"videos","page":"\(page)"]
+            case .TopicsData(let page):
+                return ["page":"\(page)","subVersion":"0.2"]
         }
     }
     

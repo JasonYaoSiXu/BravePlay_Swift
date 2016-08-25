@@ -26,7 +26,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJt-8j-uca" userLabel="typeLabel">
                                 <rect key="frame" x="55" y="15" width="36" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="y4L-KG-Tz0" userLabel="customCollectionView">
@@ -38,6 +38,24 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOq-rE-Hot" userLabel="descirptionLabel">
+                                <rect key="frame" x="65" y="31" width="157" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZC-0J-5nw" userLabel="careButton">
+                                <rect key="frame" x="248" y="17" width="44" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ix6-fG-5VF"/>
+                                    <constraint firstAttribute="width" constant="44" id="rME-Dc-6vb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="关注"/>
+                                <connections>
+                                    <action selector="tapCareButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="el2-my-59b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.051623723004269984" green="0.026308239439612247" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -45,10 +63,16 @@
                             <constraint firstItem="y4L-KG-Tz0" firstAttribute="top" secondItem="hPm-0j-AzF" secondAttribute="bottom" constant="10" id="A1z-rb-IgB"/>
                             <constraint firstItem="y4L-KG-Tz0" firstAttribute="leading" secondItem="Cxk-GA-TIE" secondAttribute="leading" id="D0X-QM-BaZ"/>
                             <constraint firstItem="hPm-0j-AzF" firstAttribute="leading" secondItem="Cxk-GA-TIE" secondAttribute="leading" constant="10" id="DDQ-uX-PUp"/>
+                            <constraint firstAttribute="trailing" secondItem="wZC-0J-5nw" secondAttribute="trailing" constant="8" id="HDa-Ur-lJd"/>
+                            <constraint firstItem="wZC-0J-5nw" firstAttribute="leading" secondItem="hOq-rE-Hot" secondAttribute="trailing" constant="26" id="KQQ-4s-Msb"/>
+                            <constraint firstItem="hOq-rE-Hot" firstAttribute="top" secondItem="NJt-8j-uca" secondAttribute="bottom" constant="-1" id="Ku8-IY-QTh"/>
                             <constraint firstItem="hPm-0j-AzF" firstAttribute="top" secondItem="Cxk-GA-TIE" secondAttribute="top" constant="10" id="LmI-n6-knd"/>
                             <constraint firstAttribute="trailing" secondItem="y4L-KG-Tz0" secondAttribute="trailing" id="Rrf-YT-bXO"/>
                             <constraint firstItem="NJt-8j-uca" firstAttribute="top" secondItem="Cxk-GA-TIE" secondAttribute="top" constant="15" id="WEx-JI-a9c"/>
+                            <constraint firstItem="hOq-rE-Hot" firstAttribute="leading" secondItem="hPm-0j-AzF" secondAttribute="trailing" constant="20" id="XEx-sB-9aX"/>
+                            <constraint firstItem="y4L-KG-Tz0" firstAttribute="top" secondItem="wZC-0J-5nw" secondAttribute="bottom" constant="17" id="k9c-0a-LPW"/>
                             <constraint firstItem="NJt-8j-uca" firstAttribute="leading" secondItem="hPm-0j-AzF" secondAttribute="trailing" constant="10" id="uhq-j8-fmD"/>
+                            <constraint firstItem="wZC-0J-5nw" firstAttribute="top" secondItem="Cxk-GA-TIE" secondAttribute="top" constant="17" id="x7M-2f-aMD"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -61,7 +85,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bgView" destination="Cxk-GA-TIE" id="daR-pH-iNT"/>
+                <outlet property="careButton" destination="wZC-0J-5nw" id="W3C-cY-JSj"/>
                 <outlet property="customCollectionView" destination="y4L-KG-Tz0" id="Ggq-rK-eer"/>
+                <outlet property="descirptionLabel" destination="hOq-rE-Hot" id="2os-OO-sP3"/>
                 <outlet property="headImageView" destination="hPm-0j-AzF" id="Wk9-Z9-ENT"/>
                 <outlet property="typeLabel" destination="NJt-8j-uca" id="Xh1-bx-reF"/>
             </connections>

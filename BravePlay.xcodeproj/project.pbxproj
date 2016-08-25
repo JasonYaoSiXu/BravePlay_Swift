@@ -135,6 +135,12 @@
 		82B52A8D1D5B353800E5FEAF /* PlayTv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B52A8C1D5B353800E5FEAF /* PlayTv.swift */; };
 		82C0329B1D6C38B000C5E721 /* LogInStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */; };
 		82C0329D1D6C4E4F00C5E721 /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0329C1D6C4E4F00C5E721 /* SetModel.swift */; };
+		82E884741D6D567E002C5637 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E884731D6D567E002C5637 /* ChannelsViewController.swift */; };
+		82E884761D6D5715002C5637 /* ChannelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E884751D6D5715002C5637 /* ChannelsModel.swift */; };
+		82E884781D6D5912002C5637 /* TopicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E884771D6D5912002C5637 /* TopicsModel.swift */; };
+		82E8847A1D6D7E1B002C5637 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E884791D6D7E1B002C5637 /* TopicsViewController.swift */; };
+		82E8847D1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8847B1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.swift */; };
+		82E8847E1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E8847C1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.xib */; };
 		82FAE7B01D50597B006505DB /* ExtensionUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAE7AF1D50597B006505DB /* ExtensionUIControl.swift */; };
 		82FAE7B51D50AC35006505DB /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAE7B31D50AC35006505DB /* BottomCollectionViewCell.swift */; };
 		82FAE7B61D50AC35006505DB /* BottomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FAE7B41D50AC35006505DB /* BottomCollectionViewCell.xib */; };
@@ -318,6 +324,12 @@
 		82B52A8C1D5B353800E5FEAF /* PlayTv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTv.swift; sourceTree = "<group>"; };
 		82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogInStoryBoard.storyboard; sourceTree = "<group>"; };
 		82C0329C1D6C4E4F00C5E721 /* SetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetModel.swift; sourceTree = "<group>"; };
+		82E884731D6D567E002C5637 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		82E884751D6D5715002C5637 /* ChannelsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsModel.swift; sourceTree = "<group>"; };
+		82E884771D6D5912002C5637 /* TopicsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsModel.swift; sourceTree = "<group>"; };
+		82E884791D6D7E1B002C5637 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
+		82E8847B1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsDataCollectionViewCell.swift; sourceTree = "<group>"; };
+		82E8847C1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicsDataCollectionViewCell.xib; sourceTree = "<group>"; };
 		82FAE7AF1D50597B006505DB /* ExtensionUIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionUIControl.swift; sourceTree = "<group>"; };
 		82FAE7B31D50AC35006505DB /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
 		82FAE7B41D50AC35006505DB /* BottomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -613,6 +625,8 @@
 				826D69211D4AF41700A1187D /* BravePlay.xcdatamodeld */,
 				826D694B1D4AF46100A1187D /* Config */,
 				826D694E1D4AF8AA00A1187D /* MainSection */,
+				82E884711D6D5653002C5637 /* Channels */,
+				82E884721D6D5663002C5637 /* Topics */,
 				820270541D61D88F0041AA5B /* InterestingSection */,
 				828F6AE01D62C795002B0B70 /* TVSection */,
 				828F6AE71D62D254002B0B70 /* ActivitySection */,
@@ -757,6 +771,26 @@
 				824B279E1D615850005DD690 /* UserCustomTableViewCell.xib */,
 			);
 			name = UserVc;
+			sourceTree = "<group>";
+		};
+		82E884711D6D5653002C5637 /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				82E884731D6D567E002C5637 /* ChannelsViewController.swift */,
+				82E884751D6D5715002C5637 /* ChannelsModel.swift */,
+			);
+			name = Channels;
+			sourceTree = "<group>";
+		};
+		82E884721D6D5663002C5637 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				82E884791D6D7E1B002C5637 /* TopicsViewController.swift */,
+				82E884771D6D5912002C5637 /* TopicsModel.swift */,
+				82E8847B1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.swift */,
+				82E8847C1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.xib */,
+			);
+			name = Topics;
 			sourceTree = "<group>";
 		};
 		82FAE7B11D506C17006505DB /* HeadDetailForTV */ = {
@@ -996,6 +1030,7 @@
 				821F169E1D65569500A7B8A4 /* MineSectionDetailTableViewCell.xib in Resources */,
 				82FE84781D646F5600CE6977 /* MineTicketInfoTableViewCell.xib in Resources */,
 				826860871D5960340099670A /* OrderDetailPayWaysTableViewCell.xib in Resources */,
+				82E8847E1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.xib in Resources */,
 				8268608D1D5969360099670A /* OrderDetailTicketNumberTableViewCell.xib in Resources */,
 				826860B01D59E02C0099670A /* relatedRecommendTableViewCell.xib in Resources */,
 				826860A01D59BF920099670A /* MoreDetailTitleTableViewCell.xib in Resources */,
@@ -1080,6 +1115,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				828F6ADD1D62B536002B0B70 /* InterestingMoya.swift in Sources */,
+				82E884761D6D5715002C5637 /* ChannelsModel.swift in Sources */,
 				828F6AFC1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift in Sources */,
 				8263A46A1D4ED2F400298D96 /* BraveActiveTableViewCell.swift in Sources */,
 				826D69561D4B14AB00A1187D /* SeciontTitleTableViewCell.swift in Sources */,
@@ -1127,9 +1163,11 @@
 				82FE84771D646F5600CE6977 /* MineTicketInfoTableViewCell.swift in Sources */,
 				824D368C1D6C168D0097A1D8 /* Notification.swift in Sources */,
 				82581EDC1D6AA27600C7A743 /* MineMoya.swift in Sources */,
+				82E884781D6D5912002C5637 /* TopicsModel.swift in Sources */,
 				82FE846A1D646EB700CE6977 /* MineTicketInfoCollectionViewCell.swift in Sources */,
 				82FE84721D646F2900CE6977 /* MineLikeCollectionViewCell.swift in Sources */,
 				820270561D61D8B30041AA5B /* InterestingSectionViewController.swift in Sources */,
+				82E8847A1D6D7E1B002C5637 /* TopicsViewController.swift in Sources */,
 				82642DE91D66A79500C7B6D5 /* LogViewController.swift in Sources */,
 				821F16BE1D65B4F400A7B8A4 /* LongInStoryBoardViewController.swift in Sources */,
 				8268609F1D59BF920099670A /* MoreDetailTitleTableViewCell.swift in Sources */,
@@ -1169,8 +1207,10 @@
 				824B279F1D615850005DD690 /* UserCustomTableViewCell.swift in Sources */,
 				8273F8C51D5C6DF00053D3A4 /* Subtitles.swift in Sources */,
 				821F16A71D657DC200A7B8A4 /* SetChangePasswordViewController.swift in Sources */,
+				82E884741D6D567E002C5637 /* ChannelsViewController.swift in Sources */,
 				82B0441E1D5DD67C0020F547 /* UserVcViewController.swift in Sources */,
 				82FAE7B01D50597B006505DB /* ExtensionUIControl.swift in Sources */,
+				82E8847D1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.swift in Sources */,
 				828F6AE21D62C81F002B0B70 /* TVSectionViewController.swift in Sources */,
 				824D36921D6C2BE40097A1D8 /* ResetPasswordViewController.swift in Sources */,
 				824B278F1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift in Sources */,

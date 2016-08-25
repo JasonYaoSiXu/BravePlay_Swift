@@ -16,11 +16,14 @@ protocol MineCareTableViewCellDelegate : class {
 class MineCareTableViewCell: UITableViewCell {
 
     var takeData : ((Void) -> (UserCare,Int))?
+    var action: ((Void) -> Void)?
     
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var headImageView: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var customCollectionView: UICollectionView!
+    @IBOutlet weak var descirptionLabel: UILabel!
+    @IBOutlet weak var careButton: UIButton!
     
     weak var delegate : MineCareTableViewCellDelegate!
     
@@ -52,6 +55,15 @@ class MineCareTableViewCell: UITableViewCell {
         typeLabel.textColor = UIColor.whiteColor()
         typeLabel.text = "机车"
         
+        careButton.layer.cornerRadius = careButton.bounds.size.height / 2
+        careButton.layer.masksToBounds = true
+        careButton.layer.borderWidth = 1
+        careButton.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        careButton.layer.borderColor = UIColor.yellowColor().CGColor
+        careButton.hidden = true
+        descirptionLabel.textColor = UIColor.cyanColor()
+        descirptionLabel.hidden = true
+        
         initCollectionView()
     }
     
@@ -70,6 +82,10 @@ class MineCareTableViewCell: UITableViewCell {
         customCollectionView.registerNib(nib, forCellWithReuseIdentifier: collectionCellIdentifier)
         customCollectionView.delegate = self
         customCollectionView.dataSource = self
+    }
+    
+    @IBAction func tapCareButton(sender: UIButton) {
+            action?()
     }
     
 }

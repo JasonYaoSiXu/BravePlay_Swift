@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-BravePlay/Alamofire.framework"
+  install_framework "Pods-BravePlay/IQKeyboardManagerSwift.framework"
   install_framework "Pods-BravePlay/Moya.framework"
   install_framework "Pods-BravePlay/ObjectMapper.framework"
   install_framework "Pods-BravePlay/Result.framework"
@@ -94,6 +95,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BravePlay/Alamofire.framework"
+  install_framework "Pods-BravePlay/IQKeyboardManagerSwift.framework"
   install_framework "Pods-BravePlay/Moya.framework"
   install_framework "Pods-BravePlay/ObjectMapper.framework"
   install_framework "Pods-BravePlay/Result.framework"
