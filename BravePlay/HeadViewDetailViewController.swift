@@ -23,7 +23,7 @@ class HeadViewDetailViewController: UIViewController {
     private let thirdSectionIdentifier: String = "HeadDetailAcConsultTableViewCell"
     private let customButton: String = "CustomButtonTableViewCell"
     private let titleName: [String] = ["基本信息","敢玩Tips","敢玩咨询"]
-    private var headView = HeadDetailAcCostomHeadView()
+    private var customView: HeadDetailAcCustomView!
     private var number = 0
     private var ticketInfo: [TicketInfo] = []
     private var vcTitle: String = ""
@@ -90,8 +90,6 @@ class HeadViewDetailViewController: UIViewController {
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height - height - 10)
         tableView.backgroundColor = UIColor.clearColor()
         tableView.separatorStyle = .None
-        headView = HeadDetailAcCostomHeadView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 280))
-        tableView.tableHeaderView = headView
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -379,10 +377,20 @@ extension HeadViewDetailViewController : MoyaPares {
             switch resultData {
             case .Success(let response):
                 self.activityDetail = response
+                var bannerItem : [BannerItem] = []
                 response.avatarGallery.forEach({
-                    self.headView.bgImageArray.append($0.url)
+                    var item = BannerItem()
+                    item.img_mobile_url = $0.url
+                    bannerItem.append(item)
                 })
-                self.headView.reloadData(response.avatar, name: response.name, info: response.title)
+                let headView = HeadView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 280), bannerItem: bannerItem)
+                headView.isCircle = false
+                self.customView = HeadDetailAcCustomView(frame: CGRect(x: 0, y: headView.bounds.size.height / 3 * 2, width: headView.bounds.size.width, height: headView.bounds.size.height / 3))
+                headView.addSubview(self.customView)
+                self.customView.circleImageView.setImageWithURL(makeImageURL(response.headimg), defaultImage: UIImage(named: "find_mw_bg"))
+                self.customView.authorLabel.text = "by  " + response.name
+                self.customView.activityInfo.text = response.title
+                self.tableView.tableHeaderView = headView
                 self.connectConsultActivity(activityId)
             case .Failure(let error):
                 self.popHud()

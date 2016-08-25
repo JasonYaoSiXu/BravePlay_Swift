@@ -11,7 +11,7 @@ import Result
 
 class HeadViewDetailForVideoViewController: UIViewController,MoyaPares {
     
-    private let pushAnimation = ViewControllerPushAnimation()
+    private var pushAnimation : ViewControllerPushAnimation! = ViewControllerPushAnimation()
     private var titleName: String = ""
     private var showId: String = ""
     private let tableView: UITableView =  UITableView()
@@ -68,7 +68,7 @@ class HeadViewDetailForVideoViewController: UIViewController,MoyaPares {
         navigationController?.navigationBar.alpha = 0.0
         navigationController?.navigationBar.barTintColor = UIColor( red: 0.0824, green: 0.1216, blue: 0.1412, alpha: 1.0 )
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-//        navigationController?.delegate = self
+        navigationController?.delegate = self
         
         let backButton = UIBarButtonItem()
         backButton.title = ""
@@ -78,6 +78,11 @@ class HeadViewDetailForVideoViewController: UIViewController,MoyaPares {
         let shareButton = UIBarButtonItem(title: "share", style: .Done, target: self, action: #selector(HeadViewDetailForVideoViewController.tapShareButton))
         let leftButtonItems = [shareButton,likeButton]
         navigationItem.rightBarButtonItems = leftButtonItems
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        pushAnimation = nil
     }
     
     func setTableView() {

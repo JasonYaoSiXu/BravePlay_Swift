@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     private let sectionThree = "BraveTVUITableViewCell"
     private let otherCellIdentifier = "CustomTableViewCell"
     private let tableView = UITableView()
-    private var tableViewHeadView = CustomHeadView(frame: CGRectZero)
     private let titleArray = ["敢玩趣闻","敢玩活动","敢玩TV","自频道精选","Topic推荐"]
     private var sectionCount : [String] = []
     private var imageInfoArray: [String] = []
@@ -81,9 +80,6 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableViewHeadView = CustomHeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 210))
-        tableViewHeadView.delegate = self
-        tableView.tableHeaderView = tableViewHeadView
         tableView.separatorStyle = .None
         
         view.addSubview(tableView)
@@ -263,7 +259,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController : CustomHeadViewDelegate,CustomTableViewCellDelegate {
+extension ViewController : HeadViewDelegate,CustomTableViewCellDelegate {
     
     func pushToHeadDetailVC(indexPath: (String,String,String)) {
         if indexPath.0 == "1" {
@@ -278,11 +274,6 @@ extension ViewController : CustomHeadViewDelegate,CustomTableViewCellDelegate {
             hidesBottomBarWhenPushed = false
         }
     }
-    
-    func showInfoWith(indexPath: Int) -> BannerItem {
-            return bannerRepos[indexPath]
-    }
-    
     
     func showInfoWithCh(indexPath: Int) -> ChnnelItem {
         guard let channelRepos = self.channelRepos else {
@@ -320,7 +311,9 @@ extension ViewController : MainVcConnectDisplay {
         switch displayData {
         case .Success(let respone):
             self.bannerRepos = respone
-            self.tableViewHeadView.reloadData()
+            let headView = HeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 210), bannerItem: self.bannerRepos)
+            headView.delegate = self
+            self.tableView.tableHeaderView = headView
             self.output.requestArticle()
         case .Failure(let error):
             dealWithError(error)

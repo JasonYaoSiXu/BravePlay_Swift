@@ -12,11 +12,8 @@ import Result
 class InterestingSectionViewController: UIViewController {
 
     private let tableView: UITableView = UITableView()
-    private var tableViewHeadView : CustomHeadView!
-    
     private var interestingBannerData: [InterestingBanners] = []
     private var interestingDetailData: [InterestingSectionDetail] = []
-    
     private let sectionOne = "InterestingTableViewCell"
     
     override func viewDidLoad() {
@@ -63,11 +60,7 @@ class InterestingSectionViewController: UIViewController {
         
         let nib = UINib(nibName: sectionOne, bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: sectionOne)
-        tableViewHeadView = CustomHeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 210))
-        tableViewHeadView.delegate = self
-        tableView.tableHeaderView = tableViewHeadView
         tableView.tableFooterView = UIView()
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -83,7 +76,17 @@ extension InterestingSectionViewController : MoyaPares {
             switch dataResult {
             case .Success(let data) :
                  self.interestingBannerData = data
-                 self.tableViewHeadView.reloadData()
+                 var bannerItem: [BannerItem] = []
+                 data.forEach({
+                    var item = BannerItem()
+                    item.dist_id = $0.id
+                    item.img_mobile_url = $0.cover
+                    item.description = $0.title
+                    bannerItem.append(item)
+                 })
+                 let headView = HeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 210), bannerItem: bannerItem)
+                 headView.delegate = self
+                 self.tableView.tableHeaderView = headView
                 self.requestDetailData()
             case .Failure(let error):
                 self.popHud()
@@ -152,29 +155,14 @@ extension InterestingSectionViewController :  UITableViewDelegate, UITableViewDa
 }
 
 
-extension InterestingSectionViewController : CustomHeadViewDelegate {
+extension InterestingSectionViewController : HeadViewDelegate {
     
     func pushToHeadDetailVC(indexPath: (String,String,String)) {
-        if indexPath.0 == "1" {
-            hidesBottomBarWhenPushed = true
-            let headVc = InterestingViewController(id: indexPath.1,name: indexPath.2)
-            headVc.title = indexPath.2
-            navigationController?.pushViewController(headVc, animated: true)
-            hidesBottomBarWhenPushed = false
-        }
-    }
-    
-    func showInfoWith(indexPath: Int) -> BannerItem {
-        
-        var bannerItem = BannerItem()
-        bannerItem.dist_id = interestingBannerData[indexPath].id
-        bannerItem.description = interestingBannerData[indexPath].title
-        bannerItem.img_mobile_url = interestingBannerData[indexPath].cover
-        bannerItem.type = "1"
-        bannerItem.created_at = "\(interestingBannerData[indexPath].date_time)"
-        bannerItem.img_url = interestingBannerData[indexPath].cover
-        
-        return bannerItem
+        hidesBottomBarWhenPushed = true
+        let headVc = InterestingViewController(id: indexPath.1,name: indexPath.2)
+        headVc.title = indexPath.2
+        navigationController?.pushViewController(headVc, animated: true)
+        hidesBottomBarWhenPushed = false
     }
 }
 
