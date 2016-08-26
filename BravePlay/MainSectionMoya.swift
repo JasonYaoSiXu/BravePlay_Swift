@@ -9,8 +9,10 @@
 import Foundation
 import Moya
 
-let mainSectionBaseUrl = "https://api.idarex.com"
+//首页联网请求配置文件
 
+//域名
+let mainSectionBaseUrl = "https://api.idarex.com"
 private func JSONResponseDataFormatter(data: NSData) -> NSData {
     do {
         let dataAsJSON = try NSJSONSerialization.JSONObjectWithData(data, options: [])
@@ -176,7 +178,7 @@ public func url(route: TargetType) -> String {
     return route.baseURL.URLByAppendingPathComponent(route.path).absoluteString
 }
 
-// Mark:
+// Mark: 为http请求头部增加属性
 let endpointClosure = { (target: MainSection) -> Endpoint<MainSection> in
     let endpoint: Endpoint<MainSection> = Endpoint<MainSection>(URL: url(target),
                                                     sampleResponseClosure: {.NetworkResponse(200, target.sampleData)},

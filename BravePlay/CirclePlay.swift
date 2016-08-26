@@ -12,6 +12,13 @@ protocol  HeadViewDelegate : class {
     func pushToHeadDetailVC(indexPath: (String,String,String))
 }
 
+enum PageControlLocation {
+    case TopLeft
+    case TopRight
+    case BottomLeft
+    case BottomRight
+}
+
 class HeadView : UIView {
     
     private var collectionView : UICollectionView!
@@ -22,11 +29,40 @@ class HeadView : UIView {
     private var bannerItem: [BannerItem] = []
     weak var delegate : HeadViewDelegate!
     
+    ///是否定时轮播，默认为true
     var isCircle = false {
         didSet {
             if isCircle == false {
                 nstime.invalidate()
             }
+        }
+    }
+    
+    ///当前pageControl的颜色
+    var currentPageColor = UIColor.redColor() {
+        didSet {
+            pageControl.currentPageIndicatorTintColor = currentPageColor
+        }
+    }
+    
+    ///没有被选中的pageControlPage的颜色
+    var notCurrenPageColor = UIColor.cyanColor() {
+        didSet {
+            pageControl.pageIndicatorTintColor = notCurrenPageColor
+        }
+    }
+    
+    ///pageControlr中心点的位置
+    var centerOfPageControl : CGPoint = CGPointZero {
+        didSet {
+            pageControl.center = centerOfPageControl
+        }
+    }
+    
+    ///获取pageControl的大小
+    var pageControlSize : CGSize {
+        get {
+            return pageControl.frame.size
         }
     }
     
@@ -73,6 +109,25 @@ class HeadView : UIView {
             collectionView.scrollToItemAtIndexPath(NSIndexPath(forRow: 1,inSection: 0), atScrollPosition: .Left, animated: false)
         }
         addSubview(collectionView)
+    }
+    
+    ///设置pageControl在那个方位 左上角、右上角、左下角、右下角.
+    func locationOfPageControl(location: PageControlLocation) {
+        let width : CGFloat = bounds.size.width
+        let height : CGFloat = bounds.size.height
+        let pageControlWidth : CGFloat = pageControl.frame.size.width
+        let pageControlHeight : CGFloat = pageControl.frame.size.height
+        
+        switch location {
+        case .TopLeft:
+            pageControl.frame.origin = CGPoint(x: 0, y: 0)
+        case .TopRight:
+            pageControl.frame.origin = CGPoint(x: width - pageControlWidth, y: 0)
+        case .BottomLeft:
+            pageControl.frame.origin = CGPoint(x: 0, y: height - pageControlHeight)
+        case .BottomRight:
+            pageControl.frame.origin = CGPoint(x: width - pageControlWidth, y: height - pageControlHeight)
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {

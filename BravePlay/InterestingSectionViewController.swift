@@ -85,6 +85,8 @@ extension InterestingSectionViewController : MoyaPares {
                     bannerItem.append(item)
                  })
                  let headView = HeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 210), bannerItem: bannerItem)
+                 headView.centerOfPageControl = CGPoint(x: headView.center.x, y: 10)
+                 headView.currentPageColor = UIColor ( red: 0.8588, green: 0.1686, blue: 0.2196, alpha: 1.0 )
                  headView.delegate = self
                  self.tableView.tableHeaderView = headView
                 self.requestDetailData()

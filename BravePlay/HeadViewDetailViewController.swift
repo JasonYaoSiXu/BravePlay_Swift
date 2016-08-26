@@ -384,6 +384,8 @@ extension HeadViewDetailViewController : MoyaPares {
                     bannerItem.append(item)
                 })
                 let headView = HeadView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 280), bannerItem: bannerItem)
+                headView.currentPageColor = UIColor ( red: 0.5098, green: 0.7529, blue: 0.3294, alpha: 1.0 )
+                headView.locationOfPageControl(PageControlLocation.BottomRight)
                 headView.isCircle = false
                 self.customView = HeadDetailAcCustomView(frame: CGRect(x: 0, y: headView.bounds.size.height / 3 * 2, width: headView.bounds.size.width, height: headView.bounds.size.height / 3))
                 headView.addSubview(self.customView)

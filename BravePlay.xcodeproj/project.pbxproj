@@ -679,8 +679,8 @@
 			isa = PBXGroup;
 			children = (
 				8263A4811D4F500B00298D96 /* MainSectionMoya.swift */,
-				824E71DB1D548ACB0067351D /* OrderDetail */,
 				82FAE7B21D506FA4006505DB /* MainVC */,
+				824E71DB1D548ACB0067351D /* OrderDetail */,
 				826D694F1D4AF9B500A1187D /* BravePlayInteresting */,
 				8263A47A1D4EF9F700298D96 /* HeadDetailForActivity */,
 				82FAE7B11D506C17006505DB /* HeadDetailForTV */,

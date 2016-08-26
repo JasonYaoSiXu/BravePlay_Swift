@@ -312,6 +312,8 @@ extension ViewController : MainVcConnectDisplay {
         case .Success(let respone):
             self.bannerRepos = respone
             let headView = HeadView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 210), bannerItem: self.bannerRepos)
+            headView.locationOfPageControl(PageControlLocation.BottomRight)
+            headView.currentPageColor = UIColor ( red: 0.1137, green: 0.302, blue: 0.5176, alpha: 1.0 )
             headView.delegate = self
             self.tableView.tableHeaderView = headView
             self.output.requestArticle()

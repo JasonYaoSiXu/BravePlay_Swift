@@ -8,20 +8,6 @@
 
 import UIKit
 
-//enum TitleArray: String {
-//    case Contact = "联系人信息"
-//    case OrderDetail = "订单信息"
-//    case PayWay = "支付方式"
-//}
-
-//enum PlaceholderInfo: String {
-//    case Name = "请填写联系人姓名"
-//    case PhoneNumber = "填写手机号方便联系"
-//    case Organize = "必填"
-//    case JoinScource = " 必填"
-//    case Course = "必填 "
-//}
-
 class OrderDetailViewController: UIViewController {
 
     private var activityId: String = ""
