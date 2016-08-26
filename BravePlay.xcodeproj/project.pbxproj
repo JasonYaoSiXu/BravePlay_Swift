@@ -133,6 +133,7 @@
 		82B0441C1D5DD1D40020F547 /* UserVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0441B1D5DD1D40020F547 /* UserVCModel.swift */; };
 		82B0441E1D5DD67C0020F547 /* UserVcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */; };
 		82B044201D5DD6FB0020F547 /* UserVcHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B0441F1D5DD6FB0020F547 /* UserVcHeadView.swift */; };
+		82B2A6B41D6FE9300058FA0B /* general.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B2A6B31D6FE9300058FA0B /* general.swift */; };
 		82B52A8D1D5B353800E5FEAF /* PlayTv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B52A8C1D5B353800E5FEAF /* PlayTv.swift */; };
 		82C0329B1D6C38B000C5E721 /* LogInStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */; };
 		82C0329D1D6C4E4F00C5E721 /* SetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0329C1D6C4E4F00C5E721 /* SetModel.swift */; };
@@ -323,6 +324,7 @@
 		82B0441B1D5DD1D40020F547 /* UserVCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVCModel.swift; sourceTree = "<group>"; };
 		82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcViewController.swift; sourceTree = "<group>"; };
 		82B0441F1D5DD6FB0020F547 /* UserVcHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVcHeadView.swift; sourceTree = "<group>"; };
+		82B2A6B31D6FE9300058FA0B /* general.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = general.swift; sourceTree = "<group>"; };
 		82B52A8C1D5B353800E5FEAF /* PlayTv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTv.swift; sourceTree = "<group>"; };
 		82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LogInStoryBoard.storyboard; sourceTree = "<group>"; };
 		82C0329C1D6C4E4F00C5E721 /* SetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetModel.swift; sourceTree = "<group>"; };
@@ -719,6 +721,7 @@
 				823A80C11D5D6EEC00EE302A /* WebTableViewCell.swift */,
 				82B044181D5DADBB0020F547 /* CustomTitleView.swift */,
 				821F16A11D656A0F00A7B8A4 /* UserData.swift */,
+				82B2A6B31D6FE9300058FA0B /* general.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -1133,6 +1136,7 @@
 				82B0441C1D5DD1D40020F547 /* UserVCModel.swift in Sources */,
 				8268609A1D59B63B0099670A /* MoreConsultViewController.swift in Sources */,
 				824D368E1D6C1D250097A1D8 /* StoryBoardMoya.swift in Sources */,
+				82B2A6B41D6FE9300058FA0B /* general.swift in Sources */,
 				8263A4781D4EF26600298D96 /* CustomTableViewCell.swift in Sources */,
 				820270511D61C3060041AA5B /* InterestingViewController.swift in Sources */,
 				828F6AEB1D62E13F002B0B70 /* ActivityChooseCityViewController.swift in Sources */,

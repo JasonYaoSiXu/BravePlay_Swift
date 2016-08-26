@@ -187,8 +187,6 @@ let endpointClosure = { (target: MainSection) -> Endpoint<MainSection> in
     
     var query = ""
     
-//    switch target {
-//    case .Banner,.Article,.Activity,.Tv,.Channel,.Topic:
         return endpoint.endpointByAddingParameterEncoding(Moya.ParameterEncoding.Custom {
             request,parameters in
             var mutableURLRequest = request.URLRequest

@@ -140,7 +140,7 @@ extension ResetPasswordViewController {
             switch result {
             case .Success(let results):
                 print("status = \(results.statusCode)")
-                if results.statusCode != 200 {
+                if results.statusCode != 201 {
                     do {
                         let json = try results.mapJSON()
                         guard let data = Mapper<GetRegisterCheckCodeError>().mapArray(json) else {
@@ -153,6 +153,7 @@ extension ResetPasswordViewController {
                     return
                 }
                 self.showInfoMessage("成功修改密码")
+                self.dismissViewControllerAnimated(true, completion: nil)
                 self.navigationController?.popToRootViewControllerAnimated(true)
             case .Failure:
                 self.showErrorMessage("出错")

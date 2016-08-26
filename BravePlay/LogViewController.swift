@@ -107,6 +107,12 @@ class LogViewController: UIViewController,MoyaPares {
     }
     
     @IBAction func tapLogButton(sender: UIButton) {
+        
+        if !regularExpression(phoneNumberTextFiled.text!) {
+            showErrorMessage("请输入正确的手机号码!")
+            return
+        }
+        
         showHud("正在登录")
         mineSectionProvider.request(MineSection.Sessions(password: passwordTextField.text!, phoneNumber: phoneNumberTextFiled.text!), completion: { [unowned self] result in
             switch result {

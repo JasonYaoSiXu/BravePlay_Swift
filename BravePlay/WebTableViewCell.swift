@@ -14,7 +14,6 @@ class FastWebTableViewCell: UITableViewCell {
     typealias NeedUpdateBlock = (Void) -> (Void)
     
     var needUpdateBlock:NeedUpdateBlock? = nil
-    //    private var webView = WKWebView()
     private var webView = UIWebView()
     var cellHeight :Float? = nil
     

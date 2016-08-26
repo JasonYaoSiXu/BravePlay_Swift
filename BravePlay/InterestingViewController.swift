@@ -78,8 +78,10 @@ class InterestingViewController: UIViewController,MoyaPares {
     }
     
     private func initTableView() {
-        tableView.frame = CGRect(x: 0, y: 64, width: view.bounds.size.width, height: view.bounds.size.height - 64)
+        tableView.frame = CGRect(x: 0, y: 64, width: view.bounds.size.width, height: UIScreen.mainScreen().bounds.size.height - 64)
         view.addSubview(tableView)
+        tableView.backgroundColor = UIColor ( red: 0.2, green: 0.298, blue: 0.3098, alpha: 1.0 )
+        tableView.tableFooterView = UIView()
         tableView.registerClass(FastWebTableViewCell.self, forCellReuseIdentifier: scheduleCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
@@ -89,9 +91,16 @@ class InterestingViewController: UIViewController,MoyaPares {
         scheduleWebCell.needUpdateBlock = { [weak self] in
             self?.tableView.reloadData()
         }
-        let urlStr = data.detail.content.stringByReplacingOccurrencesOfString("src=\"\"", withString: " ", options: NSStringCompareOptions.LiteralSearch, range: nil)
-//        scheduleWebCell.loadHtmlString(data.detail.content.stringByReplacingOccurrencesOfString("data-src", withString: "src", options: NSStringCompareOptions.LiteralSearch, range: nil))
-        scheduleWebCell.loadHtmlString(urlStr.stringByReplacingOccurrencesOfString("data-src", withString: "src", options: NSStringCompareOptions.LiteralSearch, range: nil))
+        let urlStr = data.detail.content.stringByReplacingOccurrencesOfString("src=\"\"", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let html = urlStr.stringByReplacingOccurrencesOfString("data-src", withString: "src", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let htmlString = html.componentsSeparatedByString("\n")
+        var string = ""
+        htmlString.forEach({
+            if $0.containsString("pic stage anim blur-img blur_img") == false {
+                string.appendContentsOf($0)
+            }
+        })
+        scheduleWebCell.loadHtmlString(string)
         
     }
     

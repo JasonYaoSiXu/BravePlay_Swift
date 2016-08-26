@@ -30,21 +30,6 @@ class MineSetViewController: UIViewController {
                 self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow:2,inSection:0)], withRowAnimation: .None)
                 self.tableView.endUpdates()
         })
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.hidden = false
-        navigationController?.navigationBar.alpha = 1.0
-        
-        navigationController?.navigationBar.barTintColor = UIColor ( red: 0.1059, green: 0.1608, blue: 0.1882, alpha: 1.0 )
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         let backButton = UIBarButtonItem()
         backButton.title = ""
@@ -60,6 +45,21 @@ class MineSetViewController: UIViewController {
         
         let rightButton = UIBarButtonItem(title: "退出", style: .Done, target: self, action: #selector(MineSetViewController.logOutAction))
         navigationItem.rightBarButtonItem = rightButton
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.hidden = false
+        navigationController?.navigationBar.alpha = 1.0
+        
+        navigationController?.navigationBar.barTintColor = UIColor ( red: 0.1059, green: 0.1608, blue: 0.1882, alpha: 1.0 )
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -256,22 +256,13 @@ extension MineSetViewController : UINavigationControllerDelegate, UIImagePickerC
             dateFormat.dateFormat = "yyyy年MM月dd日hh时MM"
             let path = dateFormat.stringFromDate(date)
             self.qinius(path)
-            Alamofire.upload(.PUT, "https://api.idarex.com/users/_current?scenario=avatar",headers: ["Authorization":"Bearer  \(UserData.UserDatas.access_token!)","Accept":"application/json; version=v3"], multipartFormData: { (data) in
-                let imageName = "avatar=FmQoW5GvMl7zuOIOw40q4u5nfysx"
-                data.appendBodyPart(data: imageName.dataUsingEncoding(NSUTF8StringEncoding)!, name: "")
-                data.appendBodyPart(data: destImage, name: "file", mimeType: "image/jpeg")
-            }) { (result) in
-                print("数据准备完成；")
-                switch result {
-                case .Success(let upload, _, _):
-                    upload.responseString(completionHandler: {(respone) in
-                        print("success::\(respone)")
-                    })
-                case .Failure(let err):
-                    print("Error::\(err)")
-                    break
-                }
-            }
+            let parameters = ["avatar" : path]
+            let head = ["Authorization":"Bearer  \(UserData.UserDatas.access_token!)",
+                            "Accept":"application/json",
+                            "Content-Type" : "application/x-www-form-urlencoded",
+                            "Accept-Encoding" : "gzip, deflate"]
+            let request = Alamofire.request(.PUT, "https://api.idarex.com/v4/users/_current?scenario=avatar", parameters: parameters, encoding: .URL, headers: head)
+            print("request = \(request)")
         }
     }
     
