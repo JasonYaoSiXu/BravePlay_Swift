@@ -10,6 +10,7 @@ target 'BravePlay' do
 	pod 'SVProgressHUD', '~> 2.0.3'
 	pod 'SnapKit', '~> 0.30.0.beta2'
 	pod 'IQKeyboardManagerSwift', '~> 4.0.4'
+	pod 'MLeaksFinder'
 end
 
 target 'BravePlayTests' do

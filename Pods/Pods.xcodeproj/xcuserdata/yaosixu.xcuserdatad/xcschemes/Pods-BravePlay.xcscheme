@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '67FAD816EE948813CBFE777E'
+               BlueprintIdentifier = '6D6943C89E3F6406110C8682'
                BlueprintName = 'Pods-BravePlay'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_BravePlay.framework'>
