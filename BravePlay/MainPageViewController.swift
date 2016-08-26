@@ -15,9 +15,8 @@ class MainPageViewController: UITabBarController {
         view.backgroundColor = UIColor.whiteColor()
         // 设置tabBar选中item时的文字颜色和图片颜色
         tabBar.tintColor = UIColor ( red: 0.9569, green: 0.6118, blue: 0.051, alpha: 1.0 )
-        //设置tabBar自身的颜色
+        //设置tabBar本身的背景颜色
         tabBar.barTintColor = UIColor( red: 0.0824, green: 0.1216, blue: 0.1412, alpha: 1.0 )
-        //增加子ViewController
         addSubViewController()
     }
 
