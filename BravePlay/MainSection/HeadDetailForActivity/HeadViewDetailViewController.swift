@@ -6,6 +6,7 @@
 //  Copyright © 2016年 Jason_Yao. All rights reserved.
 //
 
+//活动详情页面
 import UIKit
 import Result
 import ObjectMapper
@@ -85,6 +86,7 @@ class HeadViewDetailViewController: UIViewController {
         navigationItem.rightBarButtonItems = leftButtonItems
     }
     
+    //初始化tableView
     private func setTableView() {
         tableView.backgroundColor = UIColor.clearColor()
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height - height - 10)
@@ -108,6 +110,7 @@ class HeadViewDetailViewController: UIViewController {
         view.addSubview(tableView)
     }
     
+    //添加底部报名入口和该活动价格
     private func setUI() {
         let screenWidth = UIScreen.mainScreen().bounds.width
         let screenHeight = UIScreen.mainScreen().bounds.height
@@ -129,6 +132,7 @@ class HeadViewDetailViewController: UIViewController {
         joinButton.addTarget(self, action: #selector(HeadViewDetailViewController.tapJoinButton), forControlEvents: .TouchUpInside)
     }
     
+    //点击立即报名所产生的动作
     @objc private func tapJoinButton() {
         print("\(#function)")
         ticketInfo.append(TicketInfo("单人早鸟票",ticketRemak: "请在备注中选择课程",ticketPrice: "399",ticketId: "123"))

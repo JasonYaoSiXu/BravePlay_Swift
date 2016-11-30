@@ -241,36 +241,9 @@ let endpointClosure = { (target: MainSection) -> Endpoint<MainSection> in
             }
             return (mutableURLRequest,nil)
             })
-//    default:
-//        return endpoint
-//    }
 }
 
 
-//let MainSectionProvider = MoyaProvider<MainSection>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 let MainSectionProvider = MoyaProvider<MainSection>(endpointClosure:endpointClosure,
     plugins: [NetworkLoggerPlugin(verbose: true,responseDataFormatter: JSONResponseDataFormatter)]
 )
-
-
-
-//                    if let array = value as? [AnyObject] {
-//
-//                        array.forEach {
-//                            if !query.isEmpty { query = query + "&" }
-//                            query = query + "\(key)=\($0)"
-//                        }
-//
-//                    } else {
-//                        if !query.isEmpty { query = query + "&" }
-//                        query = query + "\(key)=\(value)"
-//                    }
-//                mutableURLRequest.HTTPBody =  query.URLEscapedString.dataUsingEncoding(NSUTF8StringEncoding)
-
-
-
-
-
-
-
-

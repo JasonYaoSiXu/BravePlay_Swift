@@ -6,6 +6,7 @@
 //  Copyright © 2016年 Jason_Yao. All rights reserved.
 //
 
+//订单详情
 import UIKit
 
 class OrderDetailViewController: UIViewController {
@@ -263,4 +264,3 @@ extension OrderDetailViewController : NumberOfTicketsViewDelegate {
         priceLabel.text = "¥\(numbers * price)"
     }
 }
-

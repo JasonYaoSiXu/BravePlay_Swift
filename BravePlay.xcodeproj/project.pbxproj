@@ -412,20 +412,20 @@
 		8202704F1D61C2CD0041AA5B /* Interesting */ = {
 			isa = PBXGroup;
 			children = (
-				820270501D61C3060041AA5B /* InterestingViewController.swift */,
 				820270521D61C6770041AA5B /* InterestingModel.swift */,
+				820270501D61C3060041AA5B /* InterestingViewController.swift */,
 			);
-			name = Interesting;
+			path = Interesting;
 			sourceTree = "<group>";
 		};
 		820270541D61D88F0041AA5B /* InterestingSection */ = {
 			isa = PBXGroup;
 			children = (
-				820270551D61D8B30041AA5B /* InterestingSectionViewController.swift */,
 				828F6ADC1D62B536002B0B70 /* InterestingMoya.swift */,
 				828F6ADE1D62B774002B0B70 /* InterestingSectionModel.swift */,
+				820270551D61D8B30041AA5B /* InterestingSectionViewController.swift */,
 			);
-			name = InterestingSection;
+			path = InterestingSection;
 			sourceTree = "<group>";
 		};
 		8209F60F1D6EE8D7000111B1 /* CirclePlay */ = {
@@ -433,22 +433,22 @@
 			children = (
 				8209F6101D6EE8F5000111B1 /* CirclePlay.swift */,
 			);
-			name = CirclePlay;
+			path = CirclePlay;
 			sourceTree = "<group>";
 		};
 		821F16A31D6574B800A7B8A4 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				82642DEA1D66B28D00C7B6D5 /* ForgetPasswordViewController.swift */,
 				82C0329A1D6C38B000C5E721 /* LogInStoryBoard.storyboard */,
+				82642DE81D66A79500C7B6D5 /* LogViewController.swift */,
 				821F16BD1D65B4F400A7B8A4 /* LongInStoryBoardViewController.swift */,
 				82642DE61D66987300C7B6D5 /* RegisterViewController.swift */,
-				82642DE81D66A79500C7B6D5 /* LogViewController.swift */,
-				82642DEA1D66B28D00C7B6D5 /* ForgetPasswordViewController.swift */,
 				824D36911D6C2BE40097A1D8 /* ResetPasswordViewController.swift */,
-				824D368D1D6C1D250097A1D8 /* StoryBoardMoya.swift */,
 				824D368F1D6C1EBA0097A1D8 /* StoryBoardModel.swift */,
+				824D368D1D6C1D250097A1D8 /* StoryBoardMoya.swift */,
 			);
-			name = StoryBoard;
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 		821F16A81D657E7200A7B8A4 /* ChangePassword */ = {
@@ -458,7 +458,7 @@
 				821F16A91D657EEF00A7B8A4 /* SetPasswordTableViewCell.swift */,
 				821F16AA1D657EEF00A7B8A4 /* SetPasswordTableViewCell.xib */,
 			);
-			name = ChangePassword;
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		821F16AE1D658CCB00A7B8A4 /* ChangeNick */ = {
@@ -466,7 +466,7 @@
 			children = (
 				821F16B11D658D3500A7B8A4 /* ChangeNickViewController.swift */,
 			);
-			name = ChangeNick;
+			path = ChangeNick;
 			sourceTree = "<group>";
 		};
 		821F16B71D6594D900A7B8A4 /* Debunk */ = {
@@ -475,7 +475,7 @@
 				821F16B31D6594CE00A7B8A4 /* SetDebunkViewController.swift */,
 				821F16B41D6594CE00A7B8A4 /* SetDebunkViewController.xib */,
 			);
-			name = Debunk;
+			path = Debunk;
 			sourceTree = "<group>";
 		};
 		821F16B81D659B1F00A7B8A4 /* Cache */ = {
@@ -483,7 +483,7 @@
 			children = (
 				821F16B91D659B3200A7B8A4 /* Cache.swift */,
 			);
-			name = Cache;
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		8241CE701D51825A00240803 /* DealError */ = {
@@ -491,7 +491,7 @@
 			children = (
 				8241CE711D51827200240803 /* DealError.swift */,
 			);
-			name = DealError;
+			path = DealError;
 			sourceTree = "<group>";
 		};
 		824E71CA1D5424EF0067351D /* GeneralViewController */ = {
@@ -500,80 +500,80 @@
 				824E71CD1D5425910067351D /* ShareViewController.swift */,
 				824E71CE1D5425910067351D /* ShareViewController.xib */,
 			);
-			name = GeneralViewController;
+			path = GeneralViewController;
 			sourceTree = "<group>";
 		};
 		824E71CB1D5425070067351D /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
-				826D695D1D4B266B00A1187D /* CustomCellCollectionViewCell.swift */,
-				826D695E1D4B266B00A1187D /* CustomCellCollectionViewCell.xib */,
-				8263A4761D4EF26600298D96 /* CustomTableViewCell.swift */,
-				8263A4771D4EF26600298D96 /* CustomTableViewCell.xib */,
 				82FAE7B31D50AC35006505DB /* BottomCollectionViewCell.swift */,
 				82FAE7B41D50AC35006505DB /* BottomCollectionViewCell.xib */,
 				824E71C61D5421480067351D /* CustomButtonTableViewCell.swift */,
 				824E71C71D5421480067351D /* CustomButtonTableViewCell.xib */,
+				826D695D1D4B266B00A1187D /* CustomCellCollectionViewCell.swift */,
+				826D695E1D4B266B00A1187D /* CustomCellCollectionViewCell.xib */,
+				8263A4761D4EF26600298D96 /* CustomTableViewCell.swift */,
+				8263A4771D4EF26600298D96 /* CustomTableViewCell.xib */,
 			);
-			name = TableCell;
+			path = TableCell;
 			sourceTree = "<group>";
 		};
 		824E71CC1D54253B0067351D /* general */ = {
 			isa = PBXGroup;
 			children = (
 				82FAE7AF1D50597B006505DB /* ExtensionUIControl.swift */,
-				8241CE751D5195A800240803 /* MoyaPares.swift */,
 				82581ED91D6A854800C7A743 /* ImagePickerProtocol.swift */,
+				8241CE751D5195A800240803 /* MoyaPares.swift */,
 				824D368B1D6C168D0097A1D8 /* Notification.swift */,
-				8209F6051D6EA282000111B1 /* ViewControllerPushAnimation.swift */,
 				8209F6071D6EA293000111B1 /* ViewControllerPopAnimation.swift */,
+				8209F6051D6EA282000111B1 /* ViewControllerPushAnimation.swift */,
 			);
-			name = general;
+			path = general;
 			sourceTree = "<group>";
 		};
 		824E71D51D544E030067351D /* ButTicketView */ = {
 			isa = PBXGroup;
 			children = (
-				824E71D31D544C780067351D /* BuyTicketView.swift */,
 				824E71D71D544E3B0067351D /* ButTicketViewTableViewCell.swift */,
 				824E71D81D544E3B0067351D /* ButTicketViewTableViewCell.xib */,
+				824E71D31D544C780067351D /* BuyTicketView.swift */,
 			);
-			name = ButTicketView;
+			path = ButTicketView;
 			sourceTree = "<group>";
 		};
 		824E71DB1D548ACB0067351D /* OrderDetail */ = {
 			isa = PBXGroup;
 			children = (
-				824E71DC1D548AEA0067351D /* OrderDetailViewController.swift */,
 				8268607C1D595A7B0099670A /* OrderDetailCellTitleTableViewCell.swift */,
 				8268607D1D595A7B0099670A /* OrderDetailCellTitleTableViewCell.xib */,
 				826860801D595E1A0099670A /* OrderDetailContactTableViewCell.swift */,
 				826860811D595E1A0099670A /* OrderDetailContactTableViewCell.xib */,
 				826860841D5960340099670A /* OrderDetailPayWaysTableViewCell.swift */,
 				826860851D5960340099670A /* OrderDetailPayWaysTableViewCell.xib */,
-				826860881D5962FE0099670A /* numberOfTicketsView.swift */,
-				8268608A1D5969360099670A /* OrderDetailTicketNumberTableViewCell.swift */,
-				8268608B1D5969360099670A /* OrderDetailTicketNumberTableViewCell.xib */,
 				8268608E1D597CBB0099670A /* OrderDetailTableViewCell.swift */,
 				8268608F1D597CBB0099670A /* OrderDetailTableViewCell.xib */,
+				8268608A1D5969360099670A /* OrderDetailTicketNumberTableViewCell.swift */,
+				8268608B1D5969360099670A /* OrderDetailTicketNumberTableViewCell.xib */,
+				824E71DC1D548AEA0067351D /* OrderDetailViewController.swift */,
+				826860881D5962FE0099670A /* numberOfTicketsView.swift */,
 			);
-			name = OrderDetail;
+			path = OrderDetail;
 			sourceTree = "<group>";
 		};
 		8263A47A1D4EF9F700298D96 /* HeadDetailForActivity */ = {
 			isa = PBXGroup;
 			children = (
-				8263A47B1D4EFA1200298D96 /* HeadViewDetailViewController.swift */,
-				8241CE7D1D51BFDB00240803 /* HeadDetailAcCustomView.swift */,
-				82FEA0301D51DBAB00EF8440 /* HeadViewAcFirstSectionTableViewCell.swift */,
-				82FEA0311D51DBAB00EF8440 /* HeadViewAcFirstSectionTableViewCell.xib */,
-				82FEA0361D51E84300EF8440 /* HeadDetalAcCustomTableViewCell.swift */,
-				82FEA0371D51E84300EF8440 /* HeadDetalAcCustomTableViewCell.xib */,
 				82FEA03A1D51FA5700EF8440 /* HeadDetailAcConsultTableViewCell.swift */,
 				82FEA03B1D51FA5700EF8440 /* HeadDetailAcConsultTableViewCell.xib */,
+				8241CE7D1D51BFDB00240803 /* HeadDetailAcCustomView.swift */,
+				82FEA0361D51E84300EF8440 /* HeadDetalAcCustomTableViewCell.swift */,
+				82FEA0371D51E84300EF8440 /* HeadDetalAcCustomTableViewCell.xib */,
+				82FEA0301D51DBAB00EF8440 /* HeadViewAcFirstSectionTableViewCell.swift */,
+				82FEA0311D51DBAB00EF8440 /* HeadViewAcFirstSectionTableViewCell.xib */,
 				82553AA21D52D82E005150C8 /* HeadViewAcModel.swift */,
+				8263A47B1D4EFA1200298D96 /* HeadViewDetailViewController.swift */,
 			);
-			name = HeadDetailForActivity;
+			path = HeadDetailForActivity;
 			sourceTree = "<group>";
 		};
 		826860921D59AD840099670A /* MapVC */ = {
@@ -581,18 +581,18 @@
 			children = (
 				826860951D59ADB00099670A /* MapVCViewController.swift */,
 			);
-			name = MapVC;
+			path = MapVC;
 			sourceTree = "<group>";
 		};
 		826860971D59B58D0099670A /* MainVCMoreDetail */ = {
 			isa = PBXGroup;
 			children = (
-				8268609B1D59B6580099670A /* MoreDetailViewController.swift */,
 				8268609D1D59BF920099670A /* MoreDetailTitleTableViewCell.swift */,
 				8268609E1D59BF920099670A /* MoreDetailTitleTableViewCell.xib */,
+				8268609B1D59B6580099670A /* MoreDetailViewController.swift */,
 				823A80C31D5D754000EE302A /* MoreDetailWebViewController.swift */,
 			);
-			name = MainVCMoreDetail;
+			path = MainVCMoreDetail;
 			sourceTree = "<group>";
 		};
 		826860981D59B5980099670A /* MainVCMoreConsult */ = {
@@ -600,7 +600,7 @@
 			children = (
 				826860991D59B63B0099670A /* MoreConsultViewController.swift */,
 			);
-			name = MainVCMoreConsult;
+			path = MainVCMoreConsult;
 			sourceTree = "<group>";
 		};
 		826D690E1D4AF41700A1187D = {
@@ -609,9 +609,9 @@
 				826D69191D4AF41700A1187D /* BravePlay */,
 				826D69311D4AF41700A1187D /* BravePlayTests */,
 				826D693C1D4AF41700A1187D /* BravePlayUITests */,
-				826D69181D4AF41700A1187D /* Products */,
-				66FF9B6EADF219F49A4B6586 /* Pods */,
 				409F3F4E06CB95BDD831967B /* Frameworks */,
+				66FF9B6EADF219F49A4B6586 /* Pods */,
+				826D69181D4AF41700A1187D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -628,23 +628,23 @@
 		826D69191D4AF41700A1187D /* BravePlay */ = {
 			isa = PBXGroup;
 			children = (
-				826D691A1D4AF41700A1187D /* AppDelegate.swift */,
-				8272344B1D5355C4000D466F /* Reveal.framework */,
-				826D691E1D4AF41700A1187D /* Main.storyboard */,
-				826D69241D4AF41700A1187D /* Assets.xcassets */,
-				826D69261D4AF41700A1187D /* LaunchScreen.storyboard */,
-				826D69291D4AF41700A1187D /* Info.plist */,
-				826D69211D4AF41700A1187D /* BravePlay.xcdatamodeld */,
-				826D694B1D4AF46100A1187D /* Config */,
-				826D694E1D4AF8AA00A1187D /* MainSection */,
-				82E884711D6D5653002C5637 /* Channels */,
-				82E884721D6D5663002C5637 /* Topics */,
-				820270541D61D88F0041AA5B /* InterestingSection */,
-				828F6AE01D62C795002B0B70 /* TVSection */,
 				828F6AE71D62D254002B0B70 /* ActivitySection */,
+				82E884711D6D5653002C5637 /* Channels */,
+				826D694B1D4AF46100A1187D /* Config */,
+				826D69581D4B227100A1187D /* General */,
+				820270541D61D88F0041AA5B /* InterestingSection */,
+				826D694E1D4AF8AA00A1187D /* MainSection */,
 				82FE845B1D644E9500CE6977 /* MineSection */,
 				821F16A31D6574B800A7B8A4 /* StoryBoard */,
-				826D69581D4B227100A1187D /* General */,
+				828F6AE01D62C795002B0B70 /* TVSection */,
+				82E884721D6D5663002C5637 /* Topics */,
+				826D691A1D4AF41700A1187D /* AppDelegate.swift */,
+				826D69241D4AF41700A1187D /* Assets.xcassets */,
+				826D69211D4AF41700A1187D /* BravePlay.xcdatamodeld */,
+				826D69291D4AF41700A1187D /* Info.plist */,
+				826D69261D4AF41700A1187D /* LaunchScreen.storyboard */,
+				826D691E1D4AF41700A1187D /* Main.storyboard */,
+				8272344B1D5355C4000D466F /* Reveal.framework */,
 			);
 			path = BravePlay;
 			sourceTree = "<group>";
@@ -672,80 +672,80 @@
 			children = (
 				826D694C1D4AF4CA00A1187D /* MainPageViewController.swift */,
 			);
-			name = Config;
+			path = Config;
 			sourceTree = "<group>";
 		};
 		826D694E1D4AF8AA00A1187D /* MainSection */ = {
 			isa = PBXGroup;
 			children = (
-				8263A4811D4F500B00298D96 /* MainSectionMoya.swift */,
-				82FAE7B21D506FA4006505DB /* MainVC */,
-				824E71DB1D548ACB0067351D /* OrderDetail */,
 				826D694F1D4AF9B500A1187D /* BravePlayInteresting */,
 				8263A47A1D4EF9F700298D96 /* HeadDetailForActivity */,
 				82FAE7B11D506C17006505DB /* HeadDetailForTV */,
-				82B0441A1D5DCFC70020F547 /* UserVc */,
 				8202704F1D61C2CD0041AA5B /* Interesting */,
+				82FAE7B21D506FA4006505DB /* MainVC */,
+				824E71DB1D548ACB0067351D /* OrderDetail */,
+				82B0441A1D5DCFC70020F547 /* UserVc */,
+				8263A4811D4F500B00298D96 /* MainSectionMoya.swift */,
 			);
-			name = MainSection;
+			path = MainSection;
 			sourceTree = "<group>";
 		};
 		826D694F1D4AF9B500A1187D /* BravePlayInteresting */ = {
 			isa = PBXGroup;
 			children = (
-				826D69501D4AF9FC00A1187D /* InterestingTableViewCell.swift */,
-				826D69511D4AF9FC00A1187D /* InterestingTableViewCell.xib */,
-				826D69541D4B14AB00A1187D /* SeciontTitleTableViewCell.swift */,
-				826D69551D4B14AB00A1187D /* SeciontTitleTableViewCell.xib */,
 				8263A4681D4ED2F400298D96 /* BraveActiveTableViewCell.swift */,
 				8263A4691D4ED2F400298D96 /* BraveActiveTableViewCell.xib */,
 				8263A46C1D4EE6DC00298D96 /* BraveTVUITableViewCell.swift */,
 				8263A46D1D4EE6DC00298D96 /* BraveTVUITableViewCell.xib */,
+				826D69501D4AF9FC00A1187D /* InterestingTableViewCell.swift */,
+				826D69511D4AF9FC00A1187D /* InterestingTableViewCell.xib */,
+				826D69541D4B14AB00A1187D /* SeciontTitleTableViewCell.swift */,
+				826D69551D4B14AB00A1187D /* SeciontTitleTableViewCell.xib */,
 			);
-			name = BravePlayInteresting;
+			path = BravePlayInteresting;
 			sourceTree = "<group>";
 		};
 		826D69581D4B227100A1187D /* General */ = {
 			isa = PBXGroup;
 			children = (
-				8209F60F1D6EE8D7000111B1 /* CirclePlay */,
-				821F16B81D659B1F00A7B8A4 /* Cache */,
-				82FBA5101D5B116500F1B09C /* PlayTv */,
-				826860921D59AD840099670A /* MapVC */,
-				824E71CB1D5425070067351D /* TableCell */,
-				8241CE701D51825A00240803 /* DealError */,
-				824E71CC1D54253B0067351D /* general */,
-				824E71CA1D5424EF0067351D /* GeneralViewController */,
 				824E71D51D544E030067351D /* ButTicketView */,
-				824E71D11D5436640067351D /* ShareView.swift */,
-				823A80C11D5D6EEC00EE302A /* WebTableViewCell.swift */,
+				821F16B81D659B1F00A7B8A4 /* Cache */,
+				8209F60F1D6EE8D7000111B1 /* CirclePlay */,
+				8241CE701D51825A00240803 /* DealError */,
+				824E71CA1D5424EF0067351D /* GeneralViewController */,
+				826860921D59AD840099670A /* MapVC */,
+				82FBA5101D5B116500F1B09C /* PlayTv */,
+				824E71CB1D5425070067351D /* TableCell */,
+				824E71CC1D54253B0067351D /* general */,
 				82B044181D5DADBB0020F547 /* CustomTitleView.swift */,
+				824E71D11D5436640067351D /* ShareView.swift */,
 				821F16A11D656A0F00A7B8A4 /* UserData.swift */,
+				823A80C11D5D6EEC00EE302A /* WebTableViewCell.swift */,
 				82B2A6B31D6FE9300058FA0B /* general.swift */,
 			);
-			name = General;
+			path = General;
 			sourceTree = "<group>";
 		};
 		828F6AE01D62C795002B0B70 /* TVSection */ = {
 			isa = PBXGroup;
 			children = (
-				828F6AE11D62C81F002B0B70 /* TVSectionViewController.swift */,
-				828F6AE31D62C946002B0B70 /* TVSectionMoya.swift */,
 				828F6AE51D62CA5B002B0B70 /* TVSectionModel.swift */,
+				828F6AE31D62C946002B0B70 /* TVSectionMoya.swift */,
+				828F6AE11D62C81F002B0B70 /* TVSectionViewController.swift */,
 			);
-			name = TVSection;
+			path = TVSection;
 			sourceTree = "<group>";
 		};
 		828F6AE71D62D254002B0B70 /* ActivitySection */ = {
 			isa = PBXGroup;
 			children = (
-				828F6AE81D62D27C002B0B70 /* ActivitySectionViewController.swift */,
-				828F6AEC1D62E22B002B0B70 /* ActivitySectionModel.swift */,
-				828F6AEF1D62F136002B0B70 /* ActivitySectionMoya.swift */,
 				828F6AEE1D62E2EC002B0B70 /* ChooseCity */,
 				828F6AF11D63082C002B0B70 /* CustomCell */,
+				828F6AEC1D62E22B002B0B70 /* ActivitySectionModel.swift */,
+				828F6AEF1D62F136002B0B70 /* ActivitySectionMoya.swift */,
+				828F6AE81D62D27C002B0B70 /* ActivitySectionViewController.swift */,
 			);
-			name = ActivitySection;
+			path = ActivitySection;
 			sourceTree = "<group>";
 		};
 		828F6AEE1D62E2EC002B0B70 /* ChooseCity */ = {
@@ -753,7 +753,7 @@
 			children = (
 				828F6AEA1D62E13F002B0B70 /* ActivityChooseCityViewController.swift */,
 			);
-			name = ChooseCity;
+			path = ChooseCity;
 			sourceTree = "<group>";
 		};
 		828F6AF11D63082C002B0B70 /* CustomCell */ = {
@@ -761,147 +761,147 @@
 			children = (
 				828F6AF61D630896002B0B70 /* ActivityHasPriceTableViewCell.swift */,
 				828F6AF71D630896002B0B70 /* ActivityHasPriceTableViewCell.xib */,
-				828F6AFA1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift */,
-				828F6AFB1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib */,
 				828F6AFE1D63123F002B0B70 /* ActivitySectionCollectionViewCell.swift */,
 				828F6AFF1D63123F002B0B70 /* ActivitySectionCollectionViewCell.xib */,
+				828F6AFA1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.swift */,
+				828F6AFB1D630EE6002B0B70 /* ActivityWithoutPriceTableViewCell.xib */,
 			);
-			name = CustomCell;
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		82B0441A1D5DCFC70020F547 /* UserVc */ = {
 			isa = PBXGroup;
 			children = (
-				82B0441B1D5DD1D40020F547 /* UserVCModel.swift */,
-				82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */,
-				82B0441F1D5DD6FB0020F547 /* UserVcHeadView.swift */,
-				824B278D1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift */,
-				824B278E1D6146F0005DD690 /* UserVcTitleViewTableViewCell.xib */,
-				824B27911D614942005DD690 /* UserVcRecommendTableViewCell.swift */,
-				824B27921D614942005DD690 /* UserVcRecommendTableViewCell.xib */,
-				824B27991D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift */,
-				824B279A1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib */,
 				824B279D1D615850005DD690 /* UserCustomTableViewCell.swift */,
 				824B279E1D615850005DD690 /* UserCustomTableViewCell.xib */,
+				82B0441B1D5DD1D40020F547 /* UserVCModel.swift */,
+				82B0441F1D5DD6FB0020F547 /* UserVcHeadView.swift */,
+				824B27991D614B73005DD690 /* UserVcRecommendCollectionViewCell.swift */,
+				824B279A1D614B73005DD690 /* UserVcRecommendCollectionViewCell.xib */,
+				824B27911D614942005DD690 /* UserVcRecommendTableViewCell.swift */,
+				824B27921D614942005DD690 /* UserVcRecommendTableViewCell.xib */,
+				824B278D1D6146F0005DD690 /* UserVcTitleViewTableViewCell.swift */,
+				824B278E1D6146F0005DD690 /* UserVcTitleViewTableViewCell.xib */,
+				82B0441D1D5DD67C0020F547 /* UserVcViewController.swift */,
 			);
-			name = UserVc;
+			path = UserVc;
 			sourceTree = "<group>";
 		};
 		82E884711D6D5653002C5637 /* Channels */ = {
 			isa = PBXGroup;
 			children = (
-				82E884731D6D567E002C5637 /* ChannelsViewController.swift */,
 				82E884751D6D5715002C5637 /* ChannelsModel.swift */,
+				82E884731D6D567E002C5637 /* ChannelsViewController.swift */,
 			);
-			name = Channels;
+			path = Channels;
 			sourceTree = "<group>";
 		};
 		82E884721D6D5663002C5637 /* Topics */ = {
 			isa = PBXGroup;
 			children = (
-				82E884791D6D7E1B002C5637 /* TopicsViewController.swift */,
-				82E884771D6D5912002C5637 /* TopicsModel.swift */,
 				82E8847B1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.swift */,
 				82E8847C1D6D7ED1002C5637 /* TopicsDataCollectionViewCell.xib */,
+				82E884771D6D5912002C5637 /* TopicsModel.swift */,
+				82E884791D6D7E1B002C5637 /* TopicsViewController.swift */,
 			);
-			name = Topics;
+			path = Topics;
 			sourceTree = "<group>";
 		};
 		82FAE7B11D506C17006505DB /* HeadDetailForTV */ = {
 			isa = PBXGroup;
 			children = (
-				8263A47D1D4F385400298D96 /* HeadViewDetailForVideoViewController.swift */,
+				826860A91D59DBD00099670A /* DetailForTvCommentTableViewCell.swift */,
+				826860AA1D59DBD00099670A /* DetailForTvCommentTableViewCell.xib */,
 				826860A31D59CE460099670A /* DetailForTvCustomHeadView.swift */,
 				826860A51D59D8070099670A /* DetailForTvRecommendTableViewCell.swift */,
 				826860A61D59D8070099670A /* DetailForTvRecommendTableViewCell.xib */,
-				826860A91D59DBD00099670A /* DetailForTvCommentTableViewCell.swift */,
-				826860AA1D59DBD00099670A /* DetailForTvCommentTableViewCell.xib */,
+				82FBA50A1D5AC13500F1B09C /* HeadDetailModel.swift */,
+				8263A47D1D4F385400298D96 /* HeadViewDetailForVideoViewController.swift */,
 				826860AD1D59E02C0099670A /* relatedRecommendTableViewCell.swift */,
 				826860AE1D59E02C0099670A /* relatedRecommendTableViewCell.xib */,
-				82FBA50A1D5AC13500F1B09C /* HeadDetailModel.swift */,
 			);
-			name = HeadDetailForTV;
+			path = HeadDetailForTV;
 			sourceTree = "<group>";
 		};
 		82FAE7B21D506FA4006505DB /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
-				826D691C1D4AF41700A1187D /* ViewController.swift */,
+				826860981D59B5980099670A /* MainVCMoreConsult */,
+				826860971D59B58D0099670A /* MainVCMoreDetail */,
 				8263A4831D4F542500298D96 /* MainSectionModel.swift */,
 				82553AA41D52FBA1005150C8 /* MainVcConnectConfig.swift */,
 				82553AAA1D531418005150C8 /* MainVcNetWork.swift */,
 				82553AAC1D531683005150C8 /* MainVcPresentData.swift */,
-				826860971D59B58D0099670A /* MainVCMoreDetail */,
-				826860981D59B5980099670A /* MainVCMoreConsult */,
+				826D691C1D4AF41700A1187D /* ViewController.swift */,
 			);
-			name = MainVC;
+			path = MainVC;
 			sourceTree = "<group>";
 		};
 		82FBA5101D5B116500F1B09C /* PlayTv */ = {
 			isa = PBXGroup;
 			children = (
-				82FBA5111D5B117D00F1B09C /* PlayTvViewController.swift */,
-				82B52A8C1D5B353800E5FEAF /* PlayTv.swift */,
-				8273F8C41D5C6DF00053D3A4 /* Subtitles.swift */,
 				8273F8C61D5C83D60053D3A4 /* BottomView.swift */,
+				82B52A8C1D5B353800E5FEAF /* PlayTv.swift */,
+				82FBA5111D5B117D00F1B09C /* PlayTvViewController.swift */,
+				8273F8C41D5C6DF00053D3A4 /* Subtitles.swift */,
 			);
-			name = PlayTv;
+			path = PlayTv;
 			sourceTree = "<group>";
 		};
 		82FE845B1D644E9500CE6977 /* MineSection */ = {
 			isa = PBXGroup;
 			children = (
-				82FE845C1D644EBA00CE6977 /* MineSectionViewController.swift */,
-				82FE845E1D64509F00CE6977 /* MineSectionHeadView.swift */,
-				82FE84601D645E2C00CE6977 /* SetViewController */,
-				82FE84741D646F2D00CE6977 /* MineTableViewCell */,
 				82FE84671D646E3300CE6977 /* MineCollectionViewCell */,
-				82581EDB1D6AA27600C7A743 /* MineMoya.swift */,
+				82FE84741D646F2D00CE6977 /* MineTableViewCell */,
+				82FE84601D645E2C00CE6977 /* SetViewController */,
 				82581EDD1D6AA3FB00C7A743 /* MineModel.swift */,
+				82581EDB1D6AA27600C7A743 /* MineMoya.swift */,
+				82FE845E1D64509F00CE6977 /* MineSectionHeadView.swift */,
+				82FE845C1D644EBA00CE6977 /* MineSectionViewController.swift */,
 			);
-			name = MineSection;
+			path = MineSection;
 			sourceTree = "<group>";
 		};
 		82FE84601D645E2C00CE6977 /* SetViewController */ = {
 			isa = PBXGroup;
 			children = (
-				82FE84611D645E4A00CE6977 /* MineSetViewController.swift */,
-				821F16971D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.swift */,
-				821F16981D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.xib */,
-				821F169B1D65569500A7B8A4 /* MineSectionDetailTableViewCell.swift */,
-				821F169C1D65569500A7B8A4 /* MineSectionDetailTableViewCell.xib */,
-				82C0329C1D6C4E4F00C5E721 /* SetModel.swift */,
 				821F16AE1D658CCB00A7B8A4 /* ChangeNick */,
 				821F16A81D657E7200A7B8A4 /* ChangePassword */,
 				821F16B71D6594D900A7B8A4 /* Debunk */,
+				821F169B1D65569500A7B8A4 /* MineSectionDetailTableViewCell.swift */,
+				821F169C1D65569500A7B8A4 /* MineSectionDetailTableViewCell.xib */,
+				821F16971D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.swift */,
+				821F16981D6553FE00A7B8A4 /* MineSectionTitleTableViewCell.xib */,
+				82FE84611D645E4A00CE6977 /* MineSetViewController.swift */,
+				82C0329C1D6C4E4F00C5E721 /* SetModel.swift */,
 			);
-			name = SetViewController;
+			path = SetViewController;
 			sourceTree = "<group>";
 		};
 		82FE84671D646E3300CE6977 /* MineCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				82FE84681D646EB700CE6977 /* MineTicketInfoCollectionViewCell.swift */,
-				82FE84691D646EB700CE6977 /* MineTicketInfoCollectionViewCell.xib */,
 				82FE846C1D646F0000CE6977 /* MineCareCollectionViewCell.swift */,
 				82FE846D1D646F0000CE6977 /* MineCareCollectionViewCell.xib */,
 				82FE84701D646F2900CE6977 /* MineLikeCollectionViewCell.swift */,
 				82FE84711D646F2900CE6977 /* MineLikeCollectionViewCell.xib */,
+				82FE84681D646EB700CE6977 /* MineTicketInfoCollectionViewCell.swift */,
+				82FE84691D646EB700CE6977 /* MineTicketInfoCollectionViewCell.xib */,
 			);
-			name = MineCollectionViewCell;
+			path = MineCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		82FE84741D646F2D00CE6977 /* MineTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				82FE84751D646F5600CE6977 /* MineTicketInfoTableViewCell.swift */,
-				82FE84761D646F5600CE6977 /* MineTicketInfoTableViewCell.xib */,
-				82FE84791D646F7B00CE6977 /* MineCareTableViewCell.swift */,
-				82FE847A1D646F7B00CE6977 /* MineCareTableViewCell.xib */,
 				82FE847D1D646FC100CE6977 /* MineCareDetailCollectionViewCell.swift */,
 				82FE847E1D646FC100CE6977 /* MineCareDetailCollectionViewCell.xib */,
+				82FE84791D646F7B00CE6977 /* MineCareTableViewCell.swift */,
+				82FE847A1D646F7B00CE6977 /* MineCareTableViewCell.xib */,
+				82FE84751D646F5600CE6977 /* MineTicketInfoTableViewCell.swift */,
+				82FE84761D646F5600CE6977 /* MineTicketInfoTableViewCell.xib */,
 			);
-			name = MineTableViewCell;
+			path = MineTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1283,6 +1283,7 @@
 				826D691F1D4AF41700A1187D /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		826D69261D4AF41700A1187D /* LaunchScreen.storyboard */ = {
@@ -1291,6 +1292,7 @@
 				826D69271D4AF41700A1187D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

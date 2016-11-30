@@ -6,6 +6,7 @@
 //  Copyright © 2016年 Jason_Yao. All rights reserved.
 //
 
+//首页
 import UIKit
 import ObjectMapper
 import Result
@@ -21,10 +22,12 @@ class ViewController: UIViewController {
     private let sectionTwo = "BraveActiveTableViewCell"
     private let sectionThree = "BraveTVUITableViewCell"
     private let otherCellIdentifier = "CustomTableViewCell"
-    private let tableView = UITableView()
     private let titleArray = ["敢玩趣闻","敢玩活动","敢玩TV","自频道精选","Topic推荐"]
+    
+    private let tableView = UITableView()
     private var sectionCount : [String] = []
     private var imageInfoArray: [String] = []
+    
     var bannerRepos: [BannerItem] = []
     var articleRepos: [ArticleItem] = []
     var activityRepos: ActivityResponse?
@@ -33,7 +36,6 @@ class ViewController: UIViewController {
     var topicRepos: TopicResponse?
     var output: MainVcConnectRequest!
     var input: MainVcConnectDisplay!
-    
     weak var delegate : ViewControllerDelegate!
     
     override func viewDidLoad() {
@@ -43,8 +45,10 @@ class ViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationItem.backBarButtonItem = backButton
+        
         setUpVIP()
         initTableView()
+        //请求数据
         output.requestBanner()
         showHud("加载中")
     }
@@ -62,6 +66,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
+    //初始化tableView并添加到ViewController
     private func initTableView() {
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.height - 41)
         tableView.backgroundColor = UIColor.clearColor()
@@ -85,6 +90,7 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
     }
     
+    //设置请求数据时的代理关系
     func setUpVIP() {
         let work = MainVcNetWork()
         self.output = work

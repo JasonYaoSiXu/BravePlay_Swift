@@ -9,24 +9,11 @@
 import UIKit
 
 protocol ImagePickerProtocol : class , UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-//    var imagePicker : UIImagePickerController { get set }
     func chooseImage(image: UIImage)
     func chooseSourceType(type: Int, imagePicker: UIImagePickerController)
 }
 
 extension ImagePickerProtocol where Self : UIViewController {
-    
-//    var imagePicker : UIImagePickerController {
-//        
-//        get {
-//            return UIImagePickerController()
-//        }
-//        
-//        set (newValue) {
-//            imagePicker = newValue
-//        }
-//        
-//    }
     
     func chooseSourceType(type: Int, imagePicker: UIImagePickerController) {
         if type == 0 {

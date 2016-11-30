@@ -70,6 +70,7 @@ class MainPageViewController: UITabBarController {
     
 }
 
+//跳转到指定的tabbar item
 extension MainPageViewController : ViewControllerDelegate {
     func jumpToOtherViewController(index: Int) {
         selectedIndex = index
